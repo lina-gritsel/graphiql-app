@@ -6,7 +6,7 @@ import Menu from '../Menu'
 
 const Header: FC = () => {
   return (
-    <div>
+    <div className={styles.container}>
       <Menu />
     </div>
   )
