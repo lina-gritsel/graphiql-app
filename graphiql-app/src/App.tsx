@@ -1,7 +1,9 @@
+import Router from './router'
+
 import './scss/styles.scss'
 
 const App = () => {
-  return <div>Hey</div>
+  return <Router />
 }
 
 export default App
