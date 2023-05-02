@@ -1,22 +1,21 @@
-import { FC } from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-
-import Layout from '../layout/Layout'
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+} from 'react-router-dom'
 
 import { routes } from './routes'
 
-const Router: FC = () => {
-  return (
-    <BrowserRouter>
-      <Layout>
-        <Routes>
-          {routes.map(({ path, component: Component }, index) => (
-            <Route key={index} path={path} element={<Component />} />
-          ))}
-        </Routes>
-      </Layout>
-    </BrowserRouter>
-  )
-}
+import Layout from '../layout/Layout'
 
-export default Router
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Layout />}>
+      {routes.map(({ path, component: Component }, index) => (
+        <Route key={index} path={path} element={<Component />} />
+      ))}
+    </Route>,
+  ),
+)
+
+export default router
