@@ -1,4 +1,4 @@
-import { PATHS } from '../../router/paths'
+import { PATHS } from '../../constants/paths'
 
 export const MENU_ITEMS = [
   { to: PATHS.WELCOME, label: 'Welcome' },

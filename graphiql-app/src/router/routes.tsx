@@ -1,4 +1,4 @@
-import { PATHS } from './paths'
+import { PATHS } from '../constants/paths'
 
 import RegistrationPage from '../pages/RegistrationPage'
 import WelcomePage from '../pages/WelcomePage'

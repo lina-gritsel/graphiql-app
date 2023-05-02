@@ -1,6 +1,4 @@
-import { FC } from 'react'
-
-const RegistrationPage: FC = () => {
+const RegistrationPage = () => {
   return <div>RegistrationPage</div>
 }
 

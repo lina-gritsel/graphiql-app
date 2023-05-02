@@ -1,8 +1,6 @@
-import { FC } from 'react'
-
 import styles from './Footer.module.scss'
 
-const Footer: FC = () => {
+const Footer = () => {
   return <div className={styles.container}>Our githubs</div>
 }
 

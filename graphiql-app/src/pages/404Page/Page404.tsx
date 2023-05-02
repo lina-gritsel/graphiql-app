@@ -1,8 +1,6 @@
-import { FC } from 'react'
-
 import styles from './Page404.module.scss'
 
-const Page404: FC = () => {
+const Page404 = () => {
   return <div className={styles.container}>404Page</div>
 }
 

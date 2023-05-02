@@ -1,7 +1,7 @@
 export const PATHS = {
   PAGE_404: '*',
   WELCOME: '/welcome',
-  REGISTRATION:'/registration',
+  REGISTRATION: '/registration',
   LOGIN: '/login',
   HOME: '/',
-}
+} as const

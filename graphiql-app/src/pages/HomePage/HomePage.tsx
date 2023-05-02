@@ -1,8 +1,6 @@
-import { FC } from 'react'
-
 import styles from './HomePage.module.scss'
 
-const HomePage: FC = () => {
+const HomePage = () => {
   return <div>HomePage</div>
 }
 

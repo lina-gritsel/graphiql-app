@@ -1,6 +1,4 @@
-import { FC } from 'react'
-
-const WelcomePage: FC = () => {
+const WelcomePage = () => {
   return <div>WelcomePage</div>
 }
 
