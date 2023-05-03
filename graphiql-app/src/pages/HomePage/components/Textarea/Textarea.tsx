@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Textarea as ChacraTextArea } from '@chakra-ui/react'
+import { Textarea as ChakraTextArea } from '@chakra-ui/react'
 
 import { useTextarea } from './hook'
 
@@ -30,13 +30,14 @@ const Textarea: FC<TextareaLocalProps> = ({
           <div key={count}>{count}</div>
         ))}
       </div>
-      <ChacraTextArea
+      <ChakraTextArea
         ref={textareaRef}
         value={valueTextarea}
         onChange={(event) => setValueTextarea(event.target.value)}
         onScroll={handleTextAreaScroll}
         className={styles.textarea}
         placeholder={placeholder}
+        focusBorderColor='white'
       />
     </div>
   )
