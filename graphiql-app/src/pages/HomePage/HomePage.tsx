@@ -1,6 +1,7 @@
-import styles from './HomePage.module.scss'
 import Playground from './components/Playground'
 import SideBar from './components/SideBar'
+
+import styles from './HomePage.module.scss'
 
 const HomePage = () => {
   return (

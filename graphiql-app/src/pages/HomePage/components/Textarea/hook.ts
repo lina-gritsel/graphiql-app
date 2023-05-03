@@ -3,24 +3,24 @@ import { useMemo, useRef, useState } from 'react'
 export const useTextarea = (numOfLines: number) => {
   const { lineCounterRef, textareaRef, handleTextAreaScroll } =
     onScrollTextarea()
-    
+
   const [valueTextarea, setValueTextarea] = useState<string>('')
 
-  const lineCount: number = useMemo(
+  const linesCount: number = useMemo(
     () => valueTextarea.split('\n').length,
     [valueTextarea],
   )
 
-  const linesArr = useMemo(
+  const linesArray = useMemo(
     () =>
-      Array.from({ length: Math.max(numOfLines, lineCount) }, (_, i) => i + 1),
-    [lineCount, numOfLines],
+      Array.from({ length: Math.max(numOfLines, linesCount) }, (_, i) => i + 1),
+    [linesCount, numOfLines],
   )
 
   return {
     valueTextarea,
     setValueTextarea,
-    linesArr,
+    linesArray,
     lineCounterRef,
     textareaRef,
     handleTextAreaScroll,

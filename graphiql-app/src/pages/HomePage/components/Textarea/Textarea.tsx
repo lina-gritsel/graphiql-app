@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Textarea } from '@chakra-ui/react'
+import { Textarea as ChacraTextArea } from '@chakra-ui/react'
 
 import { useTextarea } from './hook'
 
@@ -10,14 +10,14 @@ interface TextareaLocalProps {
   placeholder: string
 }
 
-const TextareaLocal: FC<TextareaLocalProps> = ({
+const Textarea: FC<TextareaLocalProps> = ({
   numOfLines = 5,
   placeholder,
 }) => {
   const {
     valueTextarea,
     setValueTextarea,
-    linesArr,
+    linesArray,
     lineCounterRef,
     textareaRef,
     handleTextAreaScroll,
@@ -26,11 +26,11 @@ const TextareaLocal: FC<TextareaLocalProps> = ({
   return (
     <div className={styles.wrapper}>
       <div className={styles.numberOfLine} ref={lineCounterRef}>
-        {linesArr.map((count) => (
+        {linesArray.map((count) => (
           <div key={count}>{count}</div>
         ))}
       </div>
-      <Textarea
+      <ChacraTextArea
         ref={textareaRef}
         value={valueTextarea}
         onChange={(event) => setValueTextarea(event.target.value)}
@@ -42,4 +42,4 @@ const TextareaLocal: FC<TextareaLocalProps> = ({
   )
 }
 
-export default TextareaLocal
+export default Textarea
