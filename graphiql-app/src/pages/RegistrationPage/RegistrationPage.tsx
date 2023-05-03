@@ -1,5 +1,8 @@
+import { AbsoluteCenter } from '@chakra-ui/react'
+import SignUp from './components/SignUp'
+
 const RegistrationPage = () => {
-  return <div>RegistrationPage</div>
+  return <SignUp />
 }
 
 export default RegistrationPage
