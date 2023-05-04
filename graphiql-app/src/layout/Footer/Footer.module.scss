@@ -1,7 +1,45 @@
 .container {
-  background-color: rgb(248, 209, 148);
-  position: absolute;
-  bottom: 0;
+  align-items: center;
+  border-top: 2px solid #f1f2f4;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 50px;
   width: 100%;
-  padding: 24px;
+}
+
+.yearWrapper {
+  align-items: center;
+  display: flex;
+  gap: 5px;
+}
+
+.copyright {
+  height: 20px;
+  width: 20px;
+}
+
+.year {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.logo {
+  height: 50px;
+  width: 110px;
+}
+
+.github {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+}
+
+.githubName {
+  font-size: 20px;
+}
+
+.line {
+  background-color: #afafaf;
+  height: 25px;
+  width: 2px;
 }

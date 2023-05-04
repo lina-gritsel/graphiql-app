@@ -1,5 +1,5 @@
 import { FC, PropsWithChildren } from 'react'
-import { Outlet } from 'react-router'
+import { Outlet } from 'react-router-dom'
 
 import Header from '../Header'
 import Footer from '../Footer'
@@ -10,7 +10,7 @@ const Layout: FC<PropsWithChildren> = () => {
   return (
     <div className={styles.container}>
       <Header />
-        <Outlet />
+      <Outlet />
       <Footer />
     </div>
   )
