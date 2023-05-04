@@ -1,30 +1,14 @@
 import {
   Button,
-  FormControl,
-  FormErrorMessage,
-  FormLabel,
   Heading,
-  Input,
   VStack,
   Container,
   AbsoluteCenter,
   Box,
 } from '@chakra-ui/react'
-import { ReactNode } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-
-interface Inputs {
-  login: string
-  password: string
-}
-
-const checkError = (
-  isError: boolean,
-  errElem: ReactNode,
-  labelElem: ReactNode,
-) => {
-  return isError ? errElem : labelElem
-}
+import { Inputs } from '../index.types'
+import FormField from '../UI/FormField'
 
 const SignUp = () => {
   const {
@@ -47,43 +31,29 @@ const SignUp = () => {
           <Heading>Sign up</Heading>
           <VStack
             as="form"
-            align="flex-start"
+            align="start"
             mt={5}
             spacing={5}
             onSubmit={handleSubmit(onSubmit)}
           >
-            <FormControl isInvalid={!!errors.login}>
-              {checkError(
-                !!errors.login,
-                <FormLabel as={FormErrorMessage} mt={0}>
-                  {!!errors.login && errors.login.message}
-                </FormLabel>,
-                <FormLabel htmlFor="login">Login</FormLabel>,
-              )}
-              <Input
-                type="email"
-                variant="filled"
-                {...register('login', {
-                  required: { value: true, message: 'Enter your login' },
-                })}
-              />
-            </FormControl>
-            <FormControl isInvalid={!!errors.password}>
-              {checkError(
-                !!errors.password,
-                <FormLabel as={FormErrorMessage} mt={0}>
-                  {!!errors.password && errors.password.message}
-                </FormLabel>,
-                <FormLabel htmlFor="password">Password</FormLabel>,
-              )}
-              <Input
-                type="password"
-                variant="filled"
-                {...register('password', {
-                  required: { value: true, message: 'Enter your password' },
-                })}
-              />
-            </FormControl>
+            <FormField
+              type="email"
+              label="Login"
+              errorName={errors.login}
+              errorMessage={errors.login?.message}
+              {...register('login', {
+                required: { value: true, message: 'Enter your login' },
+              })}
+            />
+            <FormField
+              type="password"
+              label="Password"
+              errorName={errors.password}
+              errorMessage={errors.password?.message}
+              {...register('password', {
+                required: { value: true, message: 'Enter your password' },
+              })}
+            />
             <Button type="submit">Sign up</Button>
           </VStack>
         </Container>
