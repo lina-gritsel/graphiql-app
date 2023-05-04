@@ -15,7 +15,7 @@ const SignUp = () => {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm<Inputs>({ defaultValues: { login: '', password: '' } })
+  } = useForm<Inputs>({ defaultValues: { email: '', password: '' } })
 
   const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
 
@@ -38,11 +38,11 @@ const SignUp = () => {
           >
             <FormField
               type="email"
-              label="Login"
-              errorName={errors.login}
-              errorMessage={errors.login?.message}
-              {...register('login', {
-                required: { value: true, message: 'Enter your login' },
+              label="Email"
+              errorName={errors.email}
+              errorMessage={errors.email?.message}
+              {...register('email', {
+                required: { value: true, message: 'Enter your email' },
               })}
             />
             <FormField

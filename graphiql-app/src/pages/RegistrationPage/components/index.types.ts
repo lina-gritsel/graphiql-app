@@ -1,4 +1,4 @@
 export interface Inputs {
-  login: string
+  email: string
   password: string
 }
