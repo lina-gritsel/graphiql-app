@@ -1,11 +1,26 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import styles from './WelcomePage.module.scss'
+import { Button } from '@chakra-ui/react'
+import { PATHS } from '../../constants/paths'
 
 const WelcomePage = () => {
+  const navigate = useNavigate()
+
   return (
     <div className={styles.container}>
-      <h1 className={styles.greeting}>Welcome! <br/>Let&apos;s get acquainted</h1>
-      <div className={styles.info}>
+      <div className={styles.greeting}>
+        <h1>
+          Welcome! <br />
+          Let&apos;s get acquainted ➪
+        </h1>
+        <div className={styles.btnWrapper}>
+          <Button onClick={() => navigate(PATHS.REGISTRATION)}>Sing In</Button>
+          <div>or</div>
+          <Button onClick={() => navigate(PATHS.LOGIN)}>Sing Up</Button>
+        </div>
+      </div>
+
+      <div className={styles.about}>
         <div className={styles.infoCard}>
           <div className={styles.title}>About Us</div>
           <div className={styles.text}>

@@ -11,13 +11,30 @@
   color: #229687;
   font-size: 35px;
   font-weight: 700;
-  position: sticky;
-  top: 30vh;
   width: 30%;
   text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  padding-top: 10%;
+  height: 100%;
+
+  position: sticky;
+  top: 70px;
 }
 
-.info {
+.btnWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  font-size: 20px;
+  font-weight: 500;
+
+}
+
+.about {
   display: flex;
   flex-direction: column;
   gap: 15px;
