@@ -9,8 +9,8 @@ const AboutUs = () => {
         <div className={styles.title}>About Us</div>
         <div className={styles.text}>
           <p>
-            We, Alina, Arthur and Angelina, are developers from a small but
-            proud country.
+            We, Alina, Arthur and Angelina, are a team of promising frontend
+            developers.
           </p>
         </div>
       </div>

@@ -10,13 +10,13 @@ const SideBar = () => {
 
   return (
     <div className={styles.greeting}>
-      <h1>
-        Welcome! <br />
-        Let&apos;s get acquainted ➪
-      </h1>
+      <div>
+        <p>Welcome!</p>
+        <p>{"Let's"} get acquainted ➪</p>
+      </div>
       <div className={styles.btnWrapper}>
         <Button onClick={() => navigate(PATHS.REGISTRATION)}>Sing In</Button>
-        <div>or</div>
+        <p>or</p>
         <Button onClick={() => navigate(PATHS.LOGIN)}>Sing Up</Button>
       </div>
     </div>
