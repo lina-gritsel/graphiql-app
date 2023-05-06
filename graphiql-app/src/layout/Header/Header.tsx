@@ -1,10 +1,15 @@
+import Menu from '../Menu'
+import { useStickyHeader } from './hooks'
+
 import styles from './Header.module.scss'
 
-import Menu from '../Menu'
-
 const Header = () => {
+  const { headerRef, sticky } = useStickyHeader()
   return (
-    <div className={styles.container}>
+    <div
+      className={sticky ? styles.containerWitchScroll : styles.container}
+      ref={headerRef}
+    >
       <Menu />
     </div>
   )
