@@ -23,7 +23,7 @@ const Playground = () => {
       {loading && <div>Loading...</div>}
       {!!response && (
         <div className={styles.responseSection}>
-          <Textarea value={JSON.stringify(response)} />
+          <Textarea value={JSON.stringify(response, null, '\t')} />
         </div>
       )}
     </div>
