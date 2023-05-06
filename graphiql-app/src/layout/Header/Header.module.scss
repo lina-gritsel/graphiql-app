@@ -1,6 +1,26 @@
+<<<<<<< HEAD
 .container {
+=======
+.container,
+.containerWitchScroll {
+>>>>>>> 2b7fe9aa8835761bd28221e6f2bd6f6def6037ba
   border-bottom: 2px solid #f1f2f4;
   padding: 10px;
   display: flex;
   justify-content: center;
+<<<<<<< HEAD
+=======
+  transition: all 1s;
+  position: sticky;
+  top: 0;
+}
+
+.container {
+  background-color: white;
+}
+
+.containerWitchScroll {
+  background-color: #99c6c1;
+  color: white;
+>>>>>>> 2b7fe9aa8835761bd28221e6f2bd6f6def6037ba
 }

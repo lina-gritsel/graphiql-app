@@ -1,4 +1,3 @@
-import { fetchCharacters } from '../../../../api/requests'
 import ControlArea from '../ControlArea'
 import Textarea from '../Textarea'
 

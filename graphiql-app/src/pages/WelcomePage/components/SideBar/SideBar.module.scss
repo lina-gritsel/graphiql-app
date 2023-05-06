@@ -1,0 +1,25 @@
+.greeting {
+  color: #229687;
+  font-size: 35px;
+  font-weight: 700;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  padding-top: 10%;
+  height: 100%;
+  width: 30%;
+
+  position: sticky;
+  top: 70px;
+}
+
+.btnWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  font-size: 20px;
+  font-weight: 500;
+}
