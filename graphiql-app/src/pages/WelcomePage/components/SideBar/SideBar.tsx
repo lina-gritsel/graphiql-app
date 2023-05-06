@@ -1,10 +1,10 @@
 import { Button } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 import { PATHS } from '../../../../constants/paths'
 
 import styles from './SideBar.module.scss'
-import { useTranslation } from 'react-i18next'
 
 const SideBar = () => {
   const navigate = useNavigate()
