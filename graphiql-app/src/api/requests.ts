@@ -13,6 +13,7 @@ export const fetchCharacters = async () => {
             }
           }
         }`,
+        variables: {},
       }),
     })
     const result = await response.json()
