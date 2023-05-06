@@ -1,7 +1,7 @@
 import { useMemo, useRef } from 'react'
 
 interface TextAreaProps {
-  numOfLines?: number 
+  numOfLines?: number
   value: string | undefined
 }
 

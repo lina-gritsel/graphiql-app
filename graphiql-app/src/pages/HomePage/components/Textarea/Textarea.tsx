@@ -23,11 +23,13 @@ const Textarea: FC<TextareaLocalProps> = ({
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.numberOfLine} ref={lineCounterRef}>
-        {linesArray.map((count) => (
-          <div key={count}>{count}</div>
-        ))}
-      </div>
+      {!!numOfLines && (
+        <div className={styles.numberOfLine} ref={lineCounterRef}>
+          {linesArray.map((count) => (
+            <div key={count}>{count}</div>
+          ))}
+        </div>
+      )}
       <ChakraTextArea
         ref={textareaRef}
         value={value}
@@ -35,7 +37,6 @@ const Textarea: FC<TextareaLocalProps> = ({
         onScroll={handleTextAreaScroll}
         className={styles.textarea}
         placeholder={placeholder}
-        focusBorderColor="white"
       />
     </div>
   )

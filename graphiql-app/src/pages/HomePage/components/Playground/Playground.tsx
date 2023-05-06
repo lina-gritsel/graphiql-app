@@ -16,15 +16,14 @@ const Playground = () => {
           placeholder="Enter your request"
           value={valueTextarea}
           onChange={setValueTextarea}
+          numOfLines={7}
         />
         <ControlArea onClick={onSubmit} />
       </div>
       {loading && <div>Loading...</div>}
       {!!response && (
         <div className={styles.responseSection}>
-          <Textarea
-            value={JSON.stringify(response)}
-          />
+          <Textarea value={JSON.stringify(response)} />
         </div>
       )}
     </div>
