@@ -1,15 +1,30 @@
-import { useQuery } from '@tanstack/react-query'
 import { fetchCharacters } from '../../../../api/requests'
+import { useState } from 'react'
 
-export const usePlayground = () => {
-  const { data, isLoading, isFetching } = useQuery(
-    ['fetchAllCharacters'],
-    () => fetchCharacters(),
-    {
-      refetchOnWindowFocus: false,
-      staleTime: 60_000,
-    },
-  )
+export const useHook = () => {
+  const [response, setResponse] = useState<any>(null)
+  const [loading, setLoading] = useState<boolean>(false)
 
-  return { data, loading: isLoading || isFetching }
+  const onSubmit = async () => {
+    try {
+      setLoading(true)
+
+      const result = await fetchCharacters()
+      if (!result) {
+        console.log('type the query correctly')
+      }
+
+      setResponse(result)
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  return {
+    response,
+    onSubmit,
+    loading,
+  }
 }
