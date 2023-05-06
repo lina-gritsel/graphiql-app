@@ -7,9 +7,9 @@ import { Outlet } from 'react-router'
 const Layout = () => {
   return (
     <div className={styles.container}>
-      {/* <Header /> */}
+      <Header />
       <Outlet />
-      {/* <Footer /> */}
+      <Footer />
     </div>
   )
 }
