@@ -8,22 +8,18 @@ import styles from './Textarea.module.scss'
 interface TextareaLocalProps {
   numOfLines?: number
   placeholder?: string
-  data?: any
+  value?: string
+  onChange?: (value: string) => void
 }
 
 const Textarea: FC<TextareaLocalProps> = ({
-  numOfLines = 5,
+  numOfLines,
   placeholder,
-  data,
+  value,
+  onChange,
 }) => {
-  const {
-    valueTextarea,
-    setValueTextarea,
-    linesArray,
-    lineCounterRef,
-    textareaRef,
-    handleTextAreaScroll,
-  } = useTextarea(numOfLines)
+  const { linesArray, lineCounterRef, textareaRef, handleTextAreaScroll } =
+    useTextarea({ numOfLines, value })
 
   return (
     <div className={styles.wrapper}>
@@ -34,8 +30,8 @@ const Textarea: FC<TextareaLocalProps> = ({
       </div>
       <ChakraTextArea
         ref={textareaRef}
-        value={valueTextarea || data }
-        onChange={(event) => setValueTextarea(event.target.value)}
+        value={value}
+        onChange={(event) => onChange?.(event.target.value)}
         onScroll={handleTextAreaScroll}
         className={styles.textarea}
         placeholder={placeholder}

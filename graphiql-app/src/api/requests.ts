@@ -1,4 +1,4 @@
-export const fetchCharacters = async () => {
+export const fetchCharacters = async (request: string) => {
   try {
     const response = await fetch('https://rickandmortyapi.com/graphql', {
       method: 'POST',
@@ -6,19 +6,13 @@ export const fetchCharacters = async () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        query: `{
-          characters {
-            results {
-              name
-            }
-          }
-        }`,
+        query: request,
         variables: {},
       }),
     })
     const result = await response.json()
 
-    return result.data.characters.results
+    return result
   } catch (error) {
     console.log(error)
   }

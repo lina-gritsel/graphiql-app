@@ -1,15 +1,15 @@
-import { useMemo, useRef, useState } from 'react'
+import { useMemo, useRef } from 'react'
 
-export const useTextarea = (numOfLines: number) => {
+interface TextAreaProps {
+  numOfLines?: number 
+  value: string | undefined
+}
+
+export const useTextarea = ({ numOfLines = 5, value = '' }: TextAreaProps) => {
   const { lineCounterRef, textareaRef, handleTextAreaScroll } =
     onScrollTextarea()
 
-  const [valueTextarea, setValueTextarea] = useState<string>('')
-
-  const linesCount: number = useMemo(
-    () => valueTextarea.split('\n').length,
-    [valueTextarea],
-  )
+  const linesCount = useMemo(() => value?.split('\n').length, [value])
 
   const linesArray = useMemo(
     () =>
@@ -18,8 +18,6 @@ export const useTextarea = (numOfLines: number) => {
   )
 
   return {
-    valueTextarea,
-    setValueTextarea,
     linesArray,
     lineCounterRef,
     textareaRef,

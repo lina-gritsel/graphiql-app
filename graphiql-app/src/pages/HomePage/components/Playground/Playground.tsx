@@ -6,18 +6,25 @@ import { useHook } from './hooks'
 import styles from './Playground.module.scss'
 
 const Playground = () => {
-  const { response, onSubmit, loading } = useHook()
+  const { response, onSubmit, loading, valueTextarea, setValueTextarea } =
+    useHook()
 
   return (
     <div className={styles.container}>
       <div className={styles.requestSection}>
-        <Textarea placeholder="Enter your request" />
+        <Textarea
+          placeholder="Enter your request"
+          value={valueTextarea}
+          onChange={setValueTextarea}
+        />
         <ControlArea onClick={onSubmit} />
       </div>
       {loading && <div>Loading...</div>}
       {!!response && (
         <div className={styles.responseSection}>
-          <Textarea data={JSON.stringify(response)} />
+          <Textarea
+            value={JSON.stringify(response)}
+          />
         </div>
       )}
     </div>
