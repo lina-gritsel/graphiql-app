@@ -1,19 +1,67 @@
-import React from 'react'
+import {
+  Box,
+  HStack,
+  UseRadioProps,
+  useRadio,
+  useRadioGroup,
+} from '@chakra-ui/react'
+import { ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 
-const LanguageSwitcher = () => {
-  const { i18n } = useTranslation()
+import styles from './LanguageSwitcher.module.scss'
+
+interface RadioCardProps extends UseRadioProps {
+  children: ReactNode
+}
+
+const RadioCard = (props: RadioCardProps) => {
+  const { getInputProps, getRadioProps } = useRadio(props)
+
+  const input = getInputProps()
+  const checkbox = getRadioProps()
 
   return (
-    <div className="select">
-      <select
-        value={i18n.language}
-        onChange={(e) => i18n.changeLanguage(e.target.value)}
+    <Box as="label">
+      <input {...input} />
+      <Box
+        {...checkbox}
+        className={styles.radioCard}
+        _checked={{
+          bg: 'teal.600',
+          color: 'white',
+          borderColor: 'teal.600',
+        }}
       >
-        <option value="english">English</option>
-        <option value="russian">Русский</option>
-      </select>
-    </div>
+        {props.children}
+      </Box>
+    </Box>
+  )
+}
+
+const LanguageSwitcher = () => {
+  const options = ['English', 'Russian']
+  const { i18n } = useTranslation()
+  const actualLanguage = localStorage.getItem('i18nextLng')
+
+  const { getRootProps, getRadioProps } = useRadioGroup({
+    name: 'language',
+    defaultValue: actualLanguage || 'English',
+    onChange: i18n.changeLanguage,
+  })
+
+  const group = getRootProps()
+
+  return (
+    <HStack {...group} className={styles.container}>
+      {options.map((value) => {
+        const radio = getRadioProps({ value })
+        return (
+          <RadioCard key={value} {...radio}>
+            {value}
+          </RadioCard>
+        )
+      })}
+    </HStack>
   )
 }
 

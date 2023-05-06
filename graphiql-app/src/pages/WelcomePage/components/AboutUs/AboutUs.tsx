@@ -17,7 +17,7 @@ const AboutUs = () => {
         <p className={styles.text}>{t('aboutFrontend')}</p>
       </div>
       <div className={styles.infoCard}>
-        <div className={styles.title}>Our project</div>
+        <div className={styles.title}>{t('project')}</div>
         <div className={styles.text}>
           <p>
             {t('aboutProjectFirstPart')}{' '}
