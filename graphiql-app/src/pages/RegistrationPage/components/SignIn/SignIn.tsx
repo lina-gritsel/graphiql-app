@@ -3,11 +3,11 @@ import { Inputs } from '../index.types'
 import { useLayoutEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { PATHS } from '../../../../constants/paths'
-import { auth, registerWithEmailAndPassword } from '../../../../firebase'
+import { auth, logInWithEmailAndPassword } from '../../../../firebase'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import SignForm from '../UI/SignForm'
 
-const SignUp = () => {
+const SignIn = () => {
   const [user, loading, error] = useAuthState(auth)
   const navigate = useNavigate()
 
@@ -20,10 +20,10 @@ const SignUp = () => {
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     const { email, password } = data
-    await registerWithEmailAndPassword(email, password)
+    await logInWithEmailAndPassword(email, password)
   }
 
-  return <SignForm heading="Sign up" btnContent="Sign up" onSubmit={onSubmit} />
+  return <SignForm heading="Sign in" btnContent="Sign in" onSubmit={onSubmit} />
 }
 
-export default SignUp
+export default SignIn;
