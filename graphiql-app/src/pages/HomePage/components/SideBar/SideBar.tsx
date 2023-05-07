@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next'
+
 import book from '../../../../assets/images/book.png'
 
 import { useSideBar } from './hooks'
@@ -6,6 +8,7 @@ import styles from './SideBar.module.scss'
 
 const SideBar = () => {
   const { onClick, openDocumentation, queryOptions, loading } = useSideBar()
+  const { t } = useTranslation()
 
   return (
     <>
@@ -18,8 +21,8 @@ const SideBar = () => {
         />
       </div>
       <div className={openDocumentation ? styles.queryOptions : styles.hidden}>
-        <p className={styles.title}>Docs</p>
-        <p className={styles.subtitle}>A GraphQL schema provides a root type for each kind of operation</p>
+        <p className={styles.title}>{t('docs')}</p>
+        <p className={styles.subtitle}>{t('schema')}</p>
         {loading && <div>Loading...</div>}
         {queryOptions?.map(({ name }: { name: string }) => (
           <div key={name}>{name}</div>
