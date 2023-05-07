@@ -11,12 +11,23 @@
 }
 
 .queryOptions {
-  border-left: 2px solid #f1f2f4;
+  border-left: 1px solid #dbdbdb;
   display: block;
-  height: 100%;
   padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .hidden {
   display: none;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.subtitle {
+  color: #6d7d94;
 }
