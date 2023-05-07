@@ -26,7 +26,7 @@ export const useHook = () => {
     }
   }
 
-  const onClean = () => {
+  const onAlign = () => {
     const value = valueTextarea
       .replaceAll('\n', '')
       .replaceAll(' ', '')
@@ -47,10 +47,20 @@ export const useHook = () => {
     setValueTextarea(value)
   }
 
+  const onClean = () => {
+    setValueTextarea('')
+  }
+
+  const onCopy = () => {
+    navigator.clipboard.writeText(valueTextarea)
+  }
+
   return {
     response,
     onSubmit,
+    onAlign,
     onClean,
+    onCopy,
     loading,
     valueTextarea,
     setValueTextarea,
