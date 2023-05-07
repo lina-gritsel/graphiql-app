@@ -26,9 +26,31 @@ export const useHook = () => {
     }
   }
 
+  const onClean = () => {
+    const value = valueTextarea
+      .replaceAll('\n', '')
+      .replaceAll(' ', '')
+      .replaceAll('{', ' {\n')
+      .replaceAll('}', '\n}')
+      .split('{\n')
+      .map((str, index) => '  '.repeat(index * 2) + str)
+      .join('{\n')
+      .split('\n}')
+      .map((str, index, arr) => {
+        if (index === 0) {
+          return str
+        } else {
+          return '  '.repeat((arr.length - index - 1) * 2) + '}'
+        }
+      })
+      .join('\n')
+    setValueTextarea(value)
+  }
+
   return {
     response,
     onSubmit,
+    onClean,
     loading,
     valueTextarea,
     setValueTextarea,

@@ -6,7 +6,7 @@ import { useHook } from './hooks'
 import styles from './Playground.module.scss'
 
 const Playground = () => {
-  const { response, onSubmit, loading, valueTextarea, setValueTextarea } =
+  const { response, onSubmit, loading, valueTextarea, setValueTextarea, onClean } =
     useHook()
 
   return (
@@ -18,7 +18,7 @@ const Playground = () => {
           onChange={setValueTextarea}
           numOfLines={7}
         />
-        <ControlArea onClick={onSubmit} />
+        <ControlArea onClick={onSubmit} onClean={onClean}/>
       </div>
       {loading && <div>Loading...</div>}
       {!!response && (
