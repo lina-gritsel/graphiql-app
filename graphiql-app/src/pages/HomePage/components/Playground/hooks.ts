@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { fetchCharacters } from '../../../../api/requests'
 
 import { DEFAULT_REQUEST } from './constants'
+import { getAlignedText } from './utils'
 
 export const useHook = () => {
   const [response, setResponse] = useState<any>(null)
@@ -17,7 +18,6 @@ export const useHook = () => {
       if (!result) {
         console.log('type the query correctly')
       }
-
       setResponse(result)
     } catch (error) {
       console.log(error)
@@ -27,24 +27,8 @@ export const useHook = () => {
   }
 
   const onAlign = () => {
-    const value = valueTextarea
-      .replaceAll('\n', '')
-      .replaceAll(' ', '')
-      .replaceAll('{', ' {\n')
-      .replaceAll('}', '\n}')
-      .split('{\n')
-      .map((str, index) => '  '.repeat(index * 2) + str)
-      .join('{\n')
-      .split('\n}')
-      .map((str, index, arr) => {
-        if (index === 0) {
-          return str
-        } else {
-          return '  '.repeat((arr.length - index - 1) * 2) + '}'
-        }
-      })
-      .join('\n')
-    setValueTextarea(value)
+    const alignedText = getAlignedText(valueTextarea)
+    setValueTextarea(alignedText)
   }
 
   const onClean = () => {

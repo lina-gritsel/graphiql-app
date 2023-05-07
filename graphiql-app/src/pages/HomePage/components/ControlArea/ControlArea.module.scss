@@ -6,7 +6,12 @@
 }
 
 .icon {
-  cursor: pointer;
   height: 35px;
   width: 35px;
+  -webkit-user-drag: none;
+
+  &:hover {
+    cursor: pointer;
+    scale: 1.05;
+  }
 }
