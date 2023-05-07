@@ -1,14 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { ChakraProvider } from '@chakra-ui/react'
+
+import '../src/i18next'
 
 import App from './App'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
-    <ChakraProvider>
+    <React.Suspense fallback="loading">
       <App />
-    </ChakraProvider>
+    </React.Suspense>
   </React.StrictMode>,
 )
