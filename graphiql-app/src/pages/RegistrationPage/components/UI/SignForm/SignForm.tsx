@@ -7,16 +7,46 @@ import {
   Box,
 } from '@chakra-ui/react'
 import { useForm } from 'react-hook-form'
-import { Inputs } from '../../index.types'
 import FormField from '../FormField'
 import { Props } from './SignForm.types'
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup'
+
+const schema = yup.object({
+  email: yup
+    .string()
+    .email('must be a valid email')
+    .required('email is required')
+    .min(8, 'email must contain at least 8 characters')
+    .matches(/^(?=.*[a-z])/i, 'email must contain at least one letter')
+    .matches(/^(?=.*[0-9])/, 'email must contain at least one digit')
+    .matches(
+      /^(?=.*[!@#$%^&*])/,
+      'email must contain at least one special character !, @, #, $, %, ^, &, *',
+    ),
+  password: yup
+    .string()
+    .required('password is required')
+    .min(8, 'password must contain at least 8 characters')
+    .matches(/^(?=.*[a-z])/i, 'password must contain at least one letter')
+    .matches(/^(?=.*[0-9])/, 'password must contain at least one digit')
+    .matches(
+      /^(?=.*[!@#$%^&*])/,
+      'password must contain at least one special character !, @, #, $, %, ^, &, *',
+    ),
+})
+
+type FormData = yup.InferType<typeof schema>
 
 const SignForm = ({ heading, btnContent, onSubmit }: Props) => {
   const {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm<Inputs>({ defaultValues: { email: '', password: '' } }) 
+  } = useForm<FormData>({
+    resolver: yupResolver(schema),
+    defaultValues: { email: '', password: '' },
+  })
 
   return (
     <AbsoluteCenter w="100%">
@@ -36,22 +66,18 @@ const SignForm = ({ heading, btnContent, onSubmit }: Props) => {
             onSubmit={handleSubmit(onSubmit)}
           >
             <FormField
-              type="email"
+              type="text"
               label="Email"
               errorName={errors.email}
               errorMessage={errors.email?.message}
-              {...register('email', {
-                required: { value: true, message: 'Enter your email' },
-              })}
+              {...register('email')}
             />
             <FormField
               type="password"
               label="Password"
               errorName={errors.password}
               errorMessage={errors.password?.message}
-              {...register('password', {
-                required: { value: true, message: 'Enter your password' },
-              })}
+              {...register('password')}
             />
             <Button type="submit">{btnContent}</Button>
           </VStack>
