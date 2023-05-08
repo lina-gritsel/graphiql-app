@@ -6,13 +6,14 @@ import './scss/styles.scss'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth } from './firebase'
 import { AuthContext } from './constants/context'
+import { Progress } from '@chakra-ui/react'
 
 const App = () => {
   const [user, loading, error] = useAuthState(auth)
   const isAuthUser = !!user
 
   if (loading) {
-    return <div>Checking authorization...</div>
+    return <Progress size='xs' isIndeterminate />
   }
 
   return (
