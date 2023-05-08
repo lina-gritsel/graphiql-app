@@ -7,37 +7,36 @@ import styles from './Textarea.module.scss'
 
 interface TextareaLocalProps {
   numOfLines?: number
-  placeholder: string
+  placeholder?: string
+  value?: string
+  onChange?: (value: string) => void
 }
 
 const Textarea: FC<TextareaLocalProps> = ({
-  numOfLines = 5,
+  numOfLines,
   placeholder,
+  value,
+  onChange,
 }) => {
-  const {
-    valueTextarea,
-    setValueTextarea,
-    linesArray,
-    lineCounterRef,
-    textareaRef,
-    handleTextAreaScroll,
-  } = useTextarea(numOfLines)
+  const { linesArray, lineCounterRef, textareaRef, handleTextAreaScroll } =
+    useTextarea({ numOfLines, value })
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.numberOfLine} ref={lineCounterRef}>
-        {linesArray.map((count) => (
-          <div key={count}>{count}</div>
-        ))}
-      </div>
+      {!!numOfLines && (
+        <div className={styles.numberOfLine} ref={lineCounterRef}>
+          {linesArray.map((count) => (
+            <div key={count}>{count}</div>
+          ))}
+        </div>
+      )}
       <ChakraTextArea
         ref={textareaRef}
-        value={valueTextarea}
-        onChange={(event) => setValueTextarea(event.target.value)}
+        value={value}
+        onChange={(event) => onChange?.(event.target.value)}
         onScroll={handleTextAreaScroll}
         className={styles.textarea}
         placeholder={placeholder}
-        focusBorderColor='white'
       />
     </div>
   )
