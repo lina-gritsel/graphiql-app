@@ -3,8 +3,7 @@ import styles from './Menu.module.scss'
 import { useContext } from 'react'
 import { AuthContext } from '../../constants/context'
 import { PATHS } from '../../constants/paths'
-import { Button } from '@chakra-ui/react'
-import { logout } from '../../firebase'
+import SignOutButton from './components/SignOutButton'
 
 const Menu = () => {
   const isAuthUser = useContext(AuthContext)
@@ -14,7 +13,7 @@ const Menu = () => {
       <NavLink className={styles.menuItem} to={PATHS.HOME}>
         Go to Main Page
       </NavLink>
-      <Button onClick={logout}>Sign out</Button>
+      <SignOutButton />
     </>
   ) : (
     <>
