@@ -1,6 +1,8 @@
 import {
   createBrowserRouter,
   createRoutesFromElements,
+  Navigate,
+  Outlet,
   Route,
 } from 'react-router-dom'
 import Layout from '../layout/Layout'
@@ -12,14 +14,18 @@ import RegistrationPage from '../pages/RegistrationPage/RegistrationPage'
 import WelcomePage from '../pages/WelcomePage'
 import PrivateRoute from '../pages/RegistrationPage/components/PrivateRoute'
 
+const PrivateRouteForAuthUser = <PrivateRoute authUserEl={<Outlet />} unauthUserEl={<Navigate to={PATHS.WELCOME} replace/>} />
+
+const PrivateRouteForUnauthUser = <PrivateRoute authUserEl={<Navigate to={PATHS.HOME} replace/>} unauthUserEl={<Outlet/>} />
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path={PATHS.WELCOME} element={<Layout />} errorElement={<Page404 />}>
       <Route index path={PATHS.WELCOME} element={<WelcomePage />} />
-      <Route element={<PrivateRoute isAuth={true} />}>
+      <Route element={PrivateRouteForAuthUser}>
         <Route path={PATHS.HOME} element={<HomePage />} />
       </Route>
-      <Route element={<PrivateRoute isAuth={false} />}>
+      <Route element={PrivateRouteForUnauthUser}>
         <Route path={PATHS.LOGIN} element={<LoginPage />} />
         <Route path={PATHS.REGISTRATION} element={<RegistrationPage />} />
       </Route>
