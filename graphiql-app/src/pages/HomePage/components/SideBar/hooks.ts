@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query'
 import { fetchSchema } from '../../../../api/requests'
 
 export const useSideBar = () => {
-  const { onClick, openDocumentation } = openQueryOptions()
+  const { changeStateDocs, openDocumentation } = openQueryOptions()
 
   const { data, isLoading, isFetching } = useQuery(
     ['fetchSchema'],
@@ -16,7 +16,7 @@ export const useSideBar = () => {
   )
 
   return {
-    onClick,
+    changeStateDocs,
     openDocumentation,
     queryOptions: data,
     loading: isLoading || isFetching,
@@ -26,9 +26,9 @@ export const useSideBar = () => {
 const openQueryOptions = () => {
   const [openDocumentation, setOpenDocumentation] = useState<boolean>(false)
 
-  const onClick = () => {
+  const changeStateDocs = () => {
     setOpenDocumentation((prev) => !prev)
   }
 
-  return { onClick, openDocumentation }
+  return { changeStateDocs, openDocumentation }
 }

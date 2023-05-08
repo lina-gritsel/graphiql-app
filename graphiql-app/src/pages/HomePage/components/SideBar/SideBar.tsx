@@ -7,14 +7,14 @@ import { useSideBar } from './hooks'
 import styles from './SideBar.module.scss'
 
 const SideBar = () => {
-  const { onClick, openDocumentation, queryOptions, loading } = useSideBar()
+  const { changeStateDocs, openDocumentation, queryOptions, loading } = useSideBar()
   const { t } = useTranslation()
 
   return (
     <>
       <div className={styles.container}>
         <img
-          onClick={onClick}
+          onClick={changeStateDocs}
           className={styles.icon}
           src={book}
           alt="documentation"
