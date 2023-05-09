@@ -1,0 +1,19 @@
+{
+  "welcome": "Welcome!",
+  "acquaintance": "Let's get acquainted ➪",
+  "singUp": "Sing Up",
+  "logIn": "Log In",
+  "or": "or",
+  "about": "About Us",
+  "aboutUs": "We, Alina, Arthur and Angelina, are a team of promising frontend developers.",
+  "aboutFrontend": "A Front-End Developer is someone who creates websites and web applications. The difference between Front-End and Back-End is that Front-End refers to how a web page looks, while back-end refers to how it works. You can think of Front-End as client-side and Back-End as server-side. The basic languages for Front-End Development are HTML, CSS, and JavaScript.",
+  "project": "Our project",
+  "aboutProjectFirstPart": "Our project is an analogue of",
+  "aboutProjectTwoPart": "GraphiQL is a playground/IDE for graphQL requests. GraphQL is a query language for APIs and a runtime for fulfilling those queries with your existing data. GraphQL provides a complete and understandable description of the data in your API, gives clients the power to ask for exactly what they need and nothing more, makes it easier to evolve APIs over time, and enables powerful developer tools.",
+  "aboutProjectLastPart": "The GraphQL application is written in a programming language such as TypeScript using the React framework and such a tool for managing data state and user interface as the Redux Toolkit. Also, various libraries were used during the creation, for example, Chakra UI for various components, i18next for translating the application into popular languages, sass and many other popular libraries.",
+  "course": "Course",
+  "aboutCourseFirstPart": "The project was developed as part of The React course by",
+  "aboutCourseLastPart": "RS School is free-of-charge and community-based education program conducted by The Rolling Scopes developer community since 2013.",
+  "docs": "Docs",
+  "schema": "A GraphQL schema provides a root type for each kind of operation"
+}

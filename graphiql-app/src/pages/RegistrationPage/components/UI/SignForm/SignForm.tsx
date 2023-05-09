@@ -3,40 +3,20 @@ import {
   Heading,
   VStack,
   Container,
-  AbsoluteCenter,
+  Center,
   Box,
 } from '@chakra-ui/react'
-import { useForm } from 'react-hook-form'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import FormField from '../FormField'
-import { Props } from './SignForm.types'
 import { yupResolver } from '@hookform/resolvers/yup'
-import * as yup from 'yup'
+import { Inputs } from '../../index.types'
+import { schema, type FormData } from './schema'
 
-const schema = yup.object({
-  email: yup
-    .string()
-    .email('must be a valid email')
-    .required('email is required')
-    .min(8, 'email must contain at least 8 characters')
-    .matches(/^(?=.*[a-z])/i, 'email must contain at least one letter')
-    .matches(/^(?=.*[0-9])/, 'email must contain at least one digit')
-    .matches(
-      /^(?=.*[!@#$%^&*])/,
-      'email must contain at least one special character !, @, #, $, %, ^, &, *',
-    ),
-  password: yup
-    .string()
-    .required('password is required')
-    .min(8, 'password must contain at least 8 characters')
-    .matches(/^(?=.*[a-z])/i, 'password must contain at least one letter')
-    .matches(/^(?=.*[0-9])/, 'password must contain at least one digit')
-    .matches(
-      /^(?=.*[!@#$%^&*])/,
-      'password must contain at least one special character !, @, #, $, %, ^, &, *',
-    ),
-})
-
-type FormData = yup.InferType<typeof schema>
+interface Props {
+  heading: string
+  btnContent: string
+  onSubmit: SubmitHandler<Inputs>
+}
 
 const SignForm = ({ heading, btnContent, onSubmit }: Props) => {
   const {
@@ -49,8 +29,8 @@ const SignForm = ({ heading, btnContent, onSubmit }: Props) => {
   })
 
   return (
-    <AbsoluteCenter w="100%">
-      <Box mx={5}>
+    <Center w="100%" h='calc(100vh - 134px)'>
+      <Box mx={5} width="100%" maxW={500} minW={280}>
         <Container
           py={4}
           border="1px"
@@ -83,7 +63,7 @@ const SignForm = ({ heading, btnContent, onSubmit }: Props) => {
           </VStack>
         </Container>
       </Box>
-    </AbsoluteCenter>
+    </Center>
   )
 }
 

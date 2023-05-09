@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 40px;
+}
+
+.icon {
+  height: 35px;
+  width: 35px;
+}
+
+.queryOptions {
+  border-left: 1px solid #dbdbdb;
+  display: block;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.hidden {
+  display: none;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.subtitle {
+  color: #6d7d94;
+}

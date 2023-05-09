@@ -1,9 +1,9 @@
-import { NavLink } from 'react-router-dom'
-import styles from './Menu.module.scss'
 import { useContext } from 'react'
+import { NavLink } from 'react-router-dom'
 import { AuthContext } from '../../constants/context'
 import { PATHS } from '../../constants/paths'
 import SignOutButton from './components/SignOutButton'
+import styles from './Menu.module.scss'
 
 const Menu = () => {
   const isAuthUser = useContext(AuthContext)

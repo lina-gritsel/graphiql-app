@@ -1,0 +1,12 @@
+.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.icon {
+  cursor: pointer;
+  height: 35px;
+  width: 35px;
+}
