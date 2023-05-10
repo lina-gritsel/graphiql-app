@@ -1,12 +1,10 @@
-import { FC, PropsWithChildren } from 'react'
-import { Outlet } from 'react-router-dom'
-
 import Header from '../Header'
 import Footer from '../Footer'
 
 import styles from './Layout.module.scss'
+import { Outlet } from 'react-router'
 
-const Layout: FC<PropsWithChildren> = () => {
+const Layout = () => {
   return (
     <div className={styles.container}>
       <Header />
