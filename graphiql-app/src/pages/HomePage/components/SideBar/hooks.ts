@@ -18,7 +18,7 @@ export const useSideBar = () => {
   return {
     changeStateDocs,
     openDocumentation,
-    queryOptions: data,
+    data,
     loading: isLoading || isFetching,
   }
 }

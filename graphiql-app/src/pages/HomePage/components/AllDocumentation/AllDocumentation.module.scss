@@ -1,0 +1,45 @@
+.container {
+  border-left: 1px solid #dbdbdb;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 400px;
+  padding: 15px;
+}
+
+.backSection {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  gap: 5px;
+  height: 20px;
+}
+
+.backArrow {
+  height: 15px;
+}
+
+.backLink {
+  color: #6d7d94;
+}
+
+.backLink:hover {
+  border-bottom: 1px solid #6d7d94;
+  color: #6d7d94;
+}
+
+.title {
+  color: #3b4c68;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.queryLink {
+  color: #ef9a2b;
+  cursor: pointer;
+}
+
+.queryLink:hover {
+  border-bottom: 1px solid #ef9a2b;
+  color: #ef9a2b;
+}

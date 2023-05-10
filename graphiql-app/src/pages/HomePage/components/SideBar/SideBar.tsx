@@ -1,14 +1,12 @@
-import { useTranslation } from 'react-i18next'
-
 import book from '../../../../assets/images/book.png'
+import AllDocumentation from '../AllDocumentation'
 
 import { useSideBar } from './hooks'
 
 import styles from './SideBar.module.scss'
 
 const SideBar = () => {
-  const { changeStateDocs, openDocumentation, queryOptions, loading } = useSideBar()
-  const { t } = useTranslation()
+  const { changeStateDocs, openDocumentation, data, loading } = useSideBar()
 
   return (
     <>
@@ -20,14 +18,8 @@ const SideBar = () => {
           alt="documentation"
         />
       </div>
-      <div className={openDocumentation ? styles.queryOptions : styles.hidden}>
-        <p className={styles.title}>{t('docs')}</p>
-        <p className={styles.subtitle}>{t('schema')}</p>
-        {loading && <div>Loading...</div>}
-        {queryOptions?.map(({ name }: { name: string }) => (
-          <div key={name}>{name}</div>
-        ))}
-      </div>
+      {loading && <div>Loading...</div>}
+      {openDocumentation && <AllDocumentation data={data}/>}
     </>
   )
 }
