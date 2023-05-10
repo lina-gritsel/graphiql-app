@@ -5,7 +5,7 @@ import { fetchCharacters } from '../../../../api/requests'
 import { DEFAULT_REQUEST } from './constants'
 import { getAlignedText } from './utils'
 
-export const useHook = () => {
+export const usePlayground = () => {
   const [response, setResponse] = useState<any>(null)
   const [loading, setLoading] = useState<boolean>(false)
   const [valueTextarea, setValueTextarea] = useState<string>(DEFAULT_REQUEST)

@@ -12,7 +12,7 @@ const Header = () => {
       ref={headerRef}
     >
       <Menu />
-      <LanguageSwitcher/>
+      <LanguageSwitcher />
     </div>
   )
 }

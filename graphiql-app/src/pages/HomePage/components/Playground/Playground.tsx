@@ -1,7 +1,7 @@
 import ControlArea from '../ControlArea'
 import Textarea from '../Textarea'
 
-import { useHook } from './hooks'
+import { usePlayground } from './hooks'
 
 import styles from './Playground.module.scss'
 
@@ -15,7 +15,7 @@ const Playground = () => {
     onClean,
     onAlign,
     onCopy,
-  } = useHook()
+  } = usePlayground()
 
   return (
     <div className={styles.container}>
@@ -35,7 +35,7 @@ const Playground = () => {
       </div>
       {loading && <div>Loading...</div>}
       {!!response && (
-        <div className={styles.responseSection}>
+        <div className={loading ? styles.hidden : styles.responseSection}>
           <Textarea value={JSON.stringify(response, null, '\t')} />
         </div>
       )}
