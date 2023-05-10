@@ -1,5 +1,7 @@
+import SignIn from '../RegistrationPage/components/SignIn/SignIn'
+
 const LoginPage = () => {
-  return <div>LoginPage</div>
+  return <SignIn />
 }
 
 export default LoginPage
