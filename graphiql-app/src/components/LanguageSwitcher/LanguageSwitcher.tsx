@@ -1,68 +1,37 @@
-import {
-  Box,
-  HStack,
-  UseRadioProps,
-  useRadio,
-  useRadioGroup,
-} from '@chakra-ui/react'
-import { ReactNode } from 'react'
+import { Button } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
 
-import styles from './LanguageSwitcher.module.scss'
-
-interface RadioCardProps extends UseRadioProps {
-  children: ReactNode
+interface Language {
+  label: string
+  option: string
 }
 
-const RadioCard = (props: RadioCardProps) => {
-  const { getInputProps, getRadioProps } = useRadio(props)
-
-  const input = getInputProps()
-  const checkbox = getRadioProps()
-
-  return (
-    <Box as="label">
-      <input {...input} />
-      <Box
-        {...checkbox}
-        className={styles.radioCard}
-        _checked={{
-          bg: 'teal.600',
-          color: 'white',
-          borderColor: 'teal.600',
-        }}
-      >
-        {props.children}
-      </Box>
-    </Box>
-  )
+const languages: Record<string, Language> = {
+  russian: {
+    label: 'Ru',
+    option: 'English',
+  },
+  english: {
+    label: 'Eng',
+    option: 'Russian',
+  },
 }
+
+const DEFAULT_LANGUAGE = 'English'
 
 const LanguageSwitcher = () => {
-  const options = ['English', 'Russian']
   const { i18n } = useTranslation()
-  const actualLanguage = localStorage.getItem('i18nextLng')
+  const actualLanguage =
+    localStorage.getItem('i18nextLng')?.toLowerCase() || DEFAULT_LANGUAGE
 
-  const { getRootProps, getRadioProps } = useRadioGroup({
-    name: 'language',
-    defaultValue: actualLanguage || 'English',
-    onChange: i18n.changeLanguage,
-  })
+  const currentLanguage = languages[actualLanguage].label
 
-  const group = getRootProps()
+  const changeLanguage = () => {
+    const newLanguage = languages[actualLanguage].option
+    i18n.changeLanguage(newLanguage)
+  }
 
-  return (
-    <HStack {...group} className={styles.container}>
-      {options.map((value) => {
-        const radio = getRadioProps({ value })
-        return (
-          <RadioCard key={value} {...radio}>
-            {value}
-          </RadioCard>
-        )
-      })}
-    </HStack>
-  )
+  return <Button onClick={changeLanguage}>{currentLanguage}</Button>
 }
 
 export default LanguageSwitcher
