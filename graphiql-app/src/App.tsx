@@ -15,7 +15,7 @@ const App = () => {
   const isAuthUser = !!user
 
   if (loading) {
-    return <Progress size='xs' isIndeterminate />
+    return <Progress size="xs" isIndeterminate />
   }
 
   return (

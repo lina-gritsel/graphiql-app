@@ -1,40 +1,32 @@
 import { FC } from 'react'
 
-import { parsingSchema } from './hooks'
+import { useAllDocumentation } from './hooks'
 import BackSection from './components'
 
 import styles from './AllDocumentation.module.scss'
+import ListQueries from './components/ListQueries'
 
-interface AllDocumentationProps {
+interface AllDocumentation {
   data: any
 }
 
-const AllDocumentation: FC<AllDocumentationProps> = ({ data }) => {
-  const { history, prevDocs, currentDocs, selectedPage, setSelectedPage } =
-    parsingSchema({
-      data,
-    })
+const AllDocumentation: FC<AllDocumentation> = ({ data}) => {
+  const {
+    prevDocs,
+    setSelectedPage,
+  } = useAllDocumentation()
 
   return (
     <>
-      {history.map((docs) => {
-        if (selectedPage === docs.toLowerCase()) {
-          return (
-            <div key={currentDocs} className={styles.container}>
-              {prevDocs && (
-                <BackSection prevDocs={prevDocs} onClick={setSelectedPage} />
-              )}
-              <div className={styles.title}>{selectedPage}</div>
-              <div
-                className={styles.queryLink}
-                onClick={() => setSelectedPage(currentDocs)}
-              >
-                {currentDocs}
-              </div>
-            </div>
-          )
-        }
-      })}
+      <div className={styles.container}>
+        {prevDocs && (
+          <BackSection prevDocs={prevDocs} onClick={setSelectedPage} />
+        )}
+        <div className={styles.title}>Query</div>
+        <div className={styles.queryLink}>
+          <ListQueries data={data} />
+        </div>
+      </div>
     </>
   )
 }
