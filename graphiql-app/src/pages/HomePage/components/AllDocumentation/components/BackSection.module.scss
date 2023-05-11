@@ -1,0 +1,20 @@
+.backSection {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  gap: 5px;
+  height: 20px;
+}
+
+.backArrow {
+  height: 15px;
+}
+
+.backLink {
+  color: #6d7d94;
+}
+
+.backLink:hover {
+  border-bottom: 1px solid #6d7d94;
+  color: #6d7d94;
+}

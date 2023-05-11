@@ -1,8 +1,7 @@
-import { FC, useState } from 'react'
-
-import back from '../../../../assets/images/back.png'
+import { FC } from 'react'
 
 import { parsingSchema } from './hooks'
+import BackSection from './components'
 
 import styles from './AllDocumentation.module.scss'
 
@@ -11,37 +10,26 @@ interface AllDocumentationProps {
 }
 
 const AllDocumentation: FC<AllDocumentationProps> = ({ data }) => {
-  const { CURRENT_DOCUMENTATION } = parsingSchema({ data })
-  const [currentPage, setCurrentPage] = useState('Docs')
+  const { history, prevDocs, currentDocs, selectedPage, setSelectedPage } =
+    parsingSchema({
+      data,
+    })
 
   return (
     <>
-      {CURRENT_DOCUMENTATION.map((object, index) => {
-        if (object.title === currentPage) {
+      {history.map((docs) => {
+        if (selectedPage === docs.toLowerCase()) {
           return (
-            <div key={index} className={styles.container}>
-              {object.prevPage && (
-                <div
-                  className={styles.backSection}
-                  onClick={() => setCurrentPage(object.prevPage)}
-                >
-                  <img src={back} className={styles.backArrow} />
-                  <a className={styles.backLink}> {object.prevPage}</a>
-                </div>
+            <div key={currentDocs} className={styles.container}>
+              {prevDocs && (
+                <BackSection prevDocs={prevDocs} onClick={setSelectedPage} />
               )}
-              <div className={styles.title}>{object.title}</div>
-              <div>
-                {object.values.map(
-                  (value, index: any) => (
-                    <div
-                      key={index}
-                      onClick={() => setCurrentPage(value)}
-                      className={styles.queryLink}
-                    >
-                      {value}
-                    </div>
-                  ),
-                )}
+              <div className={styles.title}>{selectedPage}</div>
+              <div
+                className={styles.queryLink}
+                onClick={() => setSelectedPage(currentDocs)}
+              >
+                {currentDocs}
               </div>
             </div>
           )

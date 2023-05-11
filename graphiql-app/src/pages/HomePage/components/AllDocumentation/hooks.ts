@@ -1,21 +1,22 @@
-import { FC } from 'react'
+import { useState } from 'react'
 
 export const parsingSchema = ({ data }: { data: any }) => {
   const startPage = data.name
-  const allQueryFields = data.fields
 
-  const CURRENT_DOCUMENTATION = [
-    {
-      prevPage: '',
-      title: 'Docs',
-      values: ['Query'],
-    },
-    {
-      prevPage: 'Docs',
-      title: 'Query',
-      values: ['options'],
-    },
-  ]
+  const history = ['docs', startPage]
 
-  return { CURRENT_DOCUMENTATION }
+  const [selectedPage, setSelectedPage] = useState('Docs')
+
+  const prevDocs = history[history.indexOf(selectedPage) - 1]
+
+  const currentDocs = history[history.length - 1]
+  console.log('prevDocs:', prevDocs)
+
+  return {
+    history,
+    prevDocs,
+    currentDocs,
+    selectedPage: selectedPage.toLowerCase(),
+    setSelectedPage,
+  }
 }
