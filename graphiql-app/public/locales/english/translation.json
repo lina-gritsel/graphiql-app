@@ -16,5 +16,6 @@
   "aboutCourseLastPart": "RS School is free-of-charge and community-based education program conducted by The Rolling Scopes developer community since 2013.",
   "docs": "Docs",
   "schema": "A GraphQL schema provides a root type for each kind of operation",
-  "goToMain": "Go to GraphQL Editor"
+  "goToMain": "Go to GraphQL Editor",
+  "signOut": "Sign Out"
 }
