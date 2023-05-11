@@ -1,6 +1,8 @@
 import { Button } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
 
+import styles from './LanguageSwitcher.module.scss'
+
 interface Language {
   label: string
   option: string
@@ -31,7 +33,11 @@ const LanguageSwitcher = () => {
     i18n.changeLanguage(newLanguage)
   }
 
-  return <Button onClick={changeLanguage}>{currentLanguage}</Button>
+  return (
+    <Button onClick={changeLanguage} className={styles.button}>
+      {currentLanguage}
+    </Button>
+  )
 }
 
 export default LanguageSwitcher

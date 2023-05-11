@@ -11,8 +11,8 @@ const Header = () => {
       className={sticky ? styles.containerWitchScroll : styles.container}
       ref={headerRef}
     >
-      <Menu />
       <LanguageSwitcher />
+      <Menu />
     </div>
   )
 }
