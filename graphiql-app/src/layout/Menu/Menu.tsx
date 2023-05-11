@@ -11,7 +11,7 @@ const Menu = () => {
   const menu = isAuthUser ? (
     <>
       <NavLink className={styles.menuItem} to={PATHS.HOME}>
-        Go to Main Page
+        Main
       </NavLink>
       <SignOutButton />
     </>
