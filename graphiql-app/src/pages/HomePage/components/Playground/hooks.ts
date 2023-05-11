@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { fetchCharacters } from '../../../../api/requests'
 
 import { DEFAULT_REQUEST } from './constants'
+import { getAlignedText } from './utils'
 
 export const usePlayground = () => {
   const [response, setResponse] = useState<any>(null)
@@ -17,7 +18,6 @@ export const usePlayground = () => {
       if (!result) {
         console.log('type the query correctly')
       }
-
       setResponse(result)
     } catch (error) {
       console.log(error)
@@ -26,9 +26,25 @@ export const usePlayground = () => {
     }
   }
 
+  const onAlign = () => {
+    const alignedText = getAlignedText(valueTextarea)
+    setValueTextarea(alignedText)
+  }
+
+  const onClean = () => {
+    setValueTextarea('')
+  }
+
+  const onCopy = () => {
+    navigator.clipboard.writeText(valueTextarea)
+  }
+
   return {
     response,
     onSubmit,
+    onAlign,
+    onClean,
+    onCopy,
     loading,
     valueTextarea,
     setValueTextarea,
