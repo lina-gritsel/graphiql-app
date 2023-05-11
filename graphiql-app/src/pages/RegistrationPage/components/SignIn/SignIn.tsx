@@ -1,22 +1,48 @@
+import { Center, Spinner, useToast } from '@chakra-ui/react'
 import { SubmitHandler } from 'react-hook-form'
-import { Inputs } from '../index.types'
-import { useNavigate } from 'react-router-dom'
-import { PATHS } from '../../../../constants/paths'
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth'
+import type { Inputs } from '../index.types'
 import { auth } from '../../../../firebase'
 import SignForm from '../UI/SignForm'
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth'
 
 const SignIn = () => {
-  const [signInWithEmailAndPassword, loading, error] = useSignInWithEmailAndPassword(auth);
-  const navigate = useNavigate()
+  const [signInWithEmailAndPassword, _, loading] =
+    useSignInWithEmailAndPassword(auth)
+  const toast = useToast()
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     const { email, password } = data
-    await signInWithEmailAndPassword(email, password)
-    navigate(PATHS.HOME, {replace: true})
+    const user = await signInWithEmailAndPassword(email, password)
+    if (user) {
+      toast({
+        title: 'Login successful',
+        description: 'You now have access to the application',
+        status: 'success',
+        duration: 5000,
+        isClosable: true,
+      })
+    } else {
+      toast({
+        title: 'An error has occurred.',
+        description: 'Invalid login or password',
+        status: 'error',
+        duration: 5000,
+        isClosable: true,
+      })
+    }
   }
 
-  return <SignForm heading="Sign in" btnContent="Sign in" onSubmit={onSubmit} />
+  const content = loading ? (
+    <Spinner />
+  ) : (
+    <SignForm heading="Sign in" btnContent="Sign in" onSubmit={onSubmit} />
+  )
+
+  return (
+    <Center w="100%" h="calc(100vh - 134px)">
+      {content}
+    </Center>
+  )
 }
 
-export default SignIn;
+export default SignIn
