@@ -32,7 +32,9 @@ const SideBar = () => {
             <Button onClick={() => navigate(PATHS.LOGIN)}>{t('logIn')}</Button>
           </>
         ) : (
-          <SignOutButton />
+          <Button onClick={() => navigate(PATHS.HOME)}>
+            {t('goToMain')}
+          </Button>
         )}
       </div>
     </div>
