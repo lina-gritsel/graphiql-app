@@ -2,6 +2,7 @@ import ControlArea from '../ControlArea'
 import Textarea from '../Textarea'
 
 import { usePlayground } from './hooks'
+import { TWO_SPACE } from './utils'
 
 import styles from './Playground.module.scss'
 
@@ -36,7 +37,7 @@ const Playground = () => {
       {loading && <div>Loading...</div>}
       {!!response && (
         <div className={loading ? styles.hidden : styles.responseSection}>
-          <Textarea value={JSON.stringify(response, null, '\t')} />
+          <Textarea value={JSON.stringify(response, null, TWO_SPACE)} />
         </div>
       )}
     </div>
