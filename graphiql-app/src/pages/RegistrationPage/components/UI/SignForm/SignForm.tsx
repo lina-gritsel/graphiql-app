@@ -1,9 +1,11 @@
 import { Button, Heading, VStack, Container, Box } from '@chakra-ui/react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import FormField from '../FormField'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { Inputs } from '../../index.types'
+import FormField from '../FormField'
+import { useTranslation } from 'react-i18next'
+import type { Inputs } from '../../index.types'
 import { schema, type FormData } from './schema'
+import { SING_FORM_KEYS, VALIDATION_KEYS } from './constants'
 
 interface Props {
   heading: string
@@ -20,6 +22,9 @@ const SignForm = ({ heading, btnContent, onSubmit }: Props) => {
     resolver: yupResolver(schema),
     defaultValues: { email: '', password: '' },
   })
+  const { NS: VALIDATION_NS } = VALIDATION_KEYS
+  const { NS, EMAIL, PASSWORD } = SING_FORM_KEYS
+  const { t } = useTranslation([NS, VALIDATION_NS])
 
   return (
     <Box mx={5} width="100%" maxW={500} minW={280}>
@@ -34,16 +39,20 @@ const SignForm = ({ heading, btnContent, onSubmit }: Props) => {
         >
           <FormField
             type="text"
-            label="Email"
+            label={t(EMAIL)}
             errorName={errors.email}
-            errorMessage={errors.email?.message}
+            errorMessage={
+              errors.email?.message && t(errors.email?.message, { ns: VALIDATION_NS })
+            }
             {...register('email')}
           />
           <FormField
             type="password"
-            label="Password"
+            label={t(PASSWORD)}
             errorName={errors.password}
-            errorMessage={errors.password?.message}
+            errorMessage={
+              errors.password?.message && t(errors.password?.message, { ns: VALIDATION_NS })
+            }
             {...register('password')}
           />
           <Button type="submit">{btnContent}</Button>

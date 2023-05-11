@@ -1,26 +1,29 @@
 import * as yup from 'yup'
+import { VALIDATION_KEYS } from './constants'
+
+const {EMAIL, PASSWORD} = VALIDATION_KEYS;
 
 export const schema = yup.object({
   email: yup
     .string()
-    .email('must be a valid email')
-    .required('email is required')
-    .min(8, 'email must contain at least 8 characters')
-    .matches(/^(?=.*[a-z])/i, 'email must contain at least one letter')
-    .matches(/^(?=.*[0-9])/, 'email must contain at least one digit')
+    .email(EMAIL.VALID)
+    .required(EMAIL.REQUIRED)
+    .min(8, EMAIL.LENGTH)
+    .matches(/^(?=.*[a-z])/i, EMAIL.LETTER)
+    .matches(/^(?=.*[0-9])/, EMAIL.DIGIT)
     .matches(
       /^(?=.*[!@#$%^&*])/,
-      'email must contain at least one special character !, @, #, $, %, ^, &, *',
+      EMAIL.SPECIAL,
     ),
   password: yup
     .string()
-    .required('password is required')
-    .min(8, 'password must contain at least 8 characters')
-    .matches(/^(?=.*[a-z])/i, 'password must contain at least one letter')
-    .matches(/^(?=.*[0-9])/, 'password must contain at least one digit')
+    .required(PASSWORD.REQUIRED)
+    .min(8, PASSWORD.LENGTH)
+    .matches(/^(?=.*[a-z])/i, PASSWORD.LETTER)
+    .matches(/^(?=.*[0-9])/, PASSWORD.DIGIT)
     .matches(
       /^(?=.*[!@#$%^&*])/,
-      'password must contain at least one special character !, @, #, $, %, ^, &, *',
+      PASSWORD.SPECIAL,
     ),
 })
 

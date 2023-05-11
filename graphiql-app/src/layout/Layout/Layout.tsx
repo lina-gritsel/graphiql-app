@@ -1,30 +1,34 @@
+import { useEffect } from 'react'
+import { useToast } from '@chakra-ui/react'
 import { Outlet } from 'react-router'
+import { useTranslation } from 'react-i18next'
+import { useAuthState } from 'react-firebase-hooks/auth'
 import Header from '../Header'
 import Footer from '../Footer'
-import styles from './Layout.module.scss'
-import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth } from '../../firebase'
 import { AuthContext } from '../../constants/context'
 import ProgressBar from '../../components/ProgressBar/ProgressBar'
-import { useToast } from '@chakra-ui/react'
-import { useEffect } from 'react'
+import { TOAST_KEYS } from '../../constants/translationKeys'
+import styles from './Layout.module.scss'
 
 const Layout = () => {
   const [user, loading, error] = useAuthState(auth)
   const toast = useToast()
+  const {NS, AUTH_ERROR} = TOAST_KEYS
+  const { t } = useTranslation(NS)
   const isAuthUser = !!user
 
   useEffect(() => {
     if (error) {
       toast({
-        title: 'An error has occurred.',
-        description: 'Authorization is unavailable. Please try again later',
+        title: t(AUTH_ERROR.TITLE),
+        description: t(AUTH_ERROR.DESCRIPTION),
         status: 'error',
         duration: 5000,
         isClosable: true,
       })
     }
-  }, [error, toast])
+  }, [AUTH_ERROR.DESCRIPTION, AUTH_ERROR.TITLE, error, t, toast])
 
   if (loading) {
     return <ProgressBar />
