@@ -5,20 +5,13 @@
   gap: 10px;
   width: 400px;
   padding: 15px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: 555px;
 }
 
 .title {
   color: #3b4c68;
   font-size: 30px;
   font-weight: 600;
-}
-
-.queryLink {
-  color: #ef9a2b;
-  cursor: pointer;
-}
-
-.queryLink:hover {
-  border-bottom: 1px solid #ef9a2b;
-  color: #ef9a2b;
 }

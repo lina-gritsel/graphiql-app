@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+ 
+}
+
+.queryLink {
+  cursor: pointer;
+  color: #4383eb;
+}
+
+.queryLink:hover {
+  text-decoration: underline;
+}
+
+.argument {
+  color: #fc5b8e;
+}
+
+.type {
+  color: #eca008;
+}
+
+.type:hover {
+  text-decoration: underline;
+}
+
+.description {
+  color: #848485;
+}

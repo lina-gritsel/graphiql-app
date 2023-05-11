@@ -10,11 +10,8 @@ interface AllDocumentation {
   data: any
 }
 
-const AllDocumentation: FC<AllDocumentation> = ({ data}) => {
-  const {
-    prevDocs,
-    setSelectedPage,
-  } = useAllDocumentation()
+const AllDocumentation: FC<AllDocumentation> = ({ data }) => {
+  const { prevDocs, setSelectedPage } = useAllDocumentation()
 
   return (
     <>
@@ -23,9 +20,7 @@ const AllDocumentation: FC<AllDocumentation> = ({ data}) => {
           <BackSection prevDocs={prevDocs} onClick={setSelectedPage} />
         )}
         <div className={styles.title}>Query</div>
-        <div className={styles.queryLink}>
-          <ListQueries data={data} />
-        </div>
+        <ListQueries data={data} />
       </div>
     </>
   )
