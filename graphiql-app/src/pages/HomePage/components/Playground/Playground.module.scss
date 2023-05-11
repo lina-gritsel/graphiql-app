@@ -15,7 +15,29 @@
   gap: 5px;
   height: 100%;
   padding: 25px;
-  min-width: 600px;
+  min-width: 250px;
+  max-width: 85vw;
+}
+
+.draggable {
+  opacity: 0;
+  height: 100%;
+  width: 20px;
+  margin-left: 5px;
+  display: flex;
+  transition: all 0.5s;
+
+  &:hover {
+    opacity: 1;
+    cursor: col-resize;
+  }
+}
+.slider {
+  width: 5px;
+  height: 30%;
+  background: #bebfbf;
+  border-radius: 2px;
+  align-self: center;
 }
 
 .responseSection {

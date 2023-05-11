@@ -1,7 +1,7 @@
 import ControlArea from '../ControlArea'
 import Textarea from '../Textarea'
 
-import { usePlayground } from './hooks'
+import { usePlayground, useResizableDiv } from './hooks'
 
 import styles from './Playground.module.scss'
 
@@ -17,9 +17,11 @@ const Playground = () => {
     onCopy,
   } = usePlayground()
 
+  const { divRef, initial, resize } = useResizableDiv()
+
   return (
     <div className={styles.container}>
-      <div className={styles.requestSection}>
+      <div className={styles.requestSection} ref={divRef}>
         <Textarea
           placeholder="Enter your request"
           value={valueTextarea}
@@ -32,6 +34,15 @@ const Playground = () => {
           onAlign={onAlign}
           onCopy={onCopy}
         />
+      </div>
+      <div
+        className={styles.draggable}
+        draggable
+        
+        onDragStart={initial}
+        onDrag={resize}
+      >
+        <div className={styles.slider}></div>
       </div>
       {loading && <div>Loading...</div>}
       {!!response && (
