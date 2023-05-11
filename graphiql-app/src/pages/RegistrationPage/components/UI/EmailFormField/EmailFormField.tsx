@@ -7,7 +7,7 @@ import {
 } from '@chakra-ui/react'
 import { FieldProps } from './types'
 
-const FormField = forwardRef<FieldProps, 'div'>(
+const EmailFormField = forwardRef<FieldProps, 'div'>(
   ({ name, type, label, errorName, errorMessage, onChange, onBlur }, ref) => (
     <FormControl isInvalid={!!errorName} >
       <FormLabel htmlFor={name}>{label}</FormLabel>
@@ -24,4 +24,4 @@ const FormField = forwardRef<FieldProps, 'div'>(
   ),
 )
 
-export default FormField
+export default EmailFormField

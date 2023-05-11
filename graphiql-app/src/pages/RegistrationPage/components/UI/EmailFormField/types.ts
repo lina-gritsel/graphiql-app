@@ -5,7 +5,7 @@ import { Inputs } from "../../index.types"
 import { DefaultTFuncReturn } from "i18next"
 
 interface ControlProps extends FormControlProps {
-  type: HTMLInputTypeAttribute
+  type?: HTMLInputTypeAttribute
   label: string
   errorName?: FieldError
   errorMessage?: string | DefaultTFuncReturn

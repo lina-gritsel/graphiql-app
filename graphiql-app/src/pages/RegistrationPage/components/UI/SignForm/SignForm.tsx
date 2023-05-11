@@ -1,11 +1,12 @@
 import { Button, Heading, VStack, Container, Box } from '@chakra-ui/react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import FormField from '../FormField'
+import EmailFormField from '../EmailFormField'
 import { useTranslation } from 'react-i18next'
 import type { Inputs } from '../../index.types'
 import { schema, type FormData } from './schema'
 import { SING_FORM_KEYS, VALIDATION_KEYS } from './constants'
+import PasswordFormField from '../PasswordFormField'
 
 interface Props {
   heading: string
@@ -37,21 +38,22 @@ const SignForm = ({ heading, btnContent, onSubmit }: Props) => {
           spacing={5}
           onSubmit={handleSubmit(onSubmit)}
         >
-          <FormField
+          <EmailFormField
             type="text"
             label={t(EMAIL)}
             errorName={errors.email}
             errorMessage={
-              errors.email?.message && t(errors.email?.message, { ns: VALIDATION_NS })
+              errors.email?.message &&
+              t(errors.email?.message, { ns: VALIDATION_NS })
             }
             {...register('email')}
           />
-          <FormField
-            type="password"
+          <PasswordFormField
             label={t(PASSWORD)}
             errorName={errors.password}
             errorMessage={
-              errors.password?.message && t(errors.password?.message, { ns: VALIDATION_NS })
+              errors.password?.message &&
+              t(errors.password?.message, { ns: VALIDATION_NS })
             }
             {...register('password')}
           />
