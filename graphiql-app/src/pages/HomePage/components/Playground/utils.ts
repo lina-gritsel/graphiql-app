@@ -3,8 +3,14 @@ export const TWO_SPACE = '  '
 
 export const getAlignedText = (text: string) => {
   return text
+    .split('\n')
+    .map((str, index, arr) =>
+      !arr[index + 1]?.includes(ONE_SPACE) ? str + ',' : str,
+    )
+    .join(ONE_SPACE)
     .replaceAll('\n', '')
     .replaceAll(ONE_SPACE, '')
+    .replaceAll(',', ', ')
     .replaceAll('{', ' {\n')
     .replaceAll('}', '\n}')
     .split('{\n')

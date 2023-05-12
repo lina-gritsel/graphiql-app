@@ -38,9 +38,9 @@ const Playground = () => {
       </div>
       <div
         className={styles.draggable}
-        draggable
         onDragStart={initial}
         onDrag={resize}
+        draggable
       >
         <div className={styles.slider}></div>
       </div>
@@ -48,7 +48,10 @@ const Playground = () => {
       {loading ? (
         <div>Loading...</div>
       ) : (
-        <div className={styles.responseSection} ref={neighborRef}>
+        <div
+          className={!response ? styles.hidden : styles.responseSection}
+          ref={neighborRef}
+        >
           <Textarea
             value={JSON.stringify(response, null, TWO_SPACE)}
             className={styles.responseTextarea}

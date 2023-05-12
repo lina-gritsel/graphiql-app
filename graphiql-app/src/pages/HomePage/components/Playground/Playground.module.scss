@@ -42,8 +42,12 @@
   align-self: center;
 }
 
+.hidden {
+  opacity: 0;
+}
+
 .responseSection {
-  width: 50%;
+  width: calc(50% - 25px);
 }
 
 .responseTextarea {
@@ -54,3 +58,4 @@
     background-color: #99c6c1;
   }
 }
+
