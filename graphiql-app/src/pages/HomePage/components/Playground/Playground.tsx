@@ -8,7 +8,7 @@ import styles from './Playground.module.scss'
 
 const Playground = () => {
   const {
-    response,
+    data,
     onSubmit,
     loading,
     valueTextarea,
@@ -35,9 +35,9 @@ const Playground = () => {
         />
       </div>
       {loading && <div>Loading...</div>}
-      {!!response && (
+      {!!data && (
         <div className={loading ? styles.hidden : styles.responseSection}>
-          <Textarea value={JSON.stringify(response, null, TWO_SPACE)} />
+          <Textarea value={JSON.stringify(data, null, TWO_SPACE)} />
         </div>
       )}
     </div>

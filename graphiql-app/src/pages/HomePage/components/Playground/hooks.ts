@@ -6,7 +6,7 @@ import { DEFAULT_REQUEST } from './constants'
 import { getAlignedText } from './utils'
 
 export const usePlayground = () => {
-  const [response, setResponse] = useState<any>(null)
+  const [data, setData] = useState<any>(null)
   const [loading, setLoading] = useState<boolean>(false)
   const [valueTextarea, setValueTextarea] = useState<string>(DEFAULT_REQUEST)
 
@@ -18,7 +18,7 @@ export const usePlayground = () => {
       if (!result) {
         console.log('type the query correctly')
       }
-      setResponse(result)
+      setData(result)
     } catch (error) {
       console.log(error)
     } finally {
@@ -40,7 +40,7 @@ export const usePlayground = () => {
   }
 
   return {
-    response,
+    data,
     onSubmit,
     onAlign,
     onClean,
