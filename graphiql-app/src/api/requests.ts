@@ -20,7 +20,7 @@ export const fetchCharacters = async (request: string) => {
   }
 }
 
-export const fetchSchema = async () => {
+export const fetchSchema = async (value: string) => {
   try {
     const response = await fetch(BASE_URL, {
       method: 'POST',
@@ -30,7 +30,7 @@ export const fetchSchema = async () => {
       body: JSON.stringify({
         query: `
           {
-              __type(name: "Query") {
+              __type(name: "${value}") {
                 name
                 description
                 fields {

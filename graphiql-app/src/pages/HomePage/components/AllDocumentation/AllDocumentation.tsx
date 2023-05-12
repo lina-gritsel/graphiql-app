@@ -8,11 +8,15 @@ import ListQueries from './components/ListQueries'
 
 interface AllDocumentation {
   data: any
+  requestData: (value: string) => void
 }
 
-const AllDocumentation: FC<AllDocumentation> = ({ data }) => {
-  console.log(data)
+const AllDocumentation: FC<AllDocumentation> = ({ data, requestData }) => {
   const { prevDocs, setSelectedPage } = useAllDocumentation()
+
+  const onClickNextPage = (value: string) => {
+    requestData(value)
+  }
 
   return (
     <>
@@ -21,7 +25,7 @@ const AllDocumentation: FC<AllDocumentation> = ({ data }) => {
           <BackSection prevDocs={prevDocs} onClick={setSelectedPage} />
         )}
         <div className={styles.title}>Query</div>
-        <ListQueries data={data} />
+        <ListQueries data={data} onClick={onClickNextPage} />
       </div>
     </>
   )
