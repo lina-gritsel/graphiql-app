@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 import styles from './AboutUs.module.scss'
-import { useTranslation } from 'react-i18next'
 
 const AboutUs = () => {
   const { t } = useTranslation()

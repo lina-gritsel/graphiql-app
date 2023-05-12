@@ -1,8 +1,7 @@
-export const DEFAULT_REQUEST = 
-  `query {
+export const DEFAULT_REQUEST = `query {
     characters {
-      results {
-        name
-      }
+        results {
+            name
+        }
     }
-  }`
+}`

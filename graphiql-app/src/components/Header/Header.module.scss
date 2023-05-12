@@ -4,11 +4,14 @@
   padding: 10px;
   display: flex;
   gap: 30px;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   transition: all 1s;
   position: sticky;
   top: 0;
+  color: #229687;
+  font-weight: 700;
+
 }
 
 .container {

@@ -1,8 +1,9 @@
+import { Outlet } from 'react-router'
+
 import Header from '../Header'
 import Footer from '../Footer'
 
 import styles from './Layout.module.scss'
-import { Outlet } from 'react-router'
 
 const Layout = () => {
   return (
