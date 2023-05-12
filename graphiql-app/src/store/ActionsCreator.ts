@@ -1,10 +1,11 @@
 import { bindActionCreators } from '@reduxjs/toolkit'
 
-import { addNewDocumentation } from './reducers/DocumentationSlice'
+import { addNewDocumentation, deleteDocumentation } from './reducers/DocumentationSlice'
 import { useAppDispatch } from './hooks/redux'
 
 const actions = {
   addNewDocumentation,
+  deleteDocumentation,
 }
 
 export const useActions = () => {

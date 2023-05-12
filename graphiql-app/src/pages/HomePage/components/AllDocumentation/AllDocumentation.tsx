@@ -8,21 +8,25 @@ import ListQueries from './components/ListQueries'
 
 interface AllDocumentation {
   data: any
-  requestData: (value: string) => void
 }
 
-const AllDocumentation: FC<AllDocumentation> = ({ data, requestData }) => {
-  const { prevDocs, setSelectedPage } = useAllDocumentation()
+const AllDocumentation: FC<AllDocumentation> = ({ data }) => {
+  const { prevPage, addHistory, deleteHistory } =
+    useAllDocumentation()
 
   const onClickNextPage = (value: string) => {
-    requestData(value)
+    addHistory(value)
+  }
+
+  const onClickPrevPage = (value: string) => {
+    deleteHistory(value)
   }
 
   return (
     <>
       <div className={styles.container}>
-        {prevDocs && (
-          <BackSection prevDocs={prevDocs} onClick={setSelectedPage} />
+        {prevPage && (
+          <BackSection prevDocs={prevPage} onClick={onClickPrevPage} />
         )}
         <div className={styles.title}>Query</div>
         <ListQueries data={data} onClick={onClickNextPage} />

@@ -1,10 +1,10 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
 interface DocsState {
-    history: any[]
+  history: any[]
 }
 const initialState: DocsState = {
-    history: [],
+  history: ['Query'],
 }
 
 export const documentationSlice = createSlice({
@@ -14,8 +14,12 @@ export const documentationSlice = createSlice({
     addNewDocumentation(state, action: PayloadAction<string>) {
       state.history.push(action.payload)
     },
+    deleteDocumentation(state, action: PayloadAction<string>) {
+      state.history.pop()
+    },
   },
 })
 
 export default documentationSlice.reducer
-export const { addNewDocumentation } = documentationSlice.actions
+export const { addNewDocumentation, deleteDocumentation } =
+  documentationSlice.actions
