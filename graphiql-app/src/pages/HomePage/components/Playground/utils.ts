@@ -1,5 +1,5 @@
 const ONE_SPACE = ' '
-const TWO_SPACE = '  '
+export const TWO_SPACE = '  '
 
 export const getAlignedText = (text: string) => {
   return text

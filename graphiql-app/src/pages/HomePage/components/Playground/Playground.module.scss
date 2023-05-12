@@ -5,6 +5,7 @@
   min-height: calc(100vh - 163px);
   padding: 10px;
   width: 100%;
+  position: relative;
 }
 
 .requestSection {
@@ -16,16 +17,17 @@
   height: 100%;
   padding: 25px;
   min-width: 250px;
-  max-width: 85vw;
+  max-width: 80vw;
+  width: 50%;
 }
 
 .draggable {
   opacity: 0;
   height: 100%;
   width: 20px;
-  margin-left: 5px;
   display: flex;
   transition: all 0.5s;
+  margin-left: 5px;
 
   &:hover {
     opacity: 1;
@@ -41,13 +43,9 @@
 }
 
 .responseSection {
-  width: 100%;
+  width: 50%;
 }
 
 .hidden {
   display: none;
-}
-
-.responseSection {
-  width: 100%;
 }

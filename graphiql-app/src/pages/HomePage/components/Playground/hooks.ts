@@ -56,6 +56,7 @@ export const useResizableDiv = () => {
   const [initialSize, setInitialSize] = useState<number>()
 
   const divRef = useRef<HTMLDivElement>(null)
+  const neighborRef = useRef<HTMLDivElement>(null)
 
   const initial = (event: DragEvent<HTMLDivElement>) => {
     event.dataTransfer.setDragImage(new Image(), 0, 0)
@@ -64,10 +65,17 @@ export const useResizableDiv = () => {
   }
 
   const resize = (event: DragEvent<HTMLDivElement>) => {
-    divRef.current!.style.width = `${
+    const width =
       Number(initialSize) + Number(event.clientX - Number(initialPos))
-    }px`
+
+    divRef.current!.style.width = `${width}px`
+
+    const actualWidth = Number(divRef.current?.getBoundingClientRect().width)
+
+    if (neighborRef.current) {
+      neighborRef.current.style.width = `calc(100% - ${actualWidth + 26}px)`
+    }
   }
 
-  return { divRef, initial, resize }
+  return { divRef, neighborRef, initial, resize }
 }

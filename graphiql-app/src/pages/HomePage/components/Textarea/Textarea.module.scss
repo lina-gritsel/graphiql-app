@@ -26,4 +26,10 @@
   resize: none;
   white-space: pre !important;
   box-shadow: none !important;
+  word-wrap: break-word;
+
+  &::selection {
+    color: #229687;
+    background-color: #EDF2F7;
+  }
 }
