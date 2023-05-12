@@ -11,6 +11,7 @@ interface AllDocumentation {
 }
 
 const AllDocumentation: FC<AllDocumentation> = ({ data }) => {
+  console.log(data)
   const { prevDocs, setSelectedPage } = useAllDocumentation()
 
   return (

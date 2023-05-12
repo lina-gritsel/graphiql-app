@@ -2,14 +2,14 @@ import { FC } from 'react'
 
 import styles from './ListQueries.module.scss'
 
-interface Fields {
+interface IData {
   name: string
   description: string
   fields: any[]
 }
 
 interface ListQueries {
-  data: Fields
+  data: IData
 }
 
 interface Arguments {
@@ -18,10 +18,9 @@ interface Arguments {
 }
 
 const ListQueries: FC<ListQueries> = ({ data }) => {
-  console.log(data)
   return (
     <>
-      {data.fields.map(({ name, args, description }, index) => (
+      {data.fields.map(({ name, args, description, type }, index) => (
         <div key={name} className={styles.container}>
           <div key={index}>
             <span className={styles.queryLink}>{name}</span>
@@ -35,7 +34,9 @@ const ListQueries: FC<ListQueries> = ({ data }) => {
                 <span className={styles.type}>{type.name}</span>
               </span>
             ))}
-            <span>{')'}</span>
+            <span>{'):'}</span>
+            {'\n'}
+            <span className={styles.type}>{type.name}</span>
           </div>
           <div className={styles.description}>{description}</div>
         </div>

@@ -6,7 +6,7 @@ import { useSideBar } from './hooks'
 import styles from './SideBar.module.scss'
 
 const SideBar = () => {
-  const { changeStateDocs, openDocumentation, data, loading } = useSideBar()
+  const { changeStateDocs, openDocumentation, data } = useSideBar()
 
   return (
     <>
@@ -18,8 +18,7 @@ const SideBar = () => {
           alt="documentation"
         />
       </div>
-      {loading && <div>Loading...</div>}
-      {openDocumentation && <AllDocumentation data={data}/>}
+      {openDocumentation && <AllDocumentation data={data} />}
     </>
   )
 }
