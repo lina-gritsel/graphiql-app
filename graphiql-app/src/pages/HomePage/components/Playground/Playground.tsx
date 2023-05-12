@@ -45,13 +45,14 @@ const Playground = () => {
         <div className={styles.slider}></div>
       </div>
 
-      {loading && <div>Loading...</div>}
-      {!!response && (
-        <div
-          className={loading ? styles.hidden : styles.responseSection}
-          ref={neighborRef}
-        >
-          <Textarea value={JSON.stringify(response, null, TWO_SPACE)} />
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+        <div className={styles.responseSection} ref={neighborRef}>
+          <Textarea
+            value={JSON.stringify(response, null, TWO_SPACE)}
+            className={styles.responseTextarea}
+          />
         </div>
       )}
     </div>

@@ -46,6 +46,11 @@
   width: 50%;
 }
 
-.hidden {
-  display: none;
+.responseTextarea {
+  padding-left: 5px !important;
+
+  &::selection {
+    color: white;
+    background-color: #99c6c1;
+  }
 }
