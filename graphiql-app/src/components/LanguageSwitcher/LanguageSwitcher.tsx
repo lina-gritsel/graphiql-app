@@ -19,17 +19,17 @@ const languages: Record<string, Language> = {
   },
 }
 
-const DEFAULT_LANGUAGE = 'English'
+const DEFAULT_LANGUAGE = 'english'
 
 const LanguageSwitcher = () => {
   const { i18n } = useTranslation()
   const actualLanguage =
     localStorage.getItem('i18nextLng')?.toLowerCase() || DEFAULT_LANGUAGE
 
-  const currentLanguage = languages[actualLanguage].label
+  const currentLanguage = languages[actualLanguage]?.label
 
   const changeLanguage = () => {
-    const newLanguage = languages[actualLanguage].option
+    const newLanguage = languages[actualLanguage]?.option
     i18n.changeLanguage(newLanguage)
   }
 

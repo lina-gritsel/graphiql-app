@@ -10,6 +10,7 @@ i18next
   .init({
     debug: true,
     fallbackLng: 'english',
+    lng: 'english',
     interpolation: {
       escapeValue: false,
     },
