@@ -1,5 +1,5 @@
 import { useAppSelector } from '../../../../store/hooks/redux'
-import { useActions } from '../../../../store/ActionsCreator'
+import { useActions } from '../../../../store/actions/ActionsCreator'
 
 export const useAllDocumentation = () => {
   const { history } = useAppSelector((state) => state.documentationReducer)

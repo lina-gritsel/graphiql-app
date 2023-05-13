@@ -10,7 +10,7 @@ const Playground = () => {
   const {
     response,
     onSubmit,
-    loading,
+    isLoading,
     valueTextarea,
     setValueTextarea,
     onClean,
@@ -45,7 +45,7 @@ const Playground = () => {
         <div className={styles.slider}></div>
       </div>
 
-      {loading ? (
+      {isLoading ? (
         <div>Loading...</div>
       ) : (
         <div

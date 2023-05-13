@@ -1,29 +1,16 @@
 import { useRef, useState, DragEvent } from 'react'
 
-import { fetchCharacters } from '../../../../api/requests'
-
-import { DEFAULT_REQUEST } from './constants'
 import { getAlignedText } from './utils'
+import { useActions } from '../../../../store/actions/ActionsCreator'
+import { useAppSelector } from '../../../../store/hooks/redux'
 
 export const usePlayground = () => {
-  const [response, setResponse] = useState<any>(null)
-  const [loading, setLoading] = useState<boolean>(false)
-  const [valueTextarea, setValueTextarea] = useState<string>(DEFAULT_REQUEST)
 
-  const onSubmit = async () => {
-    try {
-      setLoading(true)
+  const { response, isLoading, valueTextarea } = useAppSelector((store) => store.editorReducer)
+  const { useEditor, setValueTextarea } = useActions()
 
-      const result = await fetchCharacters(valueTextarea)
-      if (!result) {
-        console.log('type the query correctly')
-      }
-      setResponse(result)
-    } catch (error) {
-      console.log(error)
-    } finally {
-      setLoading(false)
-    }
+  const onSubmit = () => {
+    useEditor(valueTextarea)
   }
 
   const onAlign = () => {
@@ -41,11 +28,11 @@ export const usePlayground = () => {
 
   return {
     response,
+    isLoading,
     onSubmit,
     onAlign,
     onClean,
     onCopy,
-    loading,
     valueTextarea,
     setValueTextarea,
   }
