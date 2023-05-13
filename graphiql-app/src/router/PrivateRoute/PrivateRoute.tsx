@@ -1,5 +1,5 @@
 import { ReactElement, useContext } from 'react'
-import { AuthContext } from '../../../../constants/context'
+import { AuthContext } from '../../constants/context'
 
 interface Props {
   authUserEl: ReactElement

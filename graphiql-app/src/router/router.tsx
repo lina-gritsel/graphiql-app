@@ -12,7 +12,7 @@ import HomePage from '../pages/HomePage/HomePage'
 import LoginPage from '../pages/LoginPage'
 import RegistrationPage from '../pages/RegistrationPage/RegistrationPage'
 import WelcomePage from '../pages/WelcomePage'
-import PrivateRoute from '../pages/RegistrationPage/components/PrivateRoute'
+import PrivateRoute from './PrivateRoute'
 
 const PrivateRouteForAuthUser = <PrivateRoute authUserEl={<Outlet />} unauthUserEl={<Navigate to={PATHS.WELCOME} replace/>} />
 

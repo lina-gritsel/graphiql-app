@@ -2,11 +2,11 @@ import { Center, Spinner, useToast } from '@chakra-ui/react'
 import { SubmitHandler } from 'react-hook-form'
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth'
 import { useTranslation } from 'react-i18next'
-import type { Inputs } from '../index.types'
 import { auth } from '../../../../firebase'
-import SignForm from '../UI/SignForm'
 import { SIGNUP_KEYS } from './constants'
 import { TOAST_KEYS } from '../../../../constants/translationKeys'
+import SignForm from '../../../../components/SignForm'
+import type { Inputs } from '../../../../types'
 
 
 const SignUp = () => {

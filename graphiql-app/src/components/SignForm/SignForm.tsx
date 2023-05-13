@@ -1,12 +1,12 @@
 import { Button, Heading, VStack, Container, Box } from '@chakra-ui/react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import EmailFormField from '../EmailFormField'
 import { useTranslation } from 'react-i18next'
-import type { Inputs } from '../../index.types'
 import { schema, type FormData } from './schema'
 import { SING_FORM_KEYS, VALIDATION_KEYS } from './constants'
-import PasswordFormField from '../PasswordFormField'
+import { Inputs } from '../../types'
+import EmailFormField from './EmailFormField'
+import PasswordFormField from './PasswordFormField'
 
 interface Props {
   heading: string
