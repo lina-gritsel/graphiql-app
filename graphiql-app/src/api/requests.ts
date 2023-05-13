@@ -20,7 +20,7 @@ export const fetchCharacters = async (request: string) => {
   }
 }
 
-export const fetchSchema = async () => {
+export const fetchSchema = async (value: string) => {
   try {
     const response = await fetch(BASE_URL, {
       method: 'POST',
@@ -28,22 +28,33 @@ export const fetchSchema = async () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        query: `{
-          __schema {
-            queryType {
-              fields {
+        query: `
+          {
+              __type(name: "${value}") {
                 name
+                description
+                fields {
+                  name
+                  args {
+                    name
+                    type {
+                      name
+                    }
+                  }
+                  description
+                  type {
+                    name
+                    description
+                  }
+                }
               }
-            }
-          }
         }`,
         variables: {},
       }),
     })
     const result = await response.json()
-    const queryOptions = result.data.__schema.queryType.fields
 
-    return queryOptions
+    return result.data.__type
   } catch (error) {
     console.log(error)
   }

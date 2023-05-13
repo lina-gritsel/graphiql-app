@@ -3,12 +3,10 @@ import { useQuery } from '@tanstack/react-query'
 
 import { fetchSchema } from '../../../../api/requests'
 
-export const useSideBar = () => {
-  const { changeStateDocs, openDocumentation } = openQueryOptions()
-
+export const useFetchSchema = (currentPage = '') => {
   const { data, isLoading, isFetching } = useQuery(
-    ['fetchSchema'],
-    () => fetchSchema(),
+    ['fetchSchema', currentPage],
+    () => fetchSchema(currentPage),
     {
       refetchOnWindowFocus: false,
       staleTime: 60_000,
@@ -16,19 +14,13 @@ export const useSideBar = () => {
   )
 
   return {
-    changeStateDocs,
-    openDocumentation,
-    queryOptions: data,
+    data,
     loading: isLoading || isFetching,
   }
 }
 
-const openQueryOptions = () => {
-  const [openDocumentation, setOpenDocumentation] = useState<boolean>(false)
+export const useSideBarVisible = () => {
+  const [visible, setVisible] = useState<boolean>(false)
 
-  const changeStateDocs = () => {
-    setOpenDocumentation((prev) => !prev)
-  }
-
-  return { changeStateDocs, openDocumentation }
+  return { onToggleVisible: () => setVisible((prev) => !prev), visible }
 }

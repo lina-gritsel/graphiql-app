@@ -34,16 +34,12 @@ const ControlArea = ({
       <img className={styles.icon} src={play} alt="play" onClick={onPlay} />
       <img className={styles.icon} src={align} alt="align" onClick={onAlign} />
       <img className={styles.icon} src={clean} alt="clean" onClick={onClean} />
-      {isCopied ? (
-        <img className={styles.icon} src={ok} alt="ok" />
-      ) : (
-        <img
-          className={styles.icon}
-          src={clone}
-          alt="clean"
-          onClick={handleCopy}
-        />
-      )}
+      <img
+        className={styles.icon}
+        src={isCopied ? ok : clone}
+        alt="clean"
+        onClick={handleCopy}
+      />
     </div>
   )
 }

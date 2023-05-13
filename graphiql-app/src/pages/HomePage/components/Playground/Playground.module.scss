@@ -27,7 +27,6 @@
   width: 20px;
   display: flex;
   transition: all 0.5s;
-  margin-left: 5px;
 
   &:hover {
     opacity: 1;
@@ -40,6 +39,7 @@
   background: #bebfbf;
   border-radius: 2px;
   align-self: center;
+  margin-left: 5px;
 }
 
 .hidden {
