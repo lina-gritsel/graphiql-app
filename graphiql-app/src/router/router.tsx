@@ -5,7 +5,6 @@ import {
   Outlet,
   Route,
 } from 'react-router-dom'
-import Layout from '../layout/Layout'
 import Page404 from '../pages/404Page/Page404'
 import { PATHS } from '../constants/paths'
 import HomePage from '../pages/HomePage/HomePage'
@@ -13,6 +12,7 @@ import LoginPage from '../pages/LoginPage'
 import RegistrationPage from '../pages/RegistrationPage/RegistrationPage'
 import WelcomePage from '../pages/WelcomePage'
 import PrivateRoute from './PrivateRoute'
+import Layout from '../components/Layout'
 
 const PrivateRouteForAuthUser = <PrivateRoute authUserEl={<Outlet />} unauthUserEl={<Navigate to={PATHS.WELCOME} replace/>} />
 

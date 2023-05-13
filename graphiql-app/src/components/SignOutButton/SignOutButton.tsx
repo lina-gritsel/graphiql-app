@@ -1,11 +1,11 @@
-import { Button, useToast } from '@chakra-ui/react'
+import { Button, ButtonProps, useToast } from '@chakra-ui/react'
 import { useSignOut } from 'react-firebase-hooks/auth'
 import { useTranslation } from 'react-i18next'
 import { auth } from '../../firebase'
 import { SIGNOUT_KEYS } from './constants'
 import { TOAST_KEYS } from '../../constants/translationKeys'
 
-const SignOutButton = () => {
+const SignOutButton = ({className}: ButtonProps) => {
   const [signOut, loading] = useSignOut(auth)
   const toast = useToast()
   const { NS: TOAST_NS, SIGNOUT_SUCCESS, SIGNOUT_ERROR } = TOAST_KEYS
@@ -34,7 +34,7 @@ const SignOutButton = () => {
   }
 
   return (
-    <Button isLoading={loading} onClick={onClick}>
+    <Button className={className} isLoading={loading} onClick={onClick}>
       {t(CONTENT)}
     </Button>
   )

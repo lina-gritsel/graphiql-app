@@ -1,20 +1,20 @@
-import { useEffect } from 'react'
 import { useToast } from '@chakra-ui/react'
-import { Outlet } from 'react-router'
-import { useTranslation } from 'react-i18next'
+import { useEffect } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
+import { useTranslation } from 'react-i18next'
+import { Outlet } from 'react-router'
 import Header from '../Header'
 import Footer from '../Footer'
-import { auth } from '../../firebase'
-import { AuthContext } from '../../constants/context'
-import ProgressBar from '../../components/ProgressBar/ProgressBar'
 import { TOAST_KEYS } from '../../constants/translationKeys'
+import { auth } from '../../firebase'
+import ProgressBar from '../ProgressBar'
+import { AuthContext } from '../../constants/context'
 import styles from './Layout.module.scss'
 
 const Layout = () => {
   const [user, loading, error] = useAuthState(auth)
   const toast = useToast()
-  const {NS, AUTH_ERROR} = TOAST_KEYS
+  const { NS, AUTH_ERROR } = TOAST_KEYS
   const { t } = useTranslation(NS)
   const isAuthUser = !!user
 
