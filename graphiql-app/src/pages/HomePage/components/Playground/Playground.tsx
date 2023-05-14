@@ -1,6 +1,6 @@
 import ControlArea from '../ControlArea'
 import Textarea from '../Textarea'
-import Navigation from '../Navigation'
+import EditorMenu from '../EditorMenu'
 
 import { usePlayground, useResizableDiv } from './hooks'
 import { TWO_SPACE } from './utils'
@@ -23,7 +23,7 @@ const Playground = () => {
 
   return (
     <div className={styles.container}>
-      <Navigation />
+      <EditorMenu />
       <div className={styles.playgroundWrapper}>
         <div className={styles.requestSection} ref={divRef}>
           <Textarea

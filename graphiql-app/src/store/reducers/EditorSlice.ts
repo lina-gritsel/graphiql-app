@@ -33,8 +33,8 @@ export const editorSlice = createSlice({
       )
     },
     addEditor(state) {
-      state.idActiveEditor += 1
       state.editors.push({ ...DEFAULT_STATE })
+      state.idActiveEditor = state.editors.length - 1
     },
   },
   extraReducers: {
