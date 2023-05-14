@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import back from '../../../../../assets/images/back.png'
+import back from '../../../../../../assets/images/back.png'
 
 import styles from './BackSection.module.scss'
 

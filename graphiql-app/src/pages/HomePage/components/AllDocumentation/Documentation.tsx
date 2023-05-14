@@ -1,9 +1,9 @@
 import { FC } from 'react'
 
 import { useAllDocumentation } from './hooks'
-import BackSection from './components'
+import BackSection from './components/BackSection'
 
-import styles from './AllDocumentation.module.scss'
+import styles from './Documentation.module.scss'
 import ListQueries from './components/ListQueries'
 
 interface AllDocumentation {
@@ -11,7 +11,7 @@ interface AllDocumentation {
 }
 
 const AllDocumentation: FC<AllDocumentation> = ({ data }) => {
-  const { prevPage, addHistory, deleteHistory } =
+  const { prevPage, addHistory, deleteHistory,currentPage } =
     useAllDocumentation()
 
   const onClickNextPage = (value: string) => {
@@ -28,7 +28,7 @@ const AllDocumentation: FC<AllDocumentation> = ({ data }) => {
         {prevPage && (
           <BackSection prevDocs={prevPage} onClick={onClickPrevPage} />
         )}
-        <div className={styles.title}>Query</div>
+        <div className={styles.title}>{currentPage}</div>
         <ListQueries data={data} onClick={onClickNextPage} />
       </div>
     </>

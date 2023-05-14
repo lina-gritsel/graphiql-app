@@ -1,4 +1,6 @@
-import { FC } from 'react'
+import React, { FC } from 'react'
+
+import QueryDetails from '../QueryDetails'
 
 import styles from './ListQueries.module.scss'
 
@@ -21,22 +23,15 @@ interface QueryArguments {
 const ListQueries: FC<ListQueries> = ({ data, onClick }) => {
   return (
     <>
-      {data?.fields?.map(({ name, args, description, type }, index) => (
+      {data?.fields?.map(({ name, args, description, type }) => (
         <div key={name} className={styles.container}>
           <div>
             <span className={styles.queryLink}>{name}</span>
-            {args.length !== 0 && <span>{'('}</span>}
-            {args.map(({ name, type }: QueryArguments) => (
-              <span key={name}>
-                {args.length !== 1 && <br />}
-                <span className={styles.argument}>{name}</span>
-                <span>:</span>
-                <span className={styles.type}>{type.name}</span>
-              </span>
-            ))}
-            {args.length !== 0 && <span>{')'}</span>}
-            <span>{':'}</span>
-            {'\n'}
+            <Bracket args={args}>
+              {args.map(({ name, type }: QueryArguments) => (
+                <QueryDetails key={name} args={args} name={name} type={type} />
+              ))}
+            </Bracket>
             <span className={styles.type} onClick={() => onClick(type.name)}>
               {type.name}
             </span>
@@ -49,3 +44,20 @@ const ListQueries: FC<ListQueries> = ({ data, onClick }) => {
 }
 
 export default ListQueries
+
+interface BracketProps {
+  args: QueryArguments[]
+  children: React.ReactNode
+}
+
+const Bracket: FC<BracketProps> = ({ args, children }) => {
+  return (
+    <>
+      {args.length !== 0 && <span>{'('}</span>}
+      {children}
+      {args.length !== 0 && <span>{')'}</span>}
+      <span>{':'}</span>
+      {'\n'}
+    </>
+  )
+}
