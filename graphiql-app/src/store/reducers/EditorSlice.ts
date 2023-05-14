@@ -1,20 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { DEFAULT_REQUEST } from '../../constants/defaultRequest'
+import { DEFAULT_STATE, EditorState } from '../../constants/editor'
 import { useEditor } from '../actions/useEditor'
 
-interface UserState {
-  response: any
-  isLoading: boolean
-  error: string
-  valueTextarea: string
+interface InitialState {
+  editors: EditorState[]
+  idActiveEditor: number
 }
 
-const initialState: UserState = {
-  response: null,
-  isLoading: false,
-  error: '',
-  valueTextarea: DEFAULT_REQUEST,
+const initialState: InitialState = {
+  editors: [{ ...DEFAULT_STATE }],
+  idActiveEditor: 0,
 }
 
 export const editorSlice = createSlice({
@@ -22,24 +18,38 @@ export const editorSlice = createSlice({
   initialState,
   reducers: {
     setValueTextarea(state, action: PayloadAction<string>) {
-      state.valueTextarea = action.payload
+      const currentEditor = state.editors[state.idActiveEditor]
+      currentEditor.valueTextarea = action.payload
+    },
+    setIdActiveEditor(state, action: PayloadAction<number>) {
+      state.idActiveEditor = action.payload
+    },
+    addEditor(state) {
+      state.idActiveEditor += 1
+      state.editors.push({ ...DEFAULT_STATE })
     },
   },
   extraReducers: {
     [useEditor.fulfilled.type]: (state, action: PayloadAction<any>) => {
-      state.isLoading = false
-      state.error = ''
-      state.response = action.payload
+      const currentEditor = state.editors[state.idActiveEditor]
+
+      currentEditor.isLoading = false
+      currentEditor.error = ''
+      currentEditor.response = action.payload
     },
     [useEditor.pending.type]: (state) => {
-      state.isLoading = true
+      const currentEditor = state.editors[state.idActiveEditor]
+
+      currentEditor.isLoading = true
     },
     [useEditor.rejected.type]: (state, action: PayloadAction<string>) => {
-      state.isLoading = false
-      state.error = action.payload
+      const currentEditor = state.editors[state.idActiveEditor]
+
+      currentEditor.isLoading = false
+      currentEditor.error = action.payload
     },
   },
 })
 
 export default editorSlice.reducer
-export const { setValueTextarea } = editorSlice.actions
+export const { setValueTextarea, setIdActiveEditor, addEditor } = editorSlice.actions

@@ -1,0 +1,27 @@
+.container {
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  width: 100%;
+}
+
+.labelList {
+  display: flex;
+  gap: 15px;
+}
+
+.label {
+  padding: 5px 10px;
+  background: white;
+  border-radius: 10px;
+}
+
+.plus {
+  width: 25px;
+  height: 25px;
+
+  &:hover {
+    cursor: pointer;
+    scale: 1.05;
+  }
+}

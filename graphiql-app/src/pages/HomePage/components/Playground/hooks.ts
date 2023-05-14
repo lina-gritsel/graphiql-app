@@ -1,12 +1,15 @@
 import { useRef, useState, DragEvent } from 'react'
 
-import { getAlignedText } from './utils'
 import { useActions } from '../../../../store/actions/ActionsCreator'
 import { useAppSelector } from '../../../../store/hooks/redux'
 
-export const usePlayground = () => {
+import { getAlignedText } from './utils'
 
-  const { response, isLoading, valueTextarea } = useAppSelector((store) => store.editorReducer)
+export const usePlayground = () => {
+  const { editors, idActiveEditor } = useAppSelector(
+    (store) => store.editorReducer,
+  )
+  const { valueTextarea, isLoading, response } = editors[idActiveEditor]
   const { useEditor, setValueTextarea } = useActions()
 
   const onSubmit = () => {

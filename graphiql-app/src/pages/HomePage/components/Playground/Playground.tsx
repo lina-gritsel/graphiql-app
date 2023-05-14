@@ -1,5 +1,6 @@
 import ControlArea from '../ControlArea'
 import Textarea from '../Textarea'
+import Navigation from '../Navigation'
 
 import { usePlayground, useResizableDiv } from './hooks'
 import { TWO_SPACE } from './utils'
@@ -22,42 +23,45 @@ const Playground = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.requestSection} ref={divRef}>
-        <Textarea
-          placeholder="Enter your request"
-          value={valueTextarea}
-          onChange={setValueTextarea}
-          numOfLines={7}
-        />
-        <ControlArea
-          onPlay={onSubmit}
-          onClean={onClean}
-          onAlign={onAlign}
-          onCopy={onCopy}
-        />
-      </div>
-      <div
-        className={styles.draggable}
-        onDragStart={initial}
-        onDrag={resize}
-        draggable
-      >
-        <div className={styles.slider}></div>
-      </div>
-
-      {isLoading ? (
-        <div>Loading...</div>
-      ) : (
-        <div
-          className={!response ? styles.hidden : styles.responseSection}
-          ref={neighborRef}
-        >
+      <Navigation />
+      <div className={styles.playgroundWrapper}>
+        <div className={styles.requestSection} ref={divRef}>
           <Textarea
-            value={JSON.stringify(response, null, TWO_SPACE)}
-            className={styles.responseTextarea}
+            placeholder="Enter your request"
+            value={valueTextarea}
+            onChange={setValueTextarea}
+            numOfLines={7}
+          />
+          <ControlArea
+            onPlay={onSubmit}
+            onClean={onClean}
+            onAlign={onAlign}
+            onCopy={onCopy}
           />
         </div>
-      )}
+        <div
+          className={styles.draggable}
+          onDragStart={initial}
+          onDrag={resize}
+          draggable
+        >
+          <div className={styles.slider}></div>
+        </div>
+
+        {isLoading ? (
+          <div>Loading...</div>
+        ) : (
+          <div
+            className={!response ? styles.hidden : styles.responseSection}
+            ref={neighborRef}
+          >
+            <Textarea
+              value={JSON.stringify(response, null, TWO_SPACE)}
+              className={styles.responseTextarea}
+            />
+          </div>
+        )}
+      </div>
     </div>
   )
 }
