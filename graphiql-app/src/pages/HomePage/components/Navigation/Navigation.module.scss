@@ -3,25 +3,52 @@
   justify-content: space-between;
   display: flex;
   width: 100%;
+  padding: 0 5px;
 }
 
 .labelList {
   display: flex;
+  justify-self: flex-start;
   gap: 15px;
 }
 
 .label {
-  padding: 5px 10px;
+  padding: 2px 10px;
   background: white;
   border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .plus {
   width: 25px;
   height: 25px;
+  margin-left: auto;
 
   &:hover {
     cursor: pointer;
     scale: 1.05;
+  }
+}
+
+.active {
+  color: white;
+  background-color: #99c6c1;
+}
+
+.close {
+  width: 15px;
+  height: 15px;
+  opacity: 0;
+  transition: all 0.5s;
+
+  &:hover {
+    opacity: 1;
   }
 }

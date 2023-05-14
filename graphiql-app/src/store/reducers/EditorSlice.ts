@@ -24,6 +24,14 @@ export const editorSlice = createSlice({
     setIdActiveEditor(state, action: PayloadAction<number>) {
       state.idActiveEditor = action.payload
     },
+    deleteEditor(state, action: PayloadAction<number>) {
+      if (state.idActiveEditor >= action.payload) {
+        state.idActiveEditor -= 1
+      }
+      state.editors = state.editors.filter(
+        (_, index) => index !== action.payload,
+      )
+    },
     addEditor(state) {
       state.idActiveEditor += 1
       state.editors.push({ ...DEFAULT_STATE })
@@ -52,4 +60,5 @@ export const editorSlice = createSlice({
 })
 
 export default editorSlice.reducer
-export const { setValueTextarea, setIdActiveEditor, addEditor } = editorSlice.actions
+export const { setValueTextarea, setIdActiveEditor, addEditor, deleteEditor } =
+  editorSlice.actions

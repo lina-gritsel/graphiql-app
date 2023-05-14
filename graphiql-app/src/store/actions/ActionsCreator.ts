@@ -6,6 +6,7 @@ import {
 } from '../reducers/DocumentationSlice'
 import {
   addEditor,
+  deleteEditor,
   setIdActiveEditor,
   setValueTextarea,
 } from '../reducers/EditorSlice'
@@ -19,6 +20,7 @@ const actions = {
   setValueTextarea,
   addEditor,
   setIdActiveEditor,
+  deleteEditor
 }
 
 export const useActions = () => {
