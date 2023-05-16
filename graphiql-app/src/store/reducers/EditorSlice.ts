@@ -25,7 +25,10 @@ export const editorSlice = createSlice({
       state.idActiveEditor = action.payload
     },
     deleteEditor(state, action: PayloadAction<number>) {
-      if (state.idActiveEditor >= action.payload) {
+      if (
+        state.idActiveEditor >= action.payload &&
+        state.idActiveEditor !== 0
+      ) {
         state.idActiveEditor -= 1
       }
       state.editors = state.editors.filter(
@@ -38,7 +41,7 @@ export const editorSlice = createSlice({
     },
   },
   extraReducers: {
-    [useEditor.fulfilled.type]: (state, action: PayloadAction<any>) => {
+    [useEditor.fulfilled.type]: (state, action: PayloadAction<unknown>) => {
       const currentEditor = state.editors[state.idActiveEditor]
 
       currentEditor.isLoading = false

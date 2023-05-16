@@ -4,7 +4,7 @@ import { useAppSelector } from '../../../../store/hooks/redux'
 import { useActions } from '../../../../store/actions/ActionsCreator'
 
 interface IRemove {
-  event: MouseEvent<HTMLSpanElement>
+  event: MouseEvent<SVGSVGElement>
   index: number
 }
 

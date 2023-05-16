@@ -9,7 +9,8 @@ export const usePlayground = () => {
   const { editors, idActiveEditor } = useAppSelector(
     (store) => store.editorReducer,
   )
-  const { valueTextarea, isLoading, response } = editors[idActiveEditor]
+  const { valueTextarea, isLoading, response } =
+    editors[idActiveEditor] || editors[0]
   const { useEditor, setValueTextarea } = useActions()
 
   const onSubmit = () => {
@@ -58,7 +59,9 @@ export const useResizableDiv = () => {
     const width =
       Number(initialSize) + Number(event.clientX - Number(initialPos))
 
-    divRef.current!.style.width = `${width}px`
+    if (divRef.current) {
+      divRef.current.style.width = `${width}px`
+    }
 
     const actualWidth = Number(divRef.current?.getBoundingClientRect().width)
 

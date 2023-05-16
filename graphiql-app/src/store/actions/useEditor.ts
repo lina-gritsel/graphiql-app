@@ -6,7 +6,7 @@ export const useEditor = createAsyncThunk(
   'editor/fetchResponse',
   async (request: string, thunkAPI) => {
     try {
-      const response = await fetchCharacters(request)
+      const response = await fetchCharacters(request) as unknown
       return response
     } catch (error) {
       return thunkAPI.rejectWithValue(error)

@@ -1,7 +1,7 @@
 import classname from 'classnames'
 
 import plus from '../../../../assets/images/plus.png'
-import Close from '../../../../assets/icons/Close'
+import { ReactComponent as Close } from '../../../../assets/icons/close.svg'
 
 import { useEditorMenu } from './hooks'
 
@@ -31,15 +31,18 @@ const EditorMenu = () => {
               onClick={() => setIdActiveEditor(index)}
             >
               {label}
-              <span onClick={(event) => removeEditor({ event, index })}>
-                <Close className={styles.close} />
-              </span>
+              <Close
+                className={styles.close}
+                onClick={(event) => removeEditor({ event, index })}
+              />
             </p>
           ))}
         </div>
       )}
-
-      <img src={plus} className={styles.plus} onClick={addNewEditor} />
+      <div className={styles.rightSection}>
+        <div>rickandmortyapi</div>
+        <img src={plus} className={styles.plus} onClick={addNewEditor} />
+      </div>
     </div>
   )
 }

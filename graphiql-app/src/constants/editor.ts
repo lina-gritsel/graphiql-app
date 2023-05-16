@@ -1,5 +1,5 @@
 export interface EditorState {
-    response: any
+    response: unknown
     isLoading: boolean
     error: string
     valueTextarea: string

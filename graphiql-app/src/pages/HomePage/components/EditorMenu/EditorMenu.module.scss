@@ -11,7 +11,7 @@
 .labelList {
   display: flex;
   gap: 15px;
-  max-width: 75vw;
+  max-width: 72vw;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
 
@@ -23,6 +23,7 @@
 .label {
   padding: 2px 8px;
   background: white;
+  color: #229687;
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -36,10 +37,20 @@
   }
 }
 
+.rightSection {
+  display: flex;
+  gap: 10px;
+  margin-left: auto;
+
+  & > div {
+    font-weight: 600;
+    color: #229687;
+  }
+}
+
 .plus {
   width: 25px;
   height: 25px;
-  margin-left: auto;
 
   &:hover {
     cursor: pointer;
