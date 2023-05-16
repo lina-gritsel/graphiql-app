@@ -28,26 +28,26 @@
   width: 50%;
 }
 
-.draggable {
-  opacity: 0;
-  height: 100%;
-  width: 20px;
-  display: flex;
-  transition: all 0.5s;
+// .draggable {
+//   opacity: 0;
+//   height: 100%;
+//   width: 20px;
+//   display: flex;
+//   transition: all 0.5s;
 
-  &:hover {
-    opacity: 1;
-    cursor: col-resize;
-  }
-}
-.slider {
-  width: 5px;
-  height: 30%;
-  background: #bebfbf;
-  border-radius: 2px;
-  align-self: center;
-  margin-left: 5px;
-}
+//   &:hover {
+//     opacity: 1;
+//     cursor: col-resize;
+//   }
+// }
+// .slider {
+//   width: 5px;
+//   height: 30%;
+//   background: #bebfbf;
+//   border-radius: 2px;
+//   align-self: center;
+//   margin-left: 5px;
+// }
 
 .hidden {
   opacity: 0;

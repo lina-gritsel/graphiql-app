@@ -1,8 +1,11 @@
+import { useResizableDiv } from '../../../../hooks/useResizableDiv'
+import DraggableDiv from '../../../../components/DraggableDiv'
+
 import ControlArea from '../ControlArea'
 import Textarea from '../Textarea'
 import EditorMenu from '../EditorMenu'
 
-import { usePlayground, useResizableDiv } from './hooks'
+import { usePlayground } from './hooks'
 import { TWO_SPACE } from './utils'
 
 import styles from './Playground.module.scss'
@@ -39,14 +42,15 @@ const Playground = () => {
             onCopy={onCopy}
           />
         </div>
-        <div
+        <DraggableDiv initial={initial} resize={resize} />
+        {/* <div
           className={styles.draggable}
           onDragStart={initial}
           onDrag={resize}
           draggable
         >
           <div className={styles.slider}></div>
-        </div>
+        </div> */}
 
         {isLoading ? (
           <div>Loading...</div>
