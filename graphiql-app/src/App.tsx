@@ -1,29 +1,21 @@
+import { Suspense } from 'react'
 import { RouterProvider } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { ChakraProvider, Progress } from '@chakra-ui/react'
-import { useAuthState } from 'react-firebase-hooks/auth'
-import { auth } from './firebase'
-import { AuthContext } from './constants/context'
+import { ChakraProvider } from '@chakra-ui/react'
 import router from './router'
-
+import ProgressBar from './components/ProgressBar'
+import '../src/i18next'
 import './scss/styles.scss'
 
 const client = new QueryClient()
 
 const App = () => {
-  const [user, loading, error] = useAuthState(auth)
-  const isAuthUser = !!user
-
-  if (loading) {
-    return <Progress size='xs' isIndeterminate />
-  }
-
   return (
     <QueryClientProvider client={client}>
       <ChakraProvider>
-        <AuthContext.Provider value={isAuthUser}>
+        <Suspense fallback={<ProgressBar />}>
           <RouterProvider router={router} />
-        </AuthContext.Provider>
+        </Suspense>
       </ChakraProvider>
     </QueryClientProvider>
   )
