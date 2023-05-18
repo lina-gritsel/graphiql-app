@@ -28,6 +28,8 @@ export const usePlayground = () => {
     navigator.clipboard.writeText(valueTextarea)
   }
 
+  const isFullHeight = editors.length <= 1
+
   return {
     response,
     isLoading,
@@ -35,6 +37,7 @@ export const usePlayground = () => {
     onAlign,
     onClean,
     onCopy,
+    isFullHeight,
     valueTextarea,
     setValueTextarea,
   }

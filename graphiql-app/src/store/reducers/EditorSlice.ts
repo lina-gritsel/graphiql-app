@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { DEFAULT_STATE, EditorState } from '../../constants/editor'
-import { useEditor } from '../actions/useEditor'
+import { fulfilled, pending, rejected } from '../actions/editorActions'
 
 interface InitialState {
   editors: EditorState[]
@@ -40,25 +40,24 @@ export const editorSlice = createSlice({
       state.idActiveEditor = state.editors.length - 1
     },
   },
-  extraReducers: {
-    [useEditor.fulfilled.type]: (state, action: PayloadAction<unknown>) => {
-      const currentEditor = state.editors[state.idActiveEditor]
+  extraReducers: (builder) => {
+    builder
+      .addCase(fulfilled, (state, action) => {
+        const currentEditor = state.editors[state.idActiveEditor]
 
-      currentEditor.isLoading = false
-      currentEditor.error = ''
-      currentEditor.response = action.payload
-    },
-    [useEditor.pending.type]: (state) => {
-      const currentEditor = state.editors[state.idActiveEditor]
-
-      currentEditor.isLoading = true
-    },
-    [useEditor.rejected.type]: (state, action: PayloadAction<string>) => {
-      const currentEditor = state.editors[state.idActiveEditor]
-
-      currentEditor.isLoading = false
-      currentEditor.error = action.payload
-    },
+        currentEditor.isLoading = false
+        currentEditor.error = ''
+        currentEditor.response = action.payload
+      })
+      .addCase(pending, (state) => {
+        const currentEditor = state.editors[state.idActiveEditor]
+        currentEditor.isLoading = true
+      })
+      .addCase(rejected, (state, action) => {
+        const currentEditor = state.editors[state.idActiveEditor]
+        currentEditor.isLoading = false
+        currentEditor.error = action.payload
+      })
   },
 })
 

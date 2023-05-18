@@ -11,7 +11,7 @@ import {
   setValueTextarea,
 } from '../reducers/EditorSlice'
 import { useAppDispatch } from '../hooks/redux'
-import { useEditor } from './useEditor'
+import { useEditor } from './editorActions'
 
 const actions = {
   addNewDocumentation,

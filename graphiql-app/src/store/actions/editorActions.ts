@@ -1,4 +1,4 @@
-import { createAsyncThunk } from '@reduxjs/toolkit'
+import { createAction, createAsyncThunk } from '@reduxjs/toolkit'
 
 import { fetchCharacters } from '../../api/requests'
 
@@ -13,3 +13,7 @@ export const useEditor = createAsyncThunk(
     }
   },
 )
+
+export const fulfilled = createAction<unknown>(useEditor.fulfilled.type)
+export const pending = createAction(useEditor.pending.type)
+export const rejected = createAction<string>(useEditor.rejected.type)

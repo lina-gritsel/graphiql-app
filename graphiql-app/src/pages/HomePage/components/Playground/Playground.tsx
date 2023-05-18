@@ -1,3 +1,5 @@
+import classname from 'classnames'
+
 import { useResizableDiv } from '../../../../hooks/useResizableDiv'
 import DraggableDiv from '../../../../components/DraggableDiv'
 
@@ -15,6 +17,7 @@ const Playground = () => {
     response,
     onSubmit,
     isLoading,
+    isFullHeight,
     valueTextarea,
     setValueTextarea,
     onClean,
@@ -28,7 +31,7 @@ const Playground = () => {
     <div className={styles.container}>
       <EditorMenu />
       <div className={styles.playgroundWrapper}>
-        <div className={styles.requestSection} ref={divRef}>
+        <div className={classname(styles.requestSection, isFullHeight && styles.fullHeight) } ref={divRef}>
           <Textarea
             placeholder="Enter your request"
             value={valueTextarea}
@@ -43,14 +46,6 @@ const Playground = () => {
           />
         </div>
         <DraggableDiv initial={initial} resize={resize} />
-        {/* <div
-          className={styles.draggable}
-          onDragStart={initial}
-          onDrag={resize}
-          draggable
-        >
-          <div className={styles.slider}></div>
-        </div> */}
 
         {isLoading ? (
           <div>Loading...</div>
