@@ -2,6 +2,7 @@ import classname from 'classnames'
 
 import { useResizableDiv } from '../../../../hooks/useResizableDiv'
 import DraggableDiv from '../../../../components/DraggableDiv'
+import Loader from '../../../../components/Loader'
 
 import ControlArea from '../ControlArea'
 import Textarea from '../Textarea'
@@ -48,7 +49,7 @@ const Playground = () => {
         <DraggableDiv initial={initial} resize={resize} />
 
         {isLoading ? (
-          <div>Loading...</div>
+          <Loader/>
         ) : (
           <div
             className={!response ? styles.hidden : styles.responseSection}
