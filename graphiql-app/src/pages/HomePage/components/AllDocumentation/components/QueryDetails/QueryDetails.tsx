@@ -15,6 +15,21 @@ const QueryDetails: FC<QueryDetailsProps> = ({ args, name, type }) => {
       <span className={styles.argument}>{name}</span>
       <span>:</span>
       {'\n'}
+      {type.ofType?.name && (
+        <>
+          <span className={styles.type}>{type.ofType?.name}</span>
+          {type.ofType.kind === 'SCALAR' ? <span>!</span> : ''}
+        </>
+      )}
+      {type.ofType?.kind === 'LIST' && (
+        <>
+          <span>{'['}</span>
+          <span className={styles.type}>
+            {type.ofType?.ofType?.ofType?.name}
+          </span>
+          <span>{'!]!'}</span>
+        </>
+      )}
       <span className={styles.type}>{type.name}</span>
     </span>
   )

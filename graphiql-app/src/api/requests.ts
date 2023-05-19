@@ -1,3 +1,5 @@
+import { Schema } from "./types"
+
 const BASE_URL = 'https://rickandmortyapi.com/graphql'
 
 export const fetchCharacters = async (request: string) => {
@@ -20,7 +22,8 @@ export const fetchCharacters = async (request: string) => {
   }
 }
 
-export const fetchSchema = async (value: string) => {
+type FetchSchema = () => Promise<Schema>
+export const fetchSchema: FetchSchema = async () => {
   try {
     const response = await fetch(BASE_URL, {
       method: 'POST',
@@ -29,33 +32,98 @@ export const fetchSchema = async (value: string) => {
       },
       body: JSON.stringify({
         query: `
-          {
-              __type(name: "${value}") {
+        fragment FullType on __Type {
+          kind
+          name
+          fields(includeDeprecated: true) {
+            name
+            description
+            args {
+              ...InputValue
+            }
+            type {
+              ...TypeRef
+            }
+          }
+          inputFields {
+            ...InputValue
+          }
+        }
+        fragment InputValue on __InputValue {
+          name
+          type {
+            ...TypeRef
+          }
+        }
+        fragment TypeRef on __Type {
+          kind
+          name
+          ofType {
+            kind
+            name
+            ofType {
+              kind
+              name
+              ofType {
+                kind
                 name
-                description
-                fields {
+                ofType {
+                  kind
                   name
-                  args {
+                  ofType {
+                    kind
                     name
-                    type {
+                    ofType {
+                      kind
                       name
+                      ofType {
+                        kind
+                        name
+                      }
                     }
-                  }
-                  description
-                  type {
-                    name
-                    description
                   }
                 }
               }
-        }`,
+            }
+          }
+        }
+        query IntrospectionQuery {
+          __schema {
+            types {
+              ...FullType
+            }
+        
+          }
+        }
+`,
         variables: {},
       }),
     })
     const result = await response.json()
 
-    return result.data.__type
+    return result.data.__schema
   } catch (error) {
     console.log(error)
   }
 }
+
+// {
+//   __type(name: "${value}") {
+//     name
+//     description
+//     fields {
+//       name
+//       args {
+//         name
+//         type {
+//           name
+//         }
+//       }
+//       description
+//       type {
+//         name
+//         description
+//       }
+//     }
+//   }
+// }

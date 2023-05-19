@@ -1,18 +1,17 @@
 import { FC } from 'react'
 
-import { useAllDocumentation } from './hooks'
 import BackSection from './components/BackSection'
+import ListQueries from './components/ListQueries'
+import { useDocumentation } from './hooks'
 
 import styles from './Documentation.module.scss'
-import ListQueries from './components/ListQueries'
 
 interface Documentation {
   data: any
 }
 
 const Documentation: FC<Documentation> = ({ data }) => {
-  const { prevPage, deleteHistory, currentPage } = useAllDocumentation()
-
+  const { prevPage, deleteHistory, currentPage } = useDocumentation()
 
   return (
     <>
