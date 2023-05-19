@@ -17,7 +17,7 @@ const Menu = () => {
           Welcome
         </NavLink>
         <NavLink className={styles.menuItem} to={PATHS.HOME}>
-          Go to Main Page
+          Main
         </NavLink>
       </div>
       <SignOutButton className={styles.signOut} />
