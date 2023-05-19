@@ -1,4 +1,4 @@
-import DraggableElement from '../../components/DraggableDiv/'
+import DraggableElement from '../../components/DraggableElement'
 import { useResizableElement } from '../../hooks/useResizableElement'
 import AboutUs from './components/AboutUs'
 import SideBar from './components/SideBar'

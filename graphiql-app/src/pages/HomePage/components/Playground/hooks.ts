@@ -1,3 +1,6 @@
+import { useEffect } from 'react'
+import { useToast } from '@chakra-ui/react'
+
 import { useActions } from '../../../../store/actions/ActionsCreator'
 import { useAppSelector } from '../../../../store/hooks/redux'
 
@@ -10,6 +13,20 @@ export const usePlayground = () => {
   const { valueTextarea, isLoading, response, error } =
     editors[idActiveEditor] || editors[0]
   const { useEditor, setValueTextarea } = useActions()
+
+  const toast = useToast()
+
+  useEffect(() => {
+    if (error) {
+      toast({
+        title: error,
+        status: 'error',
+        position: 'top-right',
+        duration: 2000,
+        isClosable: true,
+      })
+    }
+  }, [error, toast])
 
   const onSubmit = () => {
     useEditor(valueTextarea)
@@ -31,7 +48,6 @@ export const usePlayground = () => {
   const isFullHeight = editors.length <= 1
 
   return {
-    error,
     response,
     isLoading,
     onSubmit,

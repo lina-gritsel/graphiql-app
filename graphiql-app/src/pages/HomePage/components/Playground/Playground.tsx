@@ -1,7 +1,7 @@
 import classname from 'classnames'
 
 import { useResizableElement } from '../../../../hooks/useResizableElement'
-import DraggableElement from '../../../../components/DraggableDiv'
+import DraggableElement from '../../../../components/DraggableElement'
 import Loader from '../../../../components/Loader'
 
 import ControlArea from '../ControlArea'
@@ -15,7 +15,6 @@ import styles from './Playground.module.scss'
 
 const Playground = () => {
   const {
-    error,
     response,
     onSubmit,
     isLoading,
@@ -60,10 +59,7 @@ const Playground = () => {
         ) : (
           <div className={styles.responseSection} ref={neighborRef}>
             <Textarea
-              value={
-                error ||
-                (response ? JSON.stringify(response, null, TWO_SPACE) : '')
-              }
+              value={response ? JSON.stringify(response, null, TWO_SPACE) : ''}
               className={styles.responseTextarea}
             />
           </div>

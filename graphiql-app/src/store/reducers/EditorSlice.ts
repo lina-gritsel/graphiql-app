@@ -52,6 +52,7 @@ export const editorSlice = createSlice({
       .addCase(pending, (state) => {
         const currentEditor = state.editors[state.idActiveEditor]
         currentEditor.isLoading = true
+        currentEditor.error = ''
       })
       .addCase(rejected, (state, action) => {
         const currentEditor = state.editors[state.idActiveEditor]
