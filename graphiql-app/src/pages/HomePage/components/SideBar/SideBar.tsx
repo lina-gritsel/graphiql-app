@@ -1,5 +1,5 @@
-import book from '../../../../assets/images/book.png'
 import { useAppSelector } from '../../../../store/hooks/redux'
+import book from '../../../../assets/images/book.png'
 import AllDocumentation from '../AllDocumentation'
 
 import { useFetchSchema, useSideBarVisible } from './hooks'

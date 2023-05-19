@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 
+import { useActions } from '../../../../../../store/ActionsCreator'
 import QueryDetails from '../QueryDetails'
 
 import styles from './ListQueries.module.scss'
@@ -12,7 +13,6 @@ interface IData {
 
 interface ListQueries {
   data: IData
-  onClick: (value: string) => void
 }
 
 interface QueryArguments {
@@ -20,19 +20,21 @@ interface QueryArguments {
   type: any
 }
 
-const ListQueries: FC<ListQueries> = ({ data, onClick }) => {
+const ListQueries: FC<ListQueries> = ({ data }) => {
+  const { addNewDocumentation } = useActions()
+
   return (
     <>
       {data?.fields?.map(({ name, args, description, type }) => (
         <div key={name} className={styles.container}>
           <div>
-            <span className={styles.queryLink}>{name}</span>
+            <span className={styles.queryLink} onClick={() => addNewDocumentation(name)}>{name}</span>
             <Bracket args={args}>
               {args.map(({ name, type }: QueryArguments) => (
                 <QueryDetails key={name} args={args} name={name} type={type} />
               ))}
             </Bracket>
-            <span className={styles.type} onClick={() => onClick(type.name)}>
+            <span className={styles.type} onClick={() => addNewDocumentation(type.name)}>
               {type.name}
             </span>
           </div>

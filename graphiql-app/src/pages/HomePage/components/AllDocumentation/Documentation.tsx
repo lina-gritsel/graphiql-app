@@ -6,33 +6,25 @@ import BackSection from './components/BackSection'
 import styles from './Documentation.module.scss'
 import ListQueries from './components/ListQueries'
 
-interface AllDocumentation {
+interface Documentation {
   data: any
 }
 
-const AllDocumentation: FC<AllDocumentation> = ({ data }) => {
-  const { prevPage, addHistory, deleteHistory,currentPage } =
-    useAllDocumentation()
+const Documentation: FC<Documentation> = ({ data }) => {
+  const { prevPage, deleteHistory, currentPage } = useAllDocumentation()
 
-  const onClickNextPage = (value: string) => {
-    addHistory(value)
-  }
-
-  const onClickPrevPage = (value: string) => {
-    deleteHistory(value)
-  }
 
   return (
     <>
       <div className={styles.container}>
         {prevPage && (
-          <BackSection prevDocs={prevPage} onClick={onClickPrevPage} />
+          <BackSection prevDocs={prevPage} onClick={deleteHistory} />
         )}
         <div className={styles.title}>{currentPage}</div>
-        <ListQueries data={data} onClick={onClickNextPage} />
+        <ListQueries data={data} />
       </div>
     </>
   )
 }
 
-export default AllDocumentation
+export default Documentation
