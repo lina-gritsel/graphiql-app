@@ -1,7 +1,7 @@
 import classname from 'classnames'
 
-import { useResizableDiv } from '../../../../hooks/useResizableDiv'
-import DraggableDiv from '../../../../components/DraggableDiv'
+import { useResizableElement } from '../../../../hooks/useResizableElement'
+import DraggableElement from '../../../../components/DraggableDiv'
 import Loader from '../../../../components/Loader'
 
 import ControlArea from '../ControlArea'
@@ -15,6 +15,7 @@ import styles from './Playground.module.scss'
 
 const Playground = () => {
   const {
+    error,
     response,
     onSubmit,
     isLoading,
@@ -26,13 +27,19 @@ const Playground = () => {
     onCopy,
   } = usePlayground()
 
-  const { divRef, neighborRef, initial, resize } = useResizableDiv()
+  const { divRef, neighborRef, initial, resize } = useResizableElement()
 
   return (
     <div className={styles.container}>
       <EditorMenu />
       <div className={styles.playgroundWrapper}>
-        <div className={classname(styles.requestSection, isFullHeight && styles.fullHeight) } ref={divRef}>
+        <div
+          className={classname(
+            styles.requestSection,
+            isFullHeight && styles.fullHeight,
+          )}
+          ref={divRef}
+        >
           <Textarea
             placeholder="Enter your request"
             value={valueTextarea}
@@ -46,17 +53,17 @@ const Playground = () => {
             onCopy={onCopy}
           />
         </div>
-        <DraggableDiv initial={initial} resize={resize} />
+        <DraggableElement initial={initial} resize={resize} />
 
         {isLoading ? (
-          <Loader/>
+          <Loader />
         ) : (
-          <div
-            className={!response ? styles.hidden : styles.responseSection}
-            ref={neighborRef}
-          >
+          <div className={styles.responseSection} ref={neighborRef}>
             <Textarea
-              value={JSON.stringify(response, null, TWO_SPACE)}
+              value={
+                error ||
+                (response ? JSON.stringify(response, null, TWO_SPACE) : '')
+              }
               className={styles.responseTextarea}
             />
           </div>

@@ -1,17 +1,17 @@
-import DraggableDiv from '../../components/DraggableDiv/'
-import { useResizableDiv } from '../../hooks/useResizableDiv'
+import DraggableElement from '../../components/DraggableDiv/'
+import { useResizableElement } from '../../hooks/useResizableElement'
 import AboutUs from './components/AboutUs'
 import SideBar from './components/SideBar'
 
 import styles from './WelcomePage.module.scss'
 
 const WelcomePage = () => {
-  const { divRef, neighborRef, initial, resize } = useResizableDiv()
+  const { divRef, neighborRef, initial, resize } = useResizableElement()
 
   return (
     <div className={styles.container}>
       <SideBar ref={divRef} />
-      <DraggableDiv
+      <DraggableElement
         initial={initial}
         resize={resize}
         className={styles.draggable}

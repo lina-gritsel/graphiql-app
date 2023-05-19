@@ -18,8 +18,8 @@ const AllDocumentation: FC<AllDocumentation> = ({ data }) => {
     addHistory(value)
   }
 
-  const onClickPrevPage = (value: string) => {
-    deleteHistory(value)
+  const onClickPrevPage = () => {
+    deleteHistory()
   }
 
   return (

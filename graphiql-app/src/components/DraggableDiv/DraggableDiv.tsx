@@ -1,18 +1,18 @@
 import { DragEvent } from 'react'
 import classname from 'classnames'
 
-import styles from './DraggableDiv.module.scss'
+import styles from './DraggableElement.module.scss'
 
-interface DraggableDivProps {
+interface DraggableElemProps {
   initial: (event: DragEvent<HTMLDivElement>) => void
   resize: (event: DragEvent<HTMLDivElement>) => void
   className?: string
 }
 
-const DraggableDiv = ({ initial, resize, className }: DraggableDivProps) => {
+const DraggableElement = ({ initial, resize, className }: DraggableElemProps) => {
   return (
     <div
-      className={classname(styles.draggable, className)}
+      className={classname(styles.container, className)}
       onDragStart={initial}
       onDrag={resize}
       draggable
@@ -22,4 +22,4 @@ const DraggableDiv = ({ initial, resize, className }: DraggableDivProps) => {
   )
 }
 
-export default DraggableDiv
+export default DraggableElement

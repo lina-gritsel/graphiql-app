@@ -9,19 +9,19 @@ import styles from './EditorMenu.module.scss'
 
 const EditorMenu = () => {
   const {
-    labelArray,
+    editorLabelArray,
     isLabelList,
     idActiveEditor,
     setIdActiveEditor,
     removeEditor,
-    addNewEditor,
+    addEditor,
   } = useEditorMenu()
 
   return (
     <div className={styles.container}>
       {isLabelList && (
         <div className={styles.labelList}>
-          {labelArray.map((label, index) => (
+          {editorLabelArray.map((label, index) => (
             <p
               key={index}
               className={classname(
@@ -41,7 +41,7 @@ const EditorMenu = () => {
       )}
       <div className={styles.rightSection}>
         <div>rickandmortyapi</div>
-        <img src={plus} className={styles.plus} onClick={addNewEditor} />
+        <img src={plus} className={styles.plus} onClick={() => addEditor()} />
       </div>
     </div>
   )

@@ -7,7 +7,7 @@ export const usePlayground = () => {
   const { editors, idActiveEditor } = useAppSelector(
     (store) => store.editorReducer,
   )
-  const { valueTextarea, isLoading, response } =
+  const { valueTextarea, isLoading, response, error } =
     editors[idActiveEditor] || editors[0]
   const { useEditor, setValueTextarea } = useActions()
 
@@ -31,6 +31,7 @@ export const usePlayground = () => {
   const isFullHeight = editors.length <= 1
 
   return {
+    error,
     response,
     isLoading,
     onSubmit,

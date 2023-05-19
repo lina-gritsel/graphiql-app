@@ -14,28 +14,24 @@ export const useEditorMenu = () => {
   )
   const { addEditor, setIdActiveEditor, deleteEditor } = useActions()
 
-  const labelArray = useMemo(
+  const editorLabelArray = useMemo(
     () => Array.from({ length: editors.length }, (_, i) => `Query-${i + 1}`),
     [editors],
   )
-
-  const addNewEditor = () => {
-    addEditor()
-  }
 
   const removeEditor = ({ event, index }: IRemove) => {
     event.stopPropagation()
     deleteEditor(index)
   }
 
-  const isLabelList = labelArray.length > 1
+  const isLabelList = editorLabelArray.length > 1
 
   return {
-    labelArray,
+    editorLabelArray,
     isLabelList,
     idActiveEditor,
     setIdActiveEditor,
     removeEditor,
-    addNewEditor,
+    addEditor,
   }
 }

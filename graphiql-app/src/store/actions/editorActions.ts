@@ -16,4 +16,4 @@ export const useEditor = createAsyncThunk(
 
 export const fulfilled = createAction<unknown>(useEditor.fulfilled.type)
 export const pending = createAction(useEditor.pending.type)
-export const rejected = createAction<string>(useEditor.rejected.type)
+export const rejected = createAction<Error>(useEditor.rejected.type)

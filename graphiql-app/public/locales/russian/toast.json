@@ -26,5 +26,10 @@
   "signOutError": {
     "title": "Произошла ошибка.",
     "description": "Пожалуйста, повторите попытку позже."
+  },
+  "copiedSuccess": {
+    "title": "Успешно!",
+    "description": "Ваш запрос скопирован"
   }
+
 }

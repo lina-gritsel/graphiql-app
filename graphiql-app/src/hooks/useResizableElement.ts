@@ -1,6 +1,6 @@
 import { useRef, useState, DragEvent } from "react"
 
-export const useResizableDiv = () => {
+export const useResizableElement = () => {
     const [initialPos, setInitialPos] = useState<number>()
     const [initialSize, setInitialSize] = useState<number>()
   
