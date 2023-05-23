@@ -1,10 +1,13 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
+import { Fields } from '../../api'
 
 interface DocsState {
-  history: any[]
+  history: string[]
+  currentDocs: Fields[]
 }
 const initialState: DocsState = {
   history: ['Query'],
+  currentDocs: []
 }
 
 export const documentationSlice = createSlice({
@@ -14,6 +17,9 @@ export const documentationSlice = createSlice({
     addNewDocumentation(state, action: PayloadAction<string>) {
       state.history.push(action.payload)
     },
+    setCurrentDocs(state, action: PayloadAction<Fields[]>) {
+      state.currentDocs = action.payload
+    },
     deleteDocumentation(state, action: PayloadAction<string>) {
       state.history.pop()
     },
@@ -21,5 +27,5 @@ export const documentationSlice = createSlice({
 })
 
 export default documentationSlice.reducer
-export const { addNewDocumentation, deleteDocumentation } =
+export const { addNewDocumentation, deleteDocumentation, setCurrentDocs } =
   documentationSlice.actions

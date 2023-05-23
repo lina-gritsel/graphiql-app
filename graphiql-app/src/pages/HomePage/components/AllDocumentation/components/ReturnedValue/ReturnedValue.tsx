@@ -1,14 +1,18 @@
 import { FC } from 'react'
 
+import { useActions } from '../../../../../../store/ActionsCreator'
+
 import styles from './ReturnedValue.module.scss'
 
 const ReturnedValue: FC<{ type: any }> = ({ type }) => {
+  const { addNewDocumentation } = useActions()
+
   return (
     <>
       {type.kind === 'OBJECT' && (
         <span
           className={styles.type}
-          // onClick={() => addNewDocumentation(type.name)}
+          onClick={() => addNewDocumentation(type.name)}
         >
           {type.name}
         </span>

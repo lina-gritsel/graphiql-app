@@ -1,30 +1,43 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 
 import { useActions } from '../../../../../../store/ActionsCreator'
-import { Schema, QueryArguments } from '../../../../../../api'
+import { Schema, QueryArguments, Fields } from '../../../../../../api'
 
 import ReturnedValue from '../ReturnedValue'
 import QueryDetails from '../QueryDetails'
 
 import styles from './ListQueries.module.scss'
-import { flattenObject } from '../../../../../../utils/flattenObject'
+import { findCurrentObject } from '../../../../../../utils/flattenObject'
+import { useAppSelector } from '../../../../../../store/hooks/redux'
 
 interface ListQueries {
   data: Schema
 }
 
 const ListQueries: FC<ListQueries> = ({ data }) => {
-  const { addNewDocumentation } = useActions()
-  // flattenObject(data.types[0].fields)
+  const { addNewDocumentation, setCurrentDocs } = useActions()
+  const { history, currentDocs } = useAppSelector(
+    (state) => state.documentationReducer,
+  )
+
+  useEffect(() => {
+    const currentObject = findCurrentObject(
+      data.types[0].fields,
+      history[history.length - 1],
+    )
+    const currentDocs = currentObject ? [currentObject] : data.types[0].fields
+    setCurrentDocs(currentDocs as Fields[])
+    console.log(currentObject)
+  }, [history])
 
   return (
     <>
-      {data.types[0].fields.map(({ name, args, description, type }) => (
+      {currentDocs.map(({ name, args, description, type }) => (
         <div key={name} className={styles.container}>
           <div>
             <span
               className={styles.queryLink}
-              // onClick={() => addNewDocumentation(name)}
+              onClick={() => addNewDocumentation(name)}
             >
               {name}
             </span>

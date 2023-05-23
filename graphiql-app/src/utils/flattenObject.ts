@@ -25,11 +25,9 @@ export const flattenObject = (array: any) => {
               for (const prop in argument) {
                 if (typeof argument[prop] !== 'string') {
                   for (const type in argument[prop]) {
-                  console.log(type)
-
+                    console.log(type)
                   }
                   // createNewArgArr()
-
                 } else {
                   argumentObject[prop] = argument[prop]
                 }
@@ -50,4 +48,34 @@ export const flattenObject = (array: any) => {
   })
 
   return result
+}
+
+export function findCurrentObject(arr: any[], target: string) {
+  for (const obj of arr) {
+
+    const result = searchObj(obj, target)
+    console.log(result)
+
+    if (result) {
+
+      return result
+    }
+  }
+}
+
+export function searchObj(obj: Record<string, any>, target: string) {
+  
+  for (const key in obj) {
+    const value = obj[key]
+
+    if (typeof value === 'object') {
+      searchObj(value, target)
+    }
+
+    if (value === target) {
+      console.log(obj)
+
+      return obj
+    }
+  }
 }

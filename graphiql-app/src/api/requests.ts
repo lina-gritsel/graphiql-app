@@ -1,4 +1,4 @@
-import { Schema } from "./types"
+import { Schema } from './types'
 
 const BASE_URL = 'https://rickandmortyapi.com/graphql'
 
@@ -58,12 +58,26 @@ export const fetchSchema: FetchSchema = async () => {
         fragment TypeRef on __Type {
           kind
           name
+          fields {
+            name
+            description
+            type {
+            name
+            description
+              ofType{
+                name
+              }
+          }
+            
+          }
           ofType {
             kind
             name
+            description
             ofType {
               kind
               name
+              
               ofType {
                 kind
                 name
@@ -95,7 +109,7 @@ export const fetchSchema: FetchSchema = async () => {
         
           }
         }
-`,
+        `,
         variables: {},
       }),
     })

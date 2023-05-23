@@ -9,7 +9,7 @@ interface Types {
   kind: string
 }
 
-interface Fields {
+export interface Fields {
   args: QueryArguments[]
   description: string
   name: string
