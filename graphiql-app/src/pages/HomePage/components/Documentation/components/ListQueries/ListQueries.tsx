@@ -7,7 +7,6 @@ import ReturnedValue from '../ReturnedValue'
 import QueryDetails from '../QueryDetails'
 
 import styles from './ListQueries.module.scss'
-import { flattenObject } from '../../../../../../utils/flattenObject'
 
 interface ListQueries {
   data: Schema
@@ -15,7 +14,6 @@ interface ListQueries {
 
 const ListQueries: FC<ListQueries> = ({ data }) => {
   const { addNewDocumentation } = useActions()
-  // flattenObject(data.types[0].fields)
 
   return (
     <>
