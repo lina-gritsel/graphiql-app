@@ -1,8 +1,9 @@
 import { FC } from 'react'
 
+import { useDocumentation } from './hooks'
+
 import BackSection from './components/BackSection'
 import ListQueries from './components/ListQueries'
-import { useDocumentation } from './hooks'
 
 import styles from './Documentation.module.scss'
 

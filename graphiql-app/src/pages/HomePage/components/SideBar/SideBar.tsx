@@ -1,5 +1,5 @@
 import book from '../../../../assets/images/book.png'
-import Documentation from '../AllDocumentation'
+import Documentation from '../Documentation'
 import { useAppSelector } from '../../../../store/hooks/redux'
 
 
