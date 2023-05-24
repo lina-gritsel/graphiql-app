@@ -40,7 +40,7 @@ const EditorMenu = () => {
         </div>
       )}
       <div className={styles.rightSection}>
-        <div>rickandmortyapi</div>
+        <div>rick&mortyapi</div>
         <img src={plus} className={styles.plus} onClick={() => addEditor()} />
       </div>
     </div>
