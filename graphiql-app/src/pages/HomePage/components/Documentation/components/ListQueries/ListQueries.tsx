@@ -48,7 +48,7 @@ const ListQueries: FC<ListQueries> = ({ data }) => {
           : data?.types[0].fields
         : dataTypes
 
-    // console.log(docs)
+    console.log(currentPage)
 
     setCurrentDocs(docs as Fields[])
   }, [history, isFetching])
@@ -60,7 +60,7 @@ const ListQueries: FC<ListQueries> = ({ data }) => {
   return (
     <>
       {currentDocs?.map(({ name, args, description, type }) =>
-        currentPage?.type === 'type' ? (
+        currentPage?.type === 'type' || currentDocs.length === 9 ? (
           <div key={name} className={styles.container}>
             {type && (
               <div>
