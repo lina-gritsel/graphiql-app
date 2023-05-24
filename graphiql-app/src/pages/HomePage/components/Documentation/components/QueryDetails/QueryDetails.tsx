@@ -6,13 +6,13 @@ import styles from './QueryDetails.module.scss'
 
 interface QueryDetailsProps {
   args: any[]
-  name: string
+  name?: string
   type: any
 }
 
 const QueryDetails: FC<QueryDetailsProps> = ({ args, name, type }) => {
   const { addNewDocumentation } = useActions()
-
+// console.log(type)
   return (
     <span>
       {args?.length !== 1 && <br />}

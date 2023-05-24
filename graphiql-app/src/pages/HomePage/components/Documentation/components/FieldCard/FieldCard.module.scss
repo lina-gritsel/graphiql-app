@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.type {
+  cursor: pointer;
+  color: #eca008;
+}
+
+.type:hover {
+  text-decoration: underline;
+}
+
+.argument {
+  color: #fc5b8e;
+}
+
+.description {
+  color: #848485;
+}

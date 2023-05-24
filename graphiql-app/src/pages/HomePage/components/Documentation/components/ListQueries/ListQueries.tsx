@@ -6,7 +6,6 @@ import {
   QueryArguments,
   Fields,
   fetchTypes,
-  fetchSchema,
 } from '../../../../../../api'
 
 import ReturnedValue from '../ReturnedValue'
@@ -16,6 +15,7 @@ import styles from './ListQueries.module.scss'
 import { useAppSelector } from '../../../../../../store/hooks/redux'
 import { findCurrentObject } from '../../../../../../utils/flattenObject'
 import { useQuery } from '@tanstack/react-query'
+import FieldCard from '../FieldCard'
 
 interface ListQueries {
   data: Schema
@@ -27,12 +27,11 @@ const ListQueries: FC<ListQueries> = ({ data }) => {
     (state) => state.documentationReducer,
   )
   const currentPage = history[history.length - 1]
+
   const { data: dataTypes, isFetching } = useQuery(
     ['fetchTypes', currentPage],
     () => fetchTypes(currentPage.label),
   )
-
-  console.log(dataTypes)
 
   useEffect(() => {
     const currentField = findCurrentObject(
@@ -60,25 +59,29 @@ const ListQueries: FC<ListQueries> = ({ data }) => {
 
   return (
     <>
-      {currentDocs?.map(({ name, args, description, type }) => (
-        <div key={name} className={styles.container}>
-          {type && (
-            <div>
-              <span
-                className={styles.queryLink}
-                onClick={() =>
-                  addNewDocumentation({ type: 'field', label: name })
-                }
-              >
-                {name}
-              </span>
-              {createValueWithBracket(args)}
-              <ReturnedValue type={type} />
-            </div>
-          )}
-          <div className={styles.description}>{description}</div>
-        </div>
-      ))}
+      {currentDocs?.map(({ name, args, description, type }) =>
+        currentPage?.type === 'type' ? (
+          <div key={name} className={styles.container}>
+            {type && (
+              <div>
+                <span
+                  className={styles.queryLink}
+                  onClick={() =>
+                    addNewDocumentation({ type: 'field', label: name })
+                  }
+                >
+                  {name}
+                </span>
+                {createValueWithBracket(args)}
+                <ReturnedValue type={type} />
+              </div>
+            )}
+            <div className={styles.description}>{description}</div>
+          </div>
+        ) : (
+          <FieldCard key={name} desc={description}  args={args} type={type} />
+        ),
+      )}
     </>
   )
 }
