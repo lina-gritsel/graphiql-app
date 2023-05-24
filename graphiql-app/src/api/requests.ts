@@ -3,7 +3,6 @@ import { Schema } from "./types"
 const BASE_URL = 'https://rickandmortyapi.com/graphql'
 
 export const fetchCharacters = async (request: string) => {
-  try {
     const response = await fetch(BASE_URL, {
       method: 'POST',
       headers: {
@@ -17,9 +16,6 @@ export const fetchCharacters = async (request: string) => {
     const result = await response.json()
 
     return result
-  } catch (error) {
-    console.log(error)
-  }
 }
 
 type FetchSchema = () => Promise<Schema>

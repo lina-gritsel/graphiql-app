@@ -6,12 +6,12 @@ import styles from './BackSection.module.scss'
 
 interface BackSectionProps {
   prevDocs: string
-  onClick: (value: string) => void
+  onClick: () => void
 }
 
 const BackSection: FC<BackSectionProps> = ({ prevDocs, onClick }) => {
   return (
-    <div className={styles.backSection} onClick={() => onClick(prevDocs)}>
+    <div className={styles.backSection} onClick={() => onClick()}>
       <img src={back} className={styles.backArrow} />
       <a className={styles.backLink}>{prevDocs}</a>
     </div>

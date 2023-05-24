@@ -1,12 +1,13 @@
+import { RefObject, forwardRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
 import styles from './AboutUs.module.scss'
 
-const AboutUs = () => {
+const AboutUs = forwardRef(function AboutUs(_, ref) {
   const { t } = useTranslation()
   return (
-    <div className={styles.about}>
+    <div className={styles.about} ref={ref as RefObject<HTMLDivElement>}>
       <div className={styles.infoCard}>
         <div className={styles.title}>{t('about')}</div>
         <div className={styles.text}>
@@ -54,6 +55,6 @@ const AboutUs = () => {
       </div>
     </div>
   )
-}
+})
 
 export default AboutUs

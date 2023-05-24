@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import { Textarea as ChakraTextArea } from '@chakra-ui/react'
+import classname from 'classnames'
 
 import { useTextarea } from './hook'
 
@@ -9,6 +10,7 @@ interface TextareaLocalProps {
   numOfLines?: number
   placeholder?: string
   value?: string
+  className?: string
   onChange?: (value: string) => void
 }
 
@@ -17,6 +19,7 @@ const Textarea: FC<TextareaLocalProps> = ({
   placeholder,
   value,
   onChange,
+  className,
 }) => {
   const { linesArray, lineCounterRef, textareaRef, handleTextAreaScroll } =
     useTextarea({ numOfLines, value })
@@ -35,7 +38,7 @@ const Textarea: FC<TextareaLocalProps> = ({
         value={value}
         onChange={(event) => onChange?.(event.target.value)}
         onScroll={handleTextAreaScroll}
-        className={styles.textarea}
+        className={classname(styles.textarea, className)}
         placeholder={placeholder}
       />
     </div>

@@ -1,4 +1,4 @@
-import SignIn from '../RegistrationPage/components/SignIn/SignIn'
+import SignIn from './components/SignIn'
 
 const LoginPage = () => {
   return <SignIn />

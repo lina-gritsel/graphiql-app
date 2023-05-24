@@ -1,0 +1,34 @@
+{
+  "authError": {
+    "title": "An error has occurred.",
+    "description": "Authorization is unavailable. Please try again later."
+  },
+  "signInSuccess": {
+    "title": "Login successful.",
+    "description": "You now have access to the application."
+  },
+  "signInError": {
+    "title": "An error has occurred.",
+    "description": "Invalid login or password."
+  },
+  "signUpSuccess": {
+    "title": "Account created.",
+    "description": "You now have access to the application."
+  },
+  "signUpError": {
+    "title": "An error has occurred.",
+    "description": "A user with the same email already exists."
+  },
+  "signOutSuccess": {
+    "title": "Logout successful.",
+    "description": "See you later."
+  },
+  "signOutError": {
+    "title": "An error has occurred.",
+    "description": "Please try again later."
+  },
+  "copiedSuccess": {
+    "title": "Success!",
+    "description": "Your request has been copied"
+  }
+}
