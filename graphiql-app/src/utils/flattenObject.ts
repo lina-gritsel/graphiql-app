@@ -51,20 +51,18 @@ export const flattenObject = (array: any) => {
 }
 
 export function findCurrentObject(arr: any[], target: string) {
-  for (const obj of arr) {
+  if (arr?.length) {
+    for (const obj of arr) {
+      const result = searchObj(obj, target)
 
-    const result = searchObj(obj, target)
-    console.log(result)
-
-    if (result) {
-
-      return result
+      if (result) {
+        return result
+      }
     }
   }
 }
 
 export function searchObj(obj: Record<string, any>, target: string) {
-  
   for (const key in obj) {
     const value = obj[key]
 
@@ -73,8 +71,6 @@ export function searchObj(obj: Record<string, any>, target: string) {
     }
 
     if (value === target) {
-      console.log(obj)
-
       return obj
     }
   }

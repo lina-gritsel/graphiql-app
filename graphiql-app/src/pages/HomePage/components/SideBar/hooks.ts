@@ -4,8 +4,9 @@ import { useQuery } from '@tanstack/react-query'
 import { fetchSchema } from '../../../../api/requests'
 
 export const useFetchSchema = () => {
+
   const { data, isLoading, isFetching } = useQuery(
-    ['fetchSchema'],
+    ['fetchSchema', history],
     () => fetchSchema(),
     {
       refetchOnWindowFocus: false,

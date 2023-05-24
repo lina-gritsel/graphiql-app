@@ -4,6 +4,7 @@ import {
   addNewDocumentation,
   deleteDocumentation,
   setCurrentDocs,
+  setSchema,
 } from './reducers/DocumentationSlice'
 import { useAppDispatch } from './hooks/redux'
 
@@ -11,6 +12,7 @@ const actions = {
   addNewDocumentation,
   deleteDocumentation,
   setCurrentDocs,
+  setSchema
 }
 
 export const useActions = () => {
