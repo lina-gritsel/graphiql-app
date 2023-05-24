@@ -1,8 +1,8 @@
-import Menu from '../Menu'
 import LanguageSwitcher from '../LanguageSwitcher'
 import { useStickyHeader } from './hooks'
 
 import styles from './Header.module.scss'
+import AdaptiveMenu from '../AdaptiveMenu'
 
 const Header = () => {
   const { headerRef, sticky } = useStickyHeader()
@@ -12,7 +12,7 @@ const Header = () => {
       ref={headerRef}
     >
       <LanguageSwitcher />
-      <Menu />
+      <AdaptiveMenu />
     </div>
   )
 }
