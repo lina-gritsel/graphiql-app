@@ -1,29 +1,35 @@
-import { useState } from 'react'
+import { useEffect } from 'react'
+import { useToast } from '@chakra-ui/react'
 
-import { fetchCharacters } from '../../../../api/requests'
+import { useActions } from '../../../../store/actions/ActionsCreator'
+import { useAppSelector } from '../../../../store/hooks/redux'
 
-import { DEFAULT_REQUEST } from './constants'
 import { getAlignedText } from './utils'
 
 export const usePlayground = () => {
-  const [response, setResponse] = useState<any>(null)
-  const [loading, setLoading] = useState<boolean>(false)
-  const [valueTextarea, setValueTextarea] = useState<string>(DEFAULT_REQUEST)
+  const { editors, idActiveEditor } = useAppSelector(
+    (store) => store.editorReducer,
+  )
+  const { valueTextarea, isLoading, response, error } =
+    editors[idActiveEditor] || editors[0]
+  const { useEditor, setValueTextarea } = useActions()
 
-  const onSubmit = async () => {
-    try {
-      setLoading(true)
+  const toast = useToast()
 
-      const result = await fetchCharacters(valueTextarea)
-      if (!result) {
-        console.log('type the query correctly')
-      }
-      setResponse(result)
-    } catch (error) {
-      console.log(error)
-    } finally {
-      setLoading(false)
+  useEffect(() => {
+    if (error) {
+      toast({
+        title: error,
+        status: 'error',
+        position: 'top-right',
+        duration: 2000,
+        isClosable: true,
+      })
     }
+  }, [error, toast])
+
+  const onSubmit = () => {
+    useEditor(valueTextarea)
   }
 
   const onAlign = () => {
@@ -39,13 +45,16 @@ export const usePlayground = () => {
     navigator.clipboard.writeText(valueTextarea)
   }
 
+  const isFullHeight = editors.length <= 1
+
   return {
     response,
+    isLoading,
     onSubmit,
     onAlign,
     onClean,
     onCopy,
-    loading,
+    isFullHeight,
     valueTextarea,
     setValueTextarea,
   }
