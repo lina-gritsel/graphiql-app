@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { useToast } from '@chakra-ui/react'
 
 import play from '../../../../assets/images/play.png'
 import clean from '../../../../assets/images/clean.png'
 import clone from '../../../../assets/images/clone.png'
 import align from '../../../../assets/images/align.png'
-import ok from '../../../../assets/images/ok.png'
+import { TOAST_KEYS } from '../../../../constants/translationKeys'
 
 import styles from './ControlArea.module.scss'
 
@@ -21,12 +22,21 @@ const ControlArea = ({
   onAlign,
   onCopy,
 }: ControlAreaProps) => {
-  const [isCopied, setIsCopied] = useState(false)
+  const toast = useToast()
+  const { NS, COPIED_SUCCESS } = TOAST_KEYS
+  const { t } = useTranslation(NS)
+
 
   const handleCopy = () => {
     onCopy()
-    setIsCopied(true)
-    setTimeout(() => setIsCopied(false), 1500)
+    toast({
+      title: t(COPIED_SUCCESS.TITLE),
+      description: t(COPIED_SUCCESS.DESCRIPTION),
+      status: 'success',
+      position: 'top-right',
+      duration: 2000,
+      isClosable: true,
+    })
   }
 
   return (
@@ -34,16 +44,12 @@ const ControlArea = ({
       <img className={styles.icon} src={play} alt="play" onClick={onPlay} />
       <img className={styles.icon} src={align} alt="align" onClick={onAlign} />
       <img className={styles.icon} src={clean} alt="clean" onClick={onClean} />
-      {isCopied ? (
-        <img className={styles.icon} src={ok} alt="ok" />
-      ) : (
-        <img
-          className={styles.icon}
-          src={clone}
-          alt="clean"
-          onClick={handleCopy}
-        />
-      )}
+      <img
+        className={styles.icon}
+        src={clone}
+        alt="clean"
+        onClick={handleCopy}
+      />
     </div>
   )
 }

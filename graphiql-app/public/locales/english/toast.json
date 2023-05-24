@@ -26,5 +26,9 @@
   "signOutError": {
     "title": "An error has occurred.",
     "description": "Please try again later."
+  },
+  "copiedSuccess": {
+    "title": "Success!",
+    "description": "Your request has been copied"
   }
 }

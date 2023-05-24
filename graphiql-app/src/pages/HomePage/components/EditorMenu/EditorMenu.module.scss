@@ -1,0 +1,76 @@
+.container {
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  display: flex;
+  width: 100%;
+  height: 30px;
+  padding: 0 5px;
+}
+
+.labelList {
+  display: flex;
+  gap: 15px;
+  max-width: 71vw;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.label {
+  padding: 2px 8px;
+  background: white;
+  color: #229687;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-weight: 700;
+  white-space: nowrap;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.rightSection {
+  display: flex;
+  gap: 10px;
+  margin-left: auto;
+
+  & > div {
+    font-weight: 600;
+    font-size: 18px;
+    color: #229687;
+  }
+}
+
+.plus {
+  width: 20px;
+  height: 20px;
+
+  &:hover {
+    cursor: pointer;
+    scale: 1.05;
+  }
+}
+
+.active {
+  color: white;
+  background-color: #99c6c1;
+}
+
+.close {
+  width: 15px;
+  height: 15px;
+  opacity: 0;
+  transition: all 0.5s;
+
+  &:hover {
+    opacity: 1;
+  }
+}

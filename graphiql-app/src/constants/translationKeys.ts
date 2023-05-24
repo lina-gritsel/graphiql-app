@@ -28,6 +28,10 @@ export const TOAST_KEYS = {
     TITLE: 'signOutError.title',
     DESCRIPTION: 'signOutError.description',
   },
+  COPIED_SUCCESS: {
+    TITLE: 'copiedSuccess.title',
+    DESCRIPTION: 'copiedSuccess.description',
+  },
 } as const
 
 export const SIGNUPIN_KEYS = {

@@ -28,6 +28,7 @@ i18next
     ns,
     debug: true,
     fallbackLng: 'english',
+    lng: 'english',
     interpolation: {
       escapeValue: false,
     },
