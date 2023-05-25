@@ -1,18 +1,19 @@
 import { FC } from 'react'
 
 import { useActions } from '../../../../../../store/ActionsCreator'
+import { QueryArguments, Type } from '../../../../../../api'
 
 import styles from './QueryDetails.module.scss'
 
 interface QueryDetailsProps {
-  args: any[]
+  args: QueryArguments[]
   name?: string
-  type: any
+  type: Type
 }
 
 const QueryDetails: FC<QueryDetailsProps> = ({ args, name, type }) => {
   const { addNewDocumentation } = useActions()
-// console.log(type)
+
   return (
     <span>
       {args?.length !== 1 && <br />}
@@ -52,12 +53,17 @@ const QueryDetails: FC<QueryDetailsProps> = ({ args, name, type }) => {
           <span>{'!]!'}</span>
         </>
       )}
-      <span  onClick={() =>
-              addNewDocumentation({
-                label: type?.name as string,
-                type: 'type',
-              })
-            } className={styles.type}>{type?.name}</span>
+      <span
+        onClick={() =>
+          addNewDocumentation({
+            label: type?.name as string,
+            type: 'type',
+          })
+        }
+        className={styles.type}
+      >
+        {type?.name}
+      </span>
     </span>
   )
 }

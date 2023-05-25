@@ -1,13 +1,13 @@
-import book from '../../../../assets/images/book.png'
-import Documentation from '../Documentation'
-import { Schema } from '../../../../api'
+import { Suspense, lazy } from 'react'
 
-import { useFetchSchema, useSideBarVisible } from './hooks'
+import book from '../../../../assets/images/book.png'
+import { useSideBarVisible } from './hooks'
 
 import styles from './SideBar.module.scss'
 
+const Documentation = lazy(() => import('../Documentation'))
+
 const SideBar = () => {
-  const { data } = useFetchSchema()
   const { visible: sideBarVisible, onToggleVisible } = useSideBarVisible()
 
   return (
@@ -20,7 +20,11 @@ const SideBar = () => {
           alt="documentation"
         />
       </div>
-      {sideBarVisible && <Documentation data={data as Schema} />}
+      {sideBarVisible && (
+        <Suspense>
+          <Documentation />
+        </Suspense>
+      )}
     </>
   )
 }

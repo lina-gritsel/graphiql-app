@@ -1,5 +1,3 @@
-import { FC } from 'react'
-
 import { Schema, QueryArguments } from '../../../../../../api'
 
 import ReturnedValue from '../ReturnedValue'
@@ -9,11 +7,7 @@ import { useListQueries } from './hooks'
 
 import styles from './ListQueries.module.scss'
 
-interface ListQueries {
-  data: Schema
-}
-
-const ListQueries: FC<ListQueries> = ({ data }) => {
+const ListQueries = ({ data }: { data: Schema }) => {
   const { currentDocs, currentPage, notFieldClick, fieldOnclick } =
     useListQueries(data)
 

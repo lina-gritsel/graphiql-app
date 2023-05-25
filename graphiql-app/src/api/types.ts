@@ -2,9 +2,9 @@ export interface Schema {
   types: Types[]
 }
 
-interface Types {
+export interface Types {
   fields: Fields[]
-  inputFields: any[] | undefined
+  inputFields: Fields[] | undefined
   name: string
   kind: string
 }

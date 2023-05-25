@@ -1,9 +1,10 @@
-import { Fields, QueryArguments, Type } from '../api'
+import { Fields, QueryArguments, Type, Types } from '../api'
 
-export function findCurrentObject(arr: Fields[], target: string) {
+export function findCurrentObject(arr: Fields[] | Types[], target: string) {
   if (arr?.length) {
     for (const obj of arr) {
       const result = searchObj(obj, target)
+      
       if (result) {
         return result
       }
@@ -11,10 +12,9 @@ export function findCurrentObject(arr: Fields[], target: string) {
   }
 }
 
-export function searchObj(
-  obj: Fields | QueryArguments[] | Type,
-  target: string,
-) {
+type SearchObj = Fields | QueryArguments[] | Type | Types 
+
+export function searchObj(obj: SearchObj, target: string) {
   for (const key in obj) {
     const value = obj[key as keyof typeof obj]
 
