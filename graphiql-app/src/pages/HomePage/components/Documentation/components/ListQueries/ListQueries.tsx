@@ -1,63 +1,21 @@
-import { FC, useEffect } from 'react'
+import { FC } from 'react'
 
-import { useActions } from '../../../../../../store/ActionsCreator'
-import {
-  Schema,
-  QueryArguments,
-  Fields,
-  fetchTypes,
-} from '../../../../../../api'
+import { Schema, QueryArguments } from '../../../../../../api'
 
 import ReturnedValue from '../ReturnedValue'
 import QueryDetails from '../QueryDetails'
+import FieldCard from '../FieldCard'
+import { useListQueries } from './hooks'
 
 import styles from './ListQueries.module.scss'
-import { useAppSelector } from '../../../../../../store/hooks/redux'
-import { findCurrentObject } from '../../../../../../utils/flattenObject'
-import { useQuery } from '@tanstack/react-query'
-import FieldCard from '../FieldCard'
 
 interface ListQueries {
   data: Schema
 }
 
 const ListQueries: FC<ListQueries> = ({ data }) => {
-  const { addNewDocumentation, setCurrentDocs } = useActions()
-  const { history, currentDocs } = useAppSelector(
-    (state) => state.documentationReducer,
-  )
-  const currentPage = history[history.length - 1]
-  const typesPages = history.filter(({ type }) => type === 'type')
-  const lastTypesPage = typesPages[typesPages.length - 1]
-  const notFieldClick = history.length > 1
-
-  const { data: dataTypes, isFetching } = useQuery(
-    ['fetchTypes', lastTypesPage],
-    () => fetchTypes(lastTypesPage.label),
-  )
-
-  useEffect(() => {
-    const currentField = findCurrentObject(
-      data?.types[0].fields as Fields[],
-      currentPage.label,
-    )
-
-    const docs =
-      history.length === 1
-        ? data?.types[0].fields
-        : currentPage.type === 'field'
-        ? [currentField]
-        : dataTypes
-
-    // console.log(currentPage)
-
-    setCurrentDocs(docs as Fields[])
-  }, [history, isFetching])
-
-  const fieldOnclick = (label: string) => {
-    if (notFieldClick) return
-    addNewDocumentation({ type: 'field', label: label })
-  }
+  const { currentDocs, currentPage, notFieldClick, fieldOnclick } =
+    useListQueries(data)
 
   return (
     <>
@@ -81,13 +39,7 @@ const ListQueries: FC<ListQueries> = ({ data }) => {
             <div className={styles.description}>{description}</div>
           </div>
         ) : (
-          <FieldCard
-            key={name}
-            desc={description}
-            isFetching={isFetching}
-            args={args}
-            type={type}
-          />
+          <FieldCard key={name} desc={description} args={args} type={type} />
         ),
       )}
     </>

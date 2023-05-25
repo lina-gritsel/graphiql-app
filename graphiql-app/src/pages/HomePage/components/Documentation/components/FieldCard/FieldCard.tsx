@@ -1,6 +1,5 @@
 import { useActions } from '../../../../../../store/ActionsCreator'
 import { QueryArguments, Type } from '../../../../../../api'
-import Loader from '../../../../../../components/Loader'
 import QueryDetails from '../QueryDetails'
 
 import styles from './FieldCard.module.scss'
@@ -9,15 +8,10 @@ interface FieldCardProps {
   args: QueryArguments[]
   desc: string
   type: Type
-  isFetching: boolean
 }
 
-const FieldCard = ({ args, desc, type, isFetching }: FieldCardProps) => {
+const FieldCard = ({ args, desc, type }: FieldCardProps) => {
   const { addNewDocumentation } = useActions()
-
-  // if(isFetching){
-  //   return <Loader/>
-  // }
 
   return (
     <div className={styles.container}>

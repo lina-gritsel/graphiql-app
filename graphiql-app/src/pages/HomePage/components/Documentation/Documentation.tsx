@@ -1,6 +1,7 @@
 import { FC } from 'react'
 
 import { useDocumentation } from './hooks'
+import { Schema } from '../../../../api'
 
 import BackSection from './components/BackSection'
 import ListQueries from './components/ListQueries'
@@ -8,7 +9,7 @@ import ListQueries from './components/ListQueries'
 import styles from './Documentation.module.scss'
 
 interface Documentation {
-  data: any
+  data: Schema
 }
 
 const Documentation: FC<Documentation> = ({ data }) => {
@@ -18,7 +19,7 @@ const Documentation: FC<Documentation> = ({ data }) => {
     <>
       <div className={styles.container}>
         {prevPage && (
-          <BackSection prevDocs={prevPage} onClick={deleteHistory} />
+          <BackSection prevDocs={prevPage} deleteHistory={deleteHistory} />
         )}
         <div className={styles.title}>{currentPage}</div>
         <ListQueries data={data} />

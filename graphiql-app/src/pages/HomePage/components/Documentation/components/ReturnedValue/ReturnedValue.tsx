@@ -1,9 +1,9 @@
 import { FC } from 'react'
 
 import { useActions } from '../../../../../../store/ActionsCreator'
+import { Type } from '../../../../../../api'
 
 import styles from './ReturnedValue.module.scss'
-import { Type } from '../../../../../../api'
 
 const ReturnedValue: FC<{ type: Type }> = ({ type }) => {
   const { addNewDocumentation } = useActions()

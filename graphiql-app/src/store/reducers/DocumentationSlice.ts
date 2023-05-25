@@ -24,7 +24,7 @@ export const documentationSlice = createSlice({
     setCurrentDocs(state, action: PayloadAction<Fields[]>) {
       state.currentDocs = action.payload
     },
-    deleteDocumentation(state, action: PayloadAction<string>) {
+    deleteDocumentation(state) {
       state.history.pop()
     },
   },

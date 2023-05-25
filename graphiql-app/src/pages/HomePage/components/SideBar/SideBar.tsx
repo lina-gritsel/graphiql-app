@@ -1,7 +1,6 @@
 import book from '../../../../assets/images/book.png'
 import Documentation from '../Documentation'
-import { useAppSelector } from '../../../../store/hooks/redux'
-
+import { Schema } from '../../../../api'
 
 import { useFetchSchema, useSideBarVisible } from './hooks'
 
@@ -21,7 +20,7 @@ const SideBar = () => {
           alt="documentation"
         />
       </div>
-      {sideBarVisible && <Documentation data={data} />}
+      {sideBarVisible && <Documentation data={data as Schema} />}
     </>
   )
 }
