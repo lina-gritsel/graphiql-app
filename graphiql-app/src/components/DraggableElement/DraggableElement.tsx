@@ -12,9 +12,9 @@ interface DraggableElemProps {
 }
 
 const DraggableElement = ({ initial, resize, className }: DraggableElemProps) => {
-  const [isTablet] = useMediaQuery(MEDIA_QUERIES.TABLET);
+  const [isSmallScreen] = useMediaQuery(MEDIA_QUERIES.DESKTOP_SMALL);
 
-  if (isTablet) {
+  if (isSmallScreen) {
     return null;
   }
 
