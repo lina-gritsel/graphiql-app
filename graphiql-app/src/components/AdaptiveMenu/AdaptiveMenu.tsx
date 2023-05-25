@@ -13,13 +13,14 @@ import { useRef } from 'react'
 import { Button } from '@chakra-ui/button'
 import Menu from '../Menu'
 import { useMediaQuery } from '@chakra-ui/media-query'
+import { MEDIA_QUERIES } from '../../constants/mediaQueries'
 
 const AdaptiveMenu = () => {
-  const [isSmallScreen] = useMediaQuery('(max-width: 768px)')
+  const [isTablet] = useMediaQuery(MEDIA_QUERIES.TABLET)
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = useRef(null) 
 
-  return isSmallScreen ? (
+  return isTablet ? (
     <Box
       className={styles.mobileMenu}
       onClick={(e) => {
