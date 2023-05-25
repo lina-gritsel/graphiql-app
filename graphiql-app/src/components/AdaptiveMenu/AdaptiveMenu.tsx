@@ -18,7 +18,7 @@ import { MEDIA_QUERIES } from '../../constants/mediaQueries'
 const AdaptiveMenu = () => {
   const [isTablet] = useMediaQuery(MEDIA_QUERIES.TABLET)
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const btnRef = useRef(null) 
+  const btnRef = useRef(null)
 
   return isTablet ? (
     <Box
@@ -29,7 +29,7 @@ const AdaptiveMenu = () => {
         }
       }}
     >
-      <Button onClick={onOpen}>
+      <Button variant="ghost" onClick={onOpen} p={1}>
         <HamburgerIcon />
       </Button>
       <Drawer
