@@ -27,10 +27,13 @@ const ListQueries: FC<ListQueries> = ({ data }) => {
     (state) => state.documentationReducer,
   )
   const currentPage = history[history.length - 1]
+  const typesPages = history.filter(({ type }) => type === 'type')
+  const lastTypesPage = typesPages[typesPages.length - 1]
+  const notFieldClick = history.length > 1
 
   const { data: dataTypes, isFetching } = useQuery(
-    ['fetchTypes', currentPage],
-    () => fetchTypes(currentPage.label),
+    ['fetchTypes', lastTypesPage],
+    () => fetchTypes(lastTypesPage.label),
   )
 
   useEffect(() => {
@@ -43,43 +46,48 @@ const ListQueries: FC<ListQueries> = ({ data }) => {
       history.length === 1
         ? data?.types[0].fields
         : currentPage.type === 'field'
-        ? currentField
-          ? [currentField]
-          : data?.types[0].fields
+        ? [currentField]
         : dataTypes
 
-    console.log(currentPage)
+    // console.log(currentPage)
 
     setCurrentDocs(docs as Fields[])
   }, [history, isFetching])
 
-  if (isFetching) {
-    return <>Loading...</>
+  const fieldOnclick = (label: string) => {
+    if (notFieldClick) return
+    addNewDocumentation({ type: 'field', label: label })
   }
 
   return (
     <>
       {currentDocs?.map(({ name, args, description, type }) =>
-        currentPage?.type === 'type' || currentDocs.length === 9 ? (
+        currentPage?.type === 'type' ? (
           <div key={name} className={styles.container}>
             {type && (
               <div>
                 <span
-                  className={styles.queryLink}
-                  onClick={() =>
-                    addNewDocumentation({ type: 'field', label: name })
+                  className={
+                    notFieldClick ? styles.fieldLink : styles.queryLink
                   }
+                  onClick={() => fieldOnclick(name)}
                 >
                   {name}
                 </span>
-                {createValueWithBracket(args)}
+                {args?.length ? createValueWithBracket(args) : ': '}
                 <ReturnedValue type={type} />
               </div>
             )}
             <div className={styles.description}>{description}</div>
           </div>
         ) : (
-          <FieldCard key={name} desc={description}  args={args} type={type} />
+          <FieldCard
+            key={name}
+            desc={description}
+            isFetching={isFetching}
+            args={args}
+            type={type}
+          />
         ),
       )}
     </>

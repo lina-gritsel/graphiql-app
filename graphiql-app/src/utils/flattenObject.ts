@@ -1,9 +1,3 @@
-// import { Type } from '../api'
-
-// interface NewObject {
-//   [key: string]: any
-// }
-
 export function findCurrentObject(arr: any[], target: string) {
   if (arr?.length) {
     for (const obj of arr) {
