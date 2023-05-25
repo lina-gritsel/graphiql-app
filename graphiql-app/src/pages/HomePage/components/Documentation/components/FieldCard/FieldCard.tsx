@@ -16,6 +16,7 @@ const FieldCard = ({ args, desc, type }: FieldCardProps) => {
   return (
     <div className={styles.container}>
       <div className={styles.description}>{desc}</div>
+      <div className={styles.title}>Type</div>
       <div
         className={styles.type}
         onClick={() =>
@@ -27,9 +28,12 @@ const FieldCard = ({ args, desc, type }: FieldCardProps) => {
       >
         {type?.name}
       </div>
-      {args?.map(({ name, type }) => (
-        <QueryDetails key={name} name={name} args={args} type={type} />
-      ))}
+      <div className={styles.title}>Arguments</div>
+      <div className={styles.args}>
+        {args?.map(({ name, type }) => (
+          <QueryDetails key={name} name={name} args={args} type={type} />
+        ))}
+      </div>
     </div>
   )
 }

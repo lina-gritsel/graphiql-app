@@ -23,7 +23,9 @@ export const useListQueries = (data: Schema) => {
     ) as Types
 
     const docs =
-      history.length === 1 ? schema : currentField?.fields || [currentField]
+      history.length === 1
+        ? schema
+        : currentField?.fields || currentField?.inputFields || [currentField]
 
     setCurrentDocs(docs as Fields[])
   }, [history])
