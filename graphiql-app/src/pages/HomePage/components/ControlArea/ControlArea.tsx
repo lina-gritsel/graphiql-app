@@ -33,7 +33,7 @@ const ControlArea = ({
       title: t(COPIED_SUCCESS.TITLE),
       description: t(COPIED_SUCCESS.DESCRIPTION),
       status: 'success',
-      position: 'top-right',
+      position: 'top',
       duration: 2000,
       isClosable: true,
     })
