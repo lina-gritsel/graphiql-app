@@ -21,7 +21,7 @@ export const usePlayground = () => {
       toast({
         title: error,
         status: 'error',
-        position: 'top-right',
+        position: 'top',
         duration: 2000,
         isClosable: true,
       })

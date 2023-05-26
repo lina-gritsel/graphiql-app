@@ -3,10 +3,10 @@ import { useQuery } from '@tanstack/react-query'
 
 import { fetchSchema } from '../../../../api/requests'
 
-export const useFetchSchema = (currentPage = '') => {
+export const useFetchSchema = () => {
   const { data, isLoading, isFetching } = useQuery(
-    ['fetchSchema', currentPage],
-    () => fetchSchema(currentPage),
+    ['fetchSchema'],
+    () => fetchSchema(),
     {
       refetchOnWindowFocus: false,
       staleTime: 60_000,

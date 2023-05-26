@@ -1,16 +1,14 @@
 import book from '../../../../assets/images/book.png'
+import Documentation from '../Documentation'
 import { useAppSelector } from '../../../../store/hooks/redux'
-import AllDocumentation from '../AllDocumentation'
+
 
 import { useFetchSchema, useSideBarVisible } from './hooks'
 
 import styles from './SideBar.module.scss'
 
 const SideBar = () => {
-  const { history } = useAppSelector((state) => state.documentationReducer)
-  const currentPage = history[history.length - 1]
-
-  const { data } = useFetchSchema(currentPage)
+  const { data } = useFetchSchema()
   const { visible: sideBarVisible, onToggleVisible } = useSideBarVisible()
 
   return (
@@ -23,7 +21,7 @@ const SideBar = () => {
           alt="documentation"
         />
       </div>
-      {sideBarVisible && <AllDocumentation data={data} />}
+      {sideBarVisible && <Documentation data={data} />}
     </>
   )
 }
