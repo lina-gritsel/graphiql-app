@@ -1,4 +1,4 @@
-import { Schema } from "./types"
+import { Fields, Schema } from './types'
 
 const BASE_URL = 'https://rickandmortyapi.com/graphql'
 
@@ -19,6 +19,7 @@ export const fetchCharacters = async (request: string) => {
 }
 
 type FetchSchema = () => Promise<Schema>
+
 export const fetchSchema: FetchSchema = async () => {
   try {
     const response = await fetch(BASE_URL, {
@@ -31,6 +32,7 @@ export const fetchSchema: FetchSchema = async () => {
         fragment FullType on __Type {
           kind
           name
+          description
           fields(includeDeprecated: true) {
             name
             description
@@ -54,12 +56,26 @@ export const fetchSchema: FetchSchema = async () => {
         fragment TypeRef on __Type {
           kind
           name
+          fields {
+            name
+            description
+            type {
+            name
+            description
+              ofType{
+                name
+              }
+          }
+            
+          }
           ofType {
             kind
             name
+            description
             ofType {
               kind
               name
+              
               ofType {
                 kind
                 name
@@ -91,7 +107,7 @@ export const fetchSchema: FetchSchema = async () => {
         
           }
         }
-`,
+        `,
         variables: {},
       }),
     })
@@ -103,23 +119,3 @@ export const fetchSchema: FetchSchema = async () => {
   }
 }
 
-// {
-//   __type(name: "${value}") {
-//     name
-//     description
-//     fields {
-//       name
-//       args {
-//         name
-//         type {
-//           name
-//         }
-//       }
-//       description
-//       type {
-//         name
-//         description
-//       }
-//     }
-//   }
-// }

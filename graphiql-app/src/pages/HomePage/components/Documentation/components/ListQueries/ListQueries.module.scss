@@ -4,13 +4,13 @@
   gap: 10px;
 }
 
-.queryLink {
-  cursor: pointer;
+.queryLink, .fieldLink {
   color: #4383eb;
 }
 
 .queryLink:hover {
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .argument {

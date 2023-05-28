@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.type {
+  cursor: pointer;
+  color: #eca008;
+  margin-left: 10px;
+}
+
+.type:hover {
+  text-decoration: underline;
+}
+
+.argument {
+  color: #fc5b8e;
+}
+
+.description {
+  color: #848485;
+}
+
+.title {
+  font-weight: 500;
+  color: #848485;
+}
+
+.args {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-left: 10px;
+
+  & span {
+    height: 30px;
+  }
+}
