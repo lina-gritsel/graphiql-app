@@ -26,7 +26,6 @@ i18next
   .use(Backend)
   .init({
     ns,
-    debug: true,
     fallbackLng: 'english',
     interpolation: {
       escapeValue: false,
