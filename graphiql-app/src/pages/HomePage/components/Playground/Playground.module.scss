@@ -37,7 +37,6 @@
   gap: 5px;
 }
 
-
 .fullHeight {
   height: 106%;
   position: relative;
@@ -76,6 +75,7 @@
   .requestSection {
     width: 100%;
     height: 100%;
+    max-width: 100%;
   }
 
   .responseSection {
@@ -90,8 +90,13 @@
 
 @media screen and (max-width: 768px) {
   .container {
+    border-radius: 0;
     height: calc(100vh - 153px);
     min-height: 600px;
-    max-width: calc(100vw - 30px);
+  }
+
+  .requestSection {
+    padding: 10px 15px 0 0;
+    max-width: 100%;
   }
 }

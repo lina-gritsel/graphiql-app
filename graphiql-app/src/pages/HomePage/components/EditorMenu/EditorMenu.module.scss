@@ -11,12 +11,19 @@
 .labelList {
   display: flex;
   gap: 15px;
-  max-width: 71vw;
+  max-width: 73vw;
   overflow: auto;
+  padding-bottom: 5px;
   -webkit-overflow-scrolling: touch;
 
   &::-webkit-scrollbar {
-    display: none;
+    width: 0.5em;
+    height: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #c7d3d2;
+    border-radius: 3px;
   }
 }
 
@@ -62,7 +69,7 @@
 
 .active {
   color: white;
-  background-color: #99c6c1;
+  background-color: #229687;
 }
 
 .close {

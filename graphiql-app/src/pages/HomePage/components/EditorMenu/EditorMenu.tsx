@@ -1,4 +1,4 @@
-import classname from 'classnames'
+import classnames from 'classnames'
 
 import plus from '../../../../assets/images/plus.png'
 import { ReactComponent as Close } from '../../../../assets/icons/close.svg'
@@ -24,7 +24,7 @@ const EditorMenu = () => {
           {editorLabelArray.map((label, index) => (
             <p
               key={index}
-              className={classname(
+              className={classnames(
                 styles.label,
                 index === idActiveEditor ? styles.active : null,
               )}

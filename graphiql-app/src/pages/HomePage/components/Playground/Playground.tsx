@@ -1,4 +1,4 @@
-import classname from 'classnames'
+import classnames from 'classnames'
 
 import { useResizableElement } from '../../../../hooks/useResizableElement'
 import DraggableElement from '../../../../components/DraggableElement'
@@ -34,7 +34,7 @@ const Playground = () => {
       <EditorMenu />
       <div className={styles.playgroundWrapper}>
         <div
-          className={classname(
+          className={classnames(
             styles.requestSection,
             isFullHeight && styles.fullHeight,
           )}
