@@ -1,5 +1,6 @@
 import { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 import { AuthContext } from '../../constants/context'
 import { PATHS } from '../../constants/paths'
@@ -10,14 +11,16 @@ import styles from './Menu.module.scss'
 const Menu = () => {
   const isAuthUser = useContext(AuthContext)
 
+  const { t } = useTranslation()
+
   const menu = isAuthUser ? (
     <div className={styles.authContainer}>
       <div>
         <NavLink className={styles.menuItem} to={PATHS.WELCOME}>
-          Welcome
+          {t('welcomeMenu')}
         </NavLink>
         <NavLink className={styles.menuItem} to={PATHS.HOME}>
-          Main
+          {t('main')}
         </NavLink>
       </div>
       <SignOutButton className={styles.signOut} />
