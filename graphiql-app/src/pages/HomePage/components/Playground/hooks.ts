@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useToast } from '@chakra-ui/react'
 
-import { useActions } from '../../../../store/actions/ActionsCreator'
+import { useActions } from '../../../../store/ActionsCreator'
 import { useAppSelector } from '../../../../store/hooks/redux'
 
 import { getAlignedText } from './utils'

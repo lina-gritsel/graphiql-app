@@ -7,6 +7,7 @@ import Loader from '../../../../components/Loader'
 import ControlArea from '../ControlArea'
 import Textarea from '../Textarea'
 import EditorMenu from '../EditorMenu'
+import Tools from '../Tools'
 
 import { usePlayground } from './hooks'
 import { TWO_SPACE } from './utils'
@@ -39,18 +40,21 @@ const Playground = () => {
           )}
           ref={divRef}
         >
-          <Textarea
-            placeholder="Enter your request"
-            value={valueTextarea}
-            onChange={setValueTextarea}
-            numOfLines={7}
-          />
-          <ControlArea
-            onPlay={onSubmit}
-            onClean={onClean}
-            onAlign={onAlign}
-            onCopy={onCopy}
-          />
+          <div className={styles.editor}>
+            <Textarea
+              placeholder="Enter your request"
+              value={valueTextarea}
+              onChange={setValueTextarea}
+              numOfLines={7}
+            />
+            <ControlArea
+              onPlay={onSubmit}
+              onClean={onClean}
+              onAlign={onAlign}
+              onCopy={onCopy}
+            />
+          </div>
+          <Tools />
         </div>
         <DraggableElement initial={initial} resize={resize} />
         <div className={styles.responseSection} ref={neighborRef}>

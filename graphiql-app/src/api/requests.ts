@@ -1,4 +1,4 @@
-import { Fields, Schema } from './types'
+import { Schema } from './types'
 
 const BASE_URL = 'https://rickandmortyapi.com/graphql'
 
