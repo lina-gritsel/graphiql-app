@@ -1,7 +1,7 @@
 import { useMemo, MouseEvent } from 'react'
 
 import { useAppSelector } from '../../../../store/hooks/redux'
-import { useActions } from '../../../../store/actions/ActionsCreator'
+import { useActions } from '../../../../store/ActionsCreator'
 
 interface IRemove {
   event: MouseEvent<SVGSVGElement>

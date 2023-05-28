@@ -7,6 +7,7 @@ import Loader from '../../../../components/Loader'
 import ControlArea from '../ControlArea'
 import Textarea from '../Textarea'
 import EditorMenu from '../EditorMenu'
+import Tools from '../Tools'
 
 import { usePlayground } from './hooks'
 import { TWO_SPACE } from './utils'
@@ -51,6 +52,7 @@ const Playground = () => {
             onAlign={onAlign}
             onCopy={onCopy}
           />
+          <Tools/>
         </div>
         <DraggableElement initial={initial} resize={resize} />
         <div className={styles.responseSection} ref={neighborRef}>

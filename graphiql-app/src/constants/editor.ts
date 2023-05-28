@@ -3,6 +3,8 @@ export interface EditorState {
     isLoading: boolean
     error: string
     valueTextarea: string
+    variables: string
+    headers: string
   }
   
 
@@ -19,4 +21,6 @@ export const DEFAULT_STATE: EditorState = {
   isLoading: false,
   error: '',
   valueTextarea: DEFAULT_REQUEST,
+  variables: '',
+  headers: '',
 }

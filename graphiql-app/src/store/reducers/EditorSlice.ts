@@ -21,6 +21,14 @@ export const editorSlice = createSlice({
       const currentEditor = state.editors[state.idActiveEditor]
       currentEditor.valueTextarea = action.payload
     },
+    setVariables(state, action: PayloadAction<string>) {
+      const currentEditor = state.editors[state.idActiveEditor]
+      currentEditor.variables = action.payload
+    },
+    setHeaders(state, action: PayloadAction<string>) {
+      const currentEditor = state.editors[state.idActiveEditor]
+      currentEditor.headers = action.payload
+    },
     setIdActiveEditor(state, action: PayloadAction<number>) {
       state.idActiveEditor = action.payload
     },
@@ -63,5 +71,11 @@ export const editorSlice = createSlice({
 })
 
 export default editorSlice.reducer
-export const { setValueTextarea, setIdActiveEditor, addEditor, deleteEditor } =
-  editorSlice.actions
+export const {
+  setValueTextarea,
+  setIdActiveEditor,
+  addEditor,
+  deleteEditor,
+  setVariables,
+  setHeaders,
+} = editorSlice.actions
