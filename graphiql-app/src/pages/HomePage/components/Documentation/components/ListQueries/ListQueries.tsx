@@ -1,7 +1,7 @@
-import { Schema, QueryArguments } from '../../../../../../api'
+import { Schema } from '../../../../../../api'
 
+import { createValueWithBracket } from '../Bracket'
 import ReturnedValue from '../ReturnedValue'
-import QueryDetails from '../QueryDetails'
 import FieldCard from '../FieldCard'
 import { useListQueries } from './hooks'
 
@@ -41,18 +41,3 @@ const ListQueries = ({ data }: { data: Schema }) => {
 }
 
 export default ListQueries
-
-const createValueWithBracket = (args: QueryArguments[]) => {
-  return (
-    <>
-      {args?.length !== 0 && <span>{'('}</span>}
-      {args?.map(({ name, type }) => (
-        <QueryDetails key={name} args={args} name={name} type={type} />
-      ))}
-      {args?.length > 1 && <br />}
-      {args?.length !== 0 && <span>{')'}</span>}
-      <span>{':'}</span>
-      {'\n'}
-    </>
-  )
-}

@@ -21,7 +21,7 @@ export const useTools = () => {
 
   const menuItemOnclick = (label: string) => {
     setActiveTab(label)
-    if (!open) {
+    if (!isOpen) {
       toggleHeight()
     }
   }
