@@ -21,13 +21,20 @@
   box-shadow: 0px 0px 9px 0px rgba(34, 60, 80, 0.19);
   border-radius: 20px;
   display: flex;
+  flex-direction: column;
   gap: 5px;
   height: 100%;
-  padding: 25px;
+  padding: 25px 25px 10px;
   min-width: 250px;
   max-width: 80vw;
   width: 50%;
-  position: relative;
+}
+
+.editor {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 5px;
 }
 
 
@@ -68,7 +75,7 @@
 
   .requestSection {
     width: 100%;
-    height: fit-content;
+    height: 100%;
   }
 
   .responseSection {
@@ -78,7 +85,6 @@
 
   .fullHeight {
     top: 0;
-    height: fit-content;
   }
 }
 

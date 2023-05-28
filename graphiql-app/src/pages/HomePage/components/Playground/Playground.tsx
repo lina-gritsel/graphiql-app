@@ -40,19 +40,21 @@ const Playground = () => {
           )}
           ref={divRef}
         >
-          <Textarea
-            placeholder="Enter your request"
-            value={valueTextarea}
-            onChange={setValueTextarea}
-            numOfLines={7}
-          />
-          <ControlArea
-            onPlay={onSubmit}
-            onClean={onClean}
-            onAlign={onAlign}
-            onCopy={onCopy}
-          />
-          <Tools/>
+          <div className={styles.editor}>
+            <Textarea
+              placeholder="Enter your request"
+              value={valueTextarea}
+              onChange={setValueTextarea}
+              numOfLines={7}
+            />
+            <ControlArea
+              onPlay={onSubmit}
+              onClean={onClean}
+              onAlign={onAlign}
+              onCopy={onCopy}
+            />
+          </div>
+          <Tools />
         </div>
         <DraggableElement initial={initial} resize={resize} />
         <div className={styles.responseSection} ref={neighborRef}>

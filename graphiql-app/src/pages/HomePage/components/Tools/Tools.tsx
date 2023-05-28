@@ -1,40 +1,24 @@
-import { useState } from 'react'
 import classname from 'classnames'
 
 import down from '../../../../assets/images/back.png'
 import Textarea from '../Textarea'
+import { useTools } from './hooks'
 
 import styles from './Tools.module.scss'
-import { useAppSelector } from '../../../../store/hooks/redux'
-import { useActions } from '../../../../store/ActionsCreator'
-
-const MENU = [
-  { label: 'Variables', value: 'variables' },
-  { label: 'Headers', value: 'Headers' },
-]
 
 const Tools = () => {
-  const [open, setOpen] = useState(false)
-  const [activeTab, setActiveTab] = useState(MENU[0].value)
-  const toggleHeight = () => setOpen((prev) => !prev)
-
-  const { editors, idActiveEditor } = useAppSelector(
-    (state) => state.editorReducer,
-  )
-  const { setVariables, setHeaders } = useActions()
-  const { headers, variables } = editors[idActiveEditor] || editors[0]
-
-  const menuItemOnclick = (label: string) => {
-    setActiveTab(label)
-    if (!open) {
-      toggleHeight()
-    }
-  }
-  const value = activeTab === MENU[0].value ? variables : headers
-  const setValue = activeTab === MENU[0].value ? setVariables : setHeaders
+  const {
+    MENU,
+    activeTab,
+    value,
+    setValue,
+    isOpen,
+    toggleHeight,
+    menuItemOnclick,
+  } = useTools()
 
   return (
-    <div className={classname(styles.tools, open && styles.openTools)}>
+    <div className={classname(styles.tools, isOpen && styles.openTools)}>
       <div className={styles.header}>
         <div className={styles.menu}>
           {MENU.map(({ label, value }) => (
@@ -42,7 +26,7 @@ const Tools = () => {
               key={label}
               className={classname(
                 styles.menuItem,
-                activeTab === value && open && styles.active,
+                activeTab === value && isOpen && styles.active,
               )}
               onClick={() => menuItemOnclick(value)}
             >
@@ -54,10 +38,10 @@ const Tools = () => {
           src={down}
           alt="down"
           onClick={toggleHeight}
-          className={classname(styles.upArrow, open && styles.downArrow)}
+          className={classname(styles.upArrow, isOpen && styles.downArrow)}
         />
       </div>
-      {open && <Textarea numOfLines={1} value={value} onChange={setValue} />}
+      {isOpen && <Textarea numOfLines={1} value={value} onChange={setValue} />}
     </div>
   )
 }
