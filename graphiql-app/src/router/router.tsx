@@ -20,8 +20,9 @@ const PrivateRouteForUnauthUser = <PrivateRoute authUserEl={<Navigate to={PATHS.
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path={PATHS.WELCOME} element={<Layout />} errorElement={<Page404 />}>
+    <Route path={PATHS.WELCOME} element={<Layout />}>
       <Route index path={PATHS.WELCOME} element={<WelcomePage />} />
+      <Route index path={PATHS.PAGE_404} element={<Page404 />} />
       <Route element={PrivateRouteForAuthUser}>
         <Route path={PATHS.HOME} element={<HomePage />} />
       </Route>
