@@ -26,16 +26,16 @@ const LanguageSwitcher = () => {
   const actualLanguage =
     localStorage.getItem('i18nextLng')?.toLowerCase() || DEFAULT_LANGUAGE
 
-  const currentLanguage = languages[actualLanguage]?.label
+  const currentLanguage = languages[actualLanguage] || languages.english
 
   const changeLanguage = () => {
-    const newLanguage = languages[actualLanguage]?.option
+    const newLanguage = currentLanguage?.option
     i18n.changeLanguage(newLanguage)
   }
 
   return (
     <Button onClick={changeLanguage} className={styles.button}>
-      {currentLanguage}
+      {currentLanguage?.label}
     </Button>
   )
 }
