@@ -47,3 +47,13 @@
     color: #229687;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .about {
+    width: 100%;
+  }
+
+  .infoCard {
+    width: 100%;
+  }
+}

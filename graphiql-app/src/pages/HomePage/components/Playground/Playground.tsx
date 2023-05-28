@@ -53,17 +53,18 @@ const Playground = () => {
           />
         </div>
         <DraggableElement initial={initial} resize={resize} />
-
-        {isLoading ? (
-          <Loader />
-        ) : (
-          <div className={styles.responseSection} ref={neighborRef}>
+        <div className={styles.responseSection} ref={neighborRef}>
+          {isLoading ? (
+            <div className={styles.loaderWrapper}>
+              <Loader />
+            </div>
+          ) : (
             <Textarea
               value={response ? JSON.stringify(response, null, TWO_SPACE) : ''}
               className={styles.responseTextarea}
             />
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   )

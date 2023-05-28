@@ -8,10 +8,18 @@
   overflow-x: hidden;
   overflow-y: auto;
   max-height: 555px;
+  min-width: 180px;
 }
 
 .title {
   color: #3b4c68;
   font-size: 30px;
   font-weight: 600;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: 100%;
+    max-height: none;
+  }
 }
