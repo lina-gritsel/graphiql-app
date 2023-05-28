@@ -14,15 +14,24 @@ import WelcomePage from '../pages/WelcomePage'
 import PrivateRoute from './PrivateRoute'
 import Layout from '../components/Layout'
 
-const PrivateRouteForAuthUser = <PrivateRoute authUserEl={<Outlet />} unauthUserEl={<Navigate to={PATHS.WELCOME} replace/>} />
+const PrivateRouteForAuthUser = (
+  <PrivateRoute
+    authUserEl={<Outlet />}
+    unauthUserEl={<Navigate to={PATHS.WELCOME} replace />}
+  />
+)
 
-const PrivateRouteForUnauthUser = <PrivateRoute authUserEl={<Navigate to={PATHS.HOME} replace/>} unauthUserEl={<Outlet/>} />
+const PrivateRouteForUnauthUser = (
+  <PrivateRoute
+    authUserEl={<Navigate to={PATHS.HOME} replace />}
+    unauthUserEl={<Outlet />}
+  />
+)
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path={PATHS.WELCOME} element={<Layout />}>
+    <Route path={PATHS.WELCOME} element={<Layout />} errorElement={<Page404 />}>
       <Route index path={PATHS.WELCOME} element={<WelcomePage />} />
-      <Route index path={PATHS.PAGE_404} element={<Page404 />} />
       <Route element={PrivateRouteForAuthUser}>
         <Route path={PATHS.HOME} element={<HomePage />} />
       </Route>
