@@ -1,9 +1,15 @@
 .container {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   gap: 60px;
-  width: 60%;
+  width: 100%;
+}
+
+.unauthContainer {
+  display: flex;
+  align-items: center;
+  gap: 60px;
 }
 
 .authContainer {
@@ -23,4 +29,24 @@
 .signOut {
   color: #229687;
   justify-self: flex-end;
+}
+
+@media screen and (max-width: 768px) {
+  .container,
+  .authContainer,
+  .unauthContainer {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .authContainer {
+    gap: 60px;
+
+    & div {
+      display: flex;
+      flex-direction: column;
+      justify-items: flex-start;
+      gap: 20px;
+    }
+  }
 }

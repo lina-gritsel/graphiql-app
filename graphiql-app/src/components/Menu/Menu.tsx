@@ -23,7 +23,7 @@ const Menu = () => {
       <SignOutButton className={styles.signOut} />
     </div>
   ) : (
-    <>
+    <div className={styles.unauthContainer}>
       <NavLink className={styles.menuItem} to={PATHS.WELCOME}>
         Welcome
       </NavLink>
@@ -33,7 +33,7 @@ const Menu = () => {
       <NavLink className={styles.menuItem} to={PATHS.LOGIN}>
         Login
       </NavLink>
-    </>
+    </div>
   )
 
   return <div className={styles.container}>{menu}</div>

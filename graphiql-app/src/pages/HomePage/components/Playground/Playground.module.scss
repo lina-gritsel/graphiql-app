@@ -8,6 +8,7 @@
   padding: 10px;
   width: 100%;
   position: relative;
+  overflow: hidden;
 }
 
 .playgroundWrapper {
@@ -42,11 +43,47 @@
   width: calc(50% - 25px);
 }
 
+.loaderWrapper {
+  text-align: center;
+}
+
 .responseTextarea {
   padding-left: 5px !important;
 
   &::selection {
     color: white;
     background-color: #99c6c1;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .playgroundWrapper {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .requestSection {
+    width: 100%;
+    height: fit-content;
+  }
+
+  .responseSection {
+    width: 100%;
+    height: 100%;
+  }
+
+  .fullHeight {
+    top: 0;
+    height: fit-content;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    height: calc(100vh - 163px);
+    min-height: 600px;
+    max-width: calc(100vw - 30px);
   }
 }

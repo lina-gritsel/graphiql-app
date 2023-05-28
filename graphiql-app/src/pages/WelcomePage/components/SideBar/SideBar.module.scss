@@ -24,3 +24,21 @@
   font-size: 20px;
   font-weight: 500;
 }
+
+@media screen and (max-width: 768px) {
+  .greeting {
+    position: static;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 0;
+  }
+
+  .btnWrapper {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+}
