@@ -18,9 +18,10 @@
   "docs": "Docs",
   "schema": "A GraphQL schema provides a root type for each kind of operation",
   "goToMain": "Go to GraphQL Editor",
-  "main":"Main",
+  "main": "Main",
   "welcomeMenu": "Welcome",
   "404": "Page not found",
-  "goBack" : "Go back to the",
-  "startPage": "Welcome page"
+  "goBack": "Go back to the",
+  "startPage": "Welcome page",
+  "registration": "Registration"
 }

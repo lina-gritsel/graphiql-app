@@ -28,13 +28,13 @@ const Menu = () => {
   ) : (
     <div className={styles.unauthContainer}>
       <NavLink className={styles.menuItem} to={PATHS.WELCOME}>
-        Welcome
+        {t('welcomeMenu')}
       </NavLink>
       <NavLink className={styles.menuItem} to={PATHS.REGISTRATION}>
-        Registration
+        {t('registration')}
       </NavLink>
       <NavLink className={styles.menuItem} to={PATHS.LOGIN}>
-        Login
+        {t('logIn')}
       </NavLink>
     </div>
   )
