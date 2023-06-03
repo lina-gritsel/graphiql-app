@@ -1,0 +1,102 @@
+.container {
+  background-color: #f1f2f4;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: calc(100vh - 153px);
+  padding: 10px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.playgroundWrapper {
+  display: flex;
+  height: 100%;
+}
+
+.requestSection {
+  background-color: #fff;
+  box-shadow: 0px 0px 9px 0px rgba(34, 60, 80, 0.19);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  height: 100%;
+  padding: 25px 25px 10px;
+  min-width: 250px;
+  max-width: 80vw;
+  width: 50%;
+}
+
+.editor {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 5px;
+}
+
+.fullHeight {
+  height: 106%;
+  position: relative;
+  top: -30px;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.responseSection {
+  width: calc(50% - 25px);
+}
+
+.loaderWrapper {
+  text-align: center;
+}
+
+.responseTextarea {
+  padding-left: 5px !important;
+
+  &::selection {
+    color: white;
+    background-color: #99c6c1;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .playgroundWrapper {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .requestSection {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+  }
+
+  .responseSection {
+    width: 100%;
+    height: 100%;
+  }
+
+  .fullHeight {
+    top: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    border-radius: 0;
+    height: calc(100vh - 153px);
+    min-height: 600px;
+  }
+
+  .requestSection {
+    padding: 10px 15px 0 0;
+    max-width: 100%;
+  }
+}

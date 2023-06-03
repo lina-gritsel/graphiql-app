@@ -1,0 +1,23 @@
+.container {
+  min-height: calc(100vh - 120px);
+  width: 100%;
+  padding: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.draggable {
+  position: relative;
+  left: 20px;
+  & > div {
+    position: fixed;
+    top: 38%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,52 @@
+.tools {
+  // position: absolute;
+  // left: 0;
+  // bottom: 0;
+  min-height: 50px;
+  border-top: 2px solid #f1f2f4;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px 15px 5px;
+}
+
+.openTools {
+  height: 130px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu {
+  display: flex;
+  gap: 20px;
+  position: relative;
+  left: 20px;
+}
+
+.menuItem {
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.active {
+  font-weight: 600;
+}
+
+.upArrow {
+  width: 25px;
+  height: 25px;
+  transform: rotate(90deg);
+
+  &:hover {
+    cursor: pointer;
+    scale: 1.1;
+  }
+}
+
+.downArrow {
+  transform: rotate(270deg);
+}

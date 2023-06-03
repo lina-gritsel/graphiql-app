@@ -1,0 +1,59 @@
+.about {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 70%;
+  background-color: #f1f2f4;
+  border-radius: 20px;
+  padding: 10px;
+  min-width: 260px;
+}
+
+.infoCard {
+  width: 85%;
+  background-color: #fff;
+  box-shadow: 0px 0px 9px 0px rgba(34, 60, 80, 0.19);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px 20px;
+
+  &:nth-child(3),
+  &:nth-child(4) {
+    align-self: flex-end;
+  }
+
+  & p::first-letter {
+    font-size: 30px;
+    color: #229687;
+    font-weight: 600;
+  }
+}
+
+.title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #229687;
+  text-align: center;
+}
+
+.text {
+  text-indent: 1.5em;
+  text-align: justify;
+
+  & a {
+    font-weight: 800;
+    color: #229687;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .about {
+    width: 100%;
+  }
+
+  .infoCard {
+    width: 100%;
+  }
+}

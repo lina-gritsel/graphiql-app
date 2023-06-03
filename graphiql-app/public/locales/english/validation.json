@@ -1,0 +1,17 @@
+{
+  "email": {
+    "valid": "Must be a valid email.",
+    "required": "Email is required.",
+    "length": "Email must contain at least 8 characters.",
+    "letter": "Email must contain at least one letter.",
+    "digit": "Email must contain at least one digit.",
+    "special": "Email must contain at least one special character !, @, #, $, %, ^, &, *."
+  },
+  "password": {
+    "required": "Password is required.",
+    "length": "Password must contain at least 8 characters.",
+    "letter": "Password must contain at least one letter.",
+    "digit": "Password must contain at least one digit.",
+    "special": "Password must contain at least one special character !, @, #, $, %, ^, &, *."
+  }
+}

@@ -1,0 +1,19 @@
+.container {
+  opacity: 0;
+  width: 20px;
+  display: flex;
+  transition: all 0.5s;
+
+  &:hover {
+    opacity: 1;
+    cursor: col-resize;
+  }
+}
+.slider {
+  width: 5px;
+  height: 30%;
+  background: #bebfbf;
+  border-radius: 2px;
+  align-self: center;
+  margin-left: 5px;
+}
